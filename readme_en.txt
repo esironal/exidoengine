@@ -1,5 +1,5 @@
 *******************************************************************************
-*             ExidoEngine Content Management System - README                  *
+*                   ExidoEngine Web-sites manager - README                    *
 *******************************************************************************
 
 Contents:
@@ -15,6 +15,7 @@ Contents:
 
   PHP version 5.2.4 or higher.
   MySQL version 5.0 or higher.
+  Apache/nGinx
 
 -------------------------------------------------------------------------------
 
@@ -30,7 +31,7 @@ Contents:
 
 4. Updates
 
-  You can always get the latest stable version from http://exidoengine.com/download.html
+  You can always get the latest stable version from http://www.exidoengine.com/download.html
 
 -------------------------------------------------------------------------------
 

@@ -1,14 +1,14 @@
 <?php defined('SYSPATH') or die('No direct script access allowed.');
 
 /*******************************************************************************
- * ExidoEngine Content Management System
+ * ExidoEngine Web-sites manager
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the GNU General Public License (3.0)
  * that is bundled with this package in the file license_en.txt.
  * It is also available through the world-wide-web at this URL:
- * http://exidoengine.com/license/gpl-3.0.html
+ * http://www.exidoengine.com/license/gpl-3.0.html
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@exidoengine.com so we can send you a copy immediately.
@@ -19,22 +19,19 @@
  * versions in the future. If you wish to customize ExidoEngine for your
  * needs please refer to http://www.exidoengine.com for more information.
  *
- * @license   http://exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
+ * @license   http://www.exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
  * @author    ExidoTeam
  * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
- * @link      http://exidoengine.com/
+ * @link      http://www.exidoengine.com/
  * @since     Version 1.0
  * @filesource
  *******************************************************************************/
 
-/**
- * Application bootstrap
- */
-if(IN_PRODUCTION == true) {
+// Enabling/disabling errors showing
+if(IN_PRODUCTION == true)
   ini_set('display_errors', 0);
-} else {
+else
   ini_set('display_errors', 1);
-}
 
 // Set include paths
 set_include_path(SYSPATH.PATH_SEPARATOR.
@@ -44,12 +41,8 @@ set_include_path(SYSPATH.PATH_SEPARATOR.
                    get_include_path()
 );
 
-/**
- * Define web paths
- */
-// Set web root.
-// It's empty by default.
-// Usefull if ExidoEngine is installed not in the web-root directory.
+// Set web root path. It's empty by default.
+// Usefull if ExidoEngine is installed NOT in the web-root directory.
 define('WEB_ROOT', '');
 // Set domain name
 define('HOME', 'http://'.$_SERVER['SERVER_NAME'].'/'.WEB_ROOT);

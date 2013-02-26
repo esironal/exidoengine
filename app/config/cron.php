@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access allowed.');
 
 /*******************************************************************************
- * ExidoEngine Content Management System
+ * ExidoEngine Web-sites manager
  *
  * NOTICE OF LICENSE
  *
@@ -16,7 +16,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html (GNU General Public License v3)
  * @author    ExidoTeam
  * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
- * @link      http://exidoengine.com/
+ * @link      http://www.exidoengine.com/
  * @since     Version 1.0
  * @filesource
  *******************************************************************************/

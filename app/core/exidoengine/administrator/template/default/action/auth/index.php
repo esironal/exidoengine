@@ -1,14 +1,14 @@
 <?php defined('SYSPATH') or die('No direct script access allowed.');
 
 /*******************************************************************************
- * ExidoEngine Content Management System
+ * ExidoEngine Web-sites manager
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the GNU General Public License (3.0)
  * that is bundled with this package in the file license_en.txt
  * It is also available through the world-wide-web at this URL:
- * http://exidoengine.com/license/gpl-3.0.html
+ * http://www.exidoengine.com/license/gpl-3.0.html
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@exidoengine.com so we can send you a copy immediately.
@@ -19,10 +19,10 @@
  * versions in the future. If you wish to customize ExidoEngine for your
  * needs please refer to http://www.exidoengine.com for more information.
  *
- * @license   http://exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
+ * @license   http://www.exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
  * @author    ExidoTeam
  * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
- * @link      http://exidoengine.com/
+ * @link      http://www.exidoengine.com/
  * @since     Version 1.0
  * @filesource
  *******************************************************************************/
@@ -75,7 +75,7 @@ $helper
   ->close()
   ->close()
   ->close()
-  ->notifier('<a href="http://www.exidoengine.com" target="_blank">ExidoEngine Content Management System</a>', 'footer')
+  ->notifier('<a href="http://www.exidoengine.com" target="_blank">ExidoEngine Web-sites manager</a>', 'footer')
   ->closeBody()
   ->closeHtml();
 /*
@@ -99,6 +99,6 @@ of its height, -35px.</div>
 			</div>
 		</div>
 <div id="footer">
-<a href="http://www.exidoengine.com" target="_blank">ExidoEngine Content Management System</a>
+<a href="http://www.exidoengine.com" target="_blank">ExidoEngine Web-sites manager</a>
 </div>*/
 ?>
