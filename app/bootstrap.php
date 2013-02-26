@@ -1,0 +1,107 @@
+<?php defined('SYSPATH') or die('No direct script access allowed.');
+
+/*******************************************************************************
+ * ExidoEngine Content Management System
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the GNU General Public License (3.0)
+ * that is bundled with this package in the file license_en.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://exidoengine.com/license/gpl-3.0.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@exidoengine.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade ExidoEngine to newer
+ * versions in the future. If you wish to customize ExidoEngine for your
+ * needs please refer to http://www.exidoengine.com for more information.
+ *
+ * @license   http://exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
+ * @author    ExidoTeam
+ * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
+ * @link      http://exidoengine.com/
+ * @since     Version 1.0
+ * @filesource
+ *******************************************************************************/
+
+/**
+ * Application bootstrap
+ */
+if(IN_PRODUCTION == true) {
+  ini_set('display_errors', 0);
+} else {
+  ini_set('display_errors', 1);
+}
+
+// Set include paths
+set_include_path(SYSPATH.PATH_SEPARATOR.
+                   COMPATH.PATH_SEPARATOR.
+                   VNDPATH.PATH_SEPARATOR.
+                   APPPATH.PATH_SEPARATOR.
+                   get_include_path()
+);
+
+/**
+ * Define web paths
+ */
+// Set web root.
+// It's empty by default.
+// Usefull if ExidoEngine is installed not in the web-root directory.
+define('WEB_ROOT', '');
+// Set domain name
+define('HOME', 'http://'.$_SERVER['SERVER_NAME'].'/'.WEB_ROOT);
+// Set host name
+define('HOST', $_SERVER['HTTP_HOST']);
+
+// Load framework base functions
+include_once 'base.php';
+
+// Set the PHP error reporting level.
+// @see  http://php.net/error_reporting
+error_reporting(E_ALL & ~E_DEPRECATED);
+
+// Set error handlers
+set_error_handler    (array('Exception_Exido', 'handlerError'));
+set_exception_handler(array('Exception_Exido', 'handlerException'));
+
+// Initialize framework
+Exido::initialize();
+// You can attach a log writer by uncomment the next line
+//Exido::$log->attach(new Log_File(APPPATH.'data/cache/log'));
+// Initialize components
+Exido::initComponents();
+
+// Include internalization languages
+//Exido::$i18n->attach(new I18n_File('en_US'));
+Exido::$i18n->attach(new I18n_File('ru_RU'));
+
+// Set the application time zone. Depends on language loaded.
+// It's UTC default.
+// @see  http://php.net/timezones
+date_default_timezone_set(__('__time_zone'));
+
+// Set the application locale. Depends on language loaded.
+// It's en_US.UTF-8 by default.
+// @see  http://php.net/setlocale
+setlocale(LC_ALL, __('__locale'));
+
+// Set the application charset. Depends on language loaded.
+// It's UTF-8 default.
+header('Content-Type: text/html; charset='.__('__charset'), true);
+
+// Determine routing
+Event::run('system.routing');
+
+// System ready
+Event::run('system.ready');
+
+// Make the magic happen!
+Event::run('system.execute');
+
+// Clean up and exit
+Event::run('system.shutdown');
+
+?>

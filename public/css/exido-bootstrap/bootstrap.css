@@ -1,0 +1,292 @@
+/*******************************************************************************
+ * ExidoEngine CSS Bootstrap
+ *
+ * Copyright (c) 2009 - 2013, ExidoEngine Solutions
+ * Licensed under GNU General Public License v3
+ * http://exidoengine.com/license/gpl-3.0.html
+ *******************************************************************************/
+
+/* Reset styles */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u,
+i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: 100% Arial, Helvetica, sans-serif;
+  vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu,
+nav, section {
+  display: block;
+}
+body {
+  line-height:1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Main styles */
+html, body {
+  margin: 0;
+  height: 100%;
+  font: 0.9em/2em normal Tahoma, Geneva, sans-serif;
+}
+b, .b {
+  font-weight: bold;
+}
+i, .i {
+  font-style: italic;
+}
+a, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+a:hover, a:active {
+  text-decoration: underline;
+}
+
+/** Headers **/
+h3{font: 1.8em/2.1em normal Arial, Helvetica, sans-serif;}
+
+/* Margins */
+.-m-bottom {
+  margin-bottom: 1em;
+}
+.-m-left {
+  margin-left: 1em;
+}
+.-m-right {
+  margin-right: 1em;
+}
+.-m-top {
+  margin-top: 1em;
+}
+.-m-both {
+  margin: 1em;
+}
+
+/* Floats */
+.-f-right {
+  float: right;
+}
+.-f-left {
+  float: left;
+}
+
+/* Clear */
+.-c-left {
+  clear: left;
+}
+.-c-right {
+  clear: right;
+}
+.-c-both {
+  clear: both;
+}
+
+/* Text transformations */
+.-t-upper {
+  text-transform: uppercase;
+}
+.-t-lower {
+  text-transform: lowercase;
+}
+
+/* Action buttons */
+.-b-button {
+  font: 1em bold Arial, Helvetica, sans-serif;
+  padding: 0.5em 0.5em 0.3em;
+  cursor: pointer;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  border-style: solid;
+  border-width: 0.1em;
+}
+.-b-button:hover {}
+
+/* Form fields */
+.-i-form {}
+.-i-form fieldset {
+  margin: 0 0 15px;
+}
+.-i-text {
+  font: 1.2em/1em normal Arial, Helvetica, sans-serif;
+  padding: 0.4em 0.4em 0.3em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  border-style: solid;
+  border-width: 0.1em;
+  height: 1em;
+  line-height: 1em;
+}
+.-i-textarea {
+  font: 1em normal Arial, Helvetica, sans-serif;
+  padding: 0.2em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  border-style: solid;
+  border-width: 0.1em;
+  overflow-y: scroll;
+}
+.-i-text:focus, .-i-textarea:focus {
+  border-style: solid;
+}
+.-i-error {
+  border-style: dashed;
+}
+.-i-form label {
+  padding: 0 0 0 0.5em;
+}
+.-i-form legend {
+  font-size: 1.2em;
+}
+/*
+TODO: images for checkboxes and radios are disabled for now.
+.-i-form input[type=radio], .-i-form input[type=checkbox] {
+  display: none;
+  height: 35px;
+  line-height: 35px;
+}
+.-i-form input[type=radio] + label, .-i-form input[type=checkbox] + label {
+  cursor: pointer;
+}
+.-i-form input[type=radio]:checked + label, .-i-form input[type=checkbox]:checked + label {
+  background-position: 0 -35px !important;
+}
+.-i-form input[type=checkbox]:checked + label {
+  cursor: pointer;
+}
+.-i-form input[type=radio]:checked + label {
+  cursor: default;
+}
+*/
+/* Wrapper box */
+.-i-wrapper {
+  height: auto !important;
+  height: 100%; min-height: 100%;
+  min-width: 800px;
+}
+/* Spacer */
+.-i-spacer {
+  height: 3em;
+}
+/* Footer box */
+.-i-box-footer {
+  height: 2em;
+  margin-top: -2em; text-align: center;
+}
+/* Header box */
+.-i-box-header {
+  height: 50px;
+  background: #EB9500;
+  position: relative;
+}
+/* Main content box */
+.-i-box-content {
+  -webkit-border-radius:0 0 0.2em 0.2em;
+  -moz-border-radius:0 0 0.2em 0.2em;
+  border-radius:0 0 0.2em 0.2em;
+  padding: 1em;
+  border-top: 0 !important;
+  margin: 0 1em 0 1em;
+  min-height: 600px;
+  border-style: solid;
+  border-width: 0.1em;
+}
+
+/* Notification boxes */
+.-i-box {
+  padding: 0.5em;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  border-radius: 0.2em;
+  border-style: solid;
+  border-width: 0.1em;
+  margin-bottom: 1em;
+}
+
+/* Actions menu */
+.-i-action-menu {
+  float: right;
+  height: 2.1em;
+  line-height: 2.1em;
+}
+.-i-action-menu ul li {
+  display: inline;
+}
+/* Tabs */
+.-i-tabs{
+  bottom: 0;
+  position: absolute;
+  left: 0.8em;
+}
+.-i-tabs ul {}
+.-i-tabs ul li {
+  float: left;
+  margin: 0 0.2em;
+}
+.-i-tabs ul li a {
+  text-decoration: none;
+  float: left;
+  padding: 0.7em 1em 0.5em;
+  -webkit-border-radius:5px 5px 0 0;
+  -moz-border-radius:5px 5px 0 0;
+  border-radius: 0.6em 0.6em 0 0;
+}
+
+/* Tables */
+.-i-table {
+  width: 100%;
+}
+.-i-table tbody tr {
+  border-style: solid;
+  border-bottom-width: 0.1em;
+}
+.-i-table tbody tr th {
+  font-weight: bold;
+}
+.-i-table tbody tr th,.-i-table tbody tr td {
+  padding: 0.3em;
+  text-align: left;
+}
+.-i-table-bordered {
+  border-style: solid;
+  border-width: 0.1em;
+}
+.-i-table-td-bordered tbody tr th, .-i-table-td-bordered tbody tr td {
+  border-style: solid;
+  border-width: 0.1em;
+}
+
+/* Pagination */
+.-i-pgn-ul {
+  margin: 10px;
+}
+.-i-pgn-li {
+  display: inline;
+  padding: 2px 8px;
+}
+
+/* Administration panel sign in form */
+.-i-box-admin-signin {
+
+}
