@@ -75,7 +75,7 @@ final class Administrator_Controller_Auth extends Controller_Json_Abstract
           'is_system'   => $r->getIs_system()
         )
       );
-      $this->jsonText('AUTH');
+      $this->jsonText(__('Hi').' '.$r->getUser_name());
     } else {
       $this->jsonErrorCode('403');
       $this->jsonError(__('User is not found or blocked'));

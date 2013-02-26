@@ -27,19 +27,20 @@
  * @filesource
  *******************************************************************************/
 
-$form = '<script>$(function(){$("form").validate({rules:{username:"required",password:"required"},messages:{username:"Please enter a username",password:"Please enter a password"},submitHandler:function(form){$.post("/index.php/auth",{uid: $("input[name=username]").val(), pwd: $("input[name=password]").val()}, function(data){if(data.status == true && data.text == "AUTH"){
-      alert("'.__('Thank you').'");
-      window.location.reload();
+$form = '<script>$(function(){$("#welcome_dialog").dialog({height:140,modal:true,autoOpen:false,open:function(event,ui){$("button").attr("title","'.__('Close').'");}});$("form").validate({rules:{username:"required",password:"required"},messages:{username:"'.__('Please enter a username').'",password:"'.__('Please enter a password').'"},submitHandler:function(form){$.post("/index.php/auth",{uid:$("input[name=username]").val(),pwd:$("input[name=password]").val()},function(data){if(data.status == true){
+      $("#welcome_dialog p").html(data.text);
+      $("#welcome_dialog").dialog("open");
+      setTimeout(function(){window.location.reload();},1000);
     } else {
       alert(data.text);
       form.reset();
     }},"json");}});});</script>'
        .'<form class="-i-form" method="POST" action="">'
        .'<fieldset>'
-       .'<legend>'.__('Username').'</legend><input class="-i-text" type="text" name="username" value="" maxlength="32" autocomplete="off" />'
+       .'<legend>'.__('Username').'</legend><input class="-i-text" type="text" name="username" value="" maxlength="32" autocomplete="off" /><label for="username" generated="true" class="error">&nbsp;</label>'
        .'</fieldset>'
        .'<fieldset>'
-       .'<legend>'.__('Password').'</legend><input class="-i-text" type="password" name="password" value="" />'
+       .'<legend>'.__('Password').'</legend><input class="-i-text" type="password" name="password" value="" /><label for="password" generated="true" class="error">&nbsp;</label>'
        .'</fieldset>'
        .'<fieldset>'
        .'<input class="-b-button" type="submit" name="submit" value="'.__('Sign in').'" />'
@@ -50,7 +51,9 @@ $msg1 = '<span>'.__('Welcome to administration panel').'</span>'
 $msg2 = '<span>'.__('Please enter your credentials in the box above.').'</span>'
        .'<span>'.__('You have 3 attempts to authorize yourself.').'</span>'
        .'<span>'.__('After third incorrect attempt, you will be rejected for a some time.').'</span>';
-
+$dialogs = '<div id="welcome_dialog" title="'.__('Welcome').'">'
+          .'<p></p>'
+          .'</div>';
 $helper
   ->doctype()
   ->openHtml()
@@ -62,8 +65,11 @@ $helper
   ->css('exido-bootstrap/bootstrap')
   ->css('exido-bootstrap/bootstrap-green')
   ->css('administrator/signin-form')
+  ->css('administrator/jqueryui')
   ->js('administrator/jquery')
+  ->js('administrator/jqueryui')
   ->js('administrator/form.validate')
+  ->js('administrator/common')
   ->closeHead()
   ->openBody()
   ->open('wrapper', 'wrapper')
@@ -71,34 +77,13 @@ $helper
   ->open('form-text')
   ->notifier($msg1, 'msg1 messages')
   ->notifier($form, 'signin-form')
-  ->notifier($msg2, 'msg2 messages')
+  ->notifier($msg2, 'msg2 messages');
+print $dialogs;
+$helper
   ->close()
   ->close()
   ->close()
   ->notifier('<a href="http://www.exidoengine.com" target="_blank">ExidoEngine Web-sites manager</a>', 'footer')
   ->closeBody()
   ->closeHtml();
-/*
-
-<div id="horizon">
-			<div id="content">
-				<div class="bodytext"><div id="caption1" class="captions">The
-cyan box 'horizon' is positioned absolutely 50% from the top of the
-page, is 100% wide and has a nominal height of 1px. Its overflow is set
-to 'visible'.</div>
-					This text is<br>
-					<span class="headline">DEAD CENTRE</span><br>
-					and stays there!
-					<div id="caption2" class="captions">The
-red 'content' box is nested inside the 'horizon' box and is 250px wide,
-70px high and is positioned absolutely 50% from the left - but has a
-negative margin that is exactly half of its width, -125px. To get it to
-centre vertically, it has a negative top position that is exactly half
-of its height, -35px.</div>
-				</div>
-			</div>
-		</div>
-<div id="footer">
-<a href="http://www.exidoengine.com" target="_blank">ExidoEngine Web-sites manager</a>
-</div>*/
 ?>

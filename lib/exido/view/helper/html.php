@@ -209,7 +209,7 @@ abstract class View_Helper_Html extends View_Helper_Meta
    * @param bool $use_span set TRUE if you need to use span instead div
    * @return View_Helper_Html
    */
-  public function notifier($msg, $class = 'html-block html-notifier', $use_span = false)
+  public function notifier($msg, $class = '-i-box -i-simple-box', $use_span = false)
   {
     print htmlMsgBox($msg, $class, $use_span);
     return $this;
@@ -224,7 +224,7 @@ abstract class View_Helper_Html extends View_Helper_Meta
    * @param string $class
    * @return View_Helper_Html
    */
-  public function target($id, $class = 'html-block')
+  public function target($id, $class = '-i-simple-box')
   {
     print htmlDiv($id, $class);
     return $this;
@@ -239,7 +239,7 @@ abstract class View_Helper_Html extends View_Helper_Meta
    * @param string $class
    * @return View_Helper_Html
    */
-  public function open($id = '', $class = 'html-block')
+  public function open($id = '', $class = '-i-simple-box')
   {
     print htmlOpenDiv($id, $class);
     return $this;

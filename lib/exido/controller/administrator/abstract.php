@@ -75,7 +75,7 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
             'is_system'   => $r->getIs_system()
           )
         );
-        $this->_is_logged_in = false;
+        $this->_is_logged_in = true;
       }
     }
 

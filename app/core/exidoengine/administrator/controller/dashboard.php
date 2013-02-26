@@ -54,8 +54,7 @@ class Administrator_Controller_Dashboard extends Administrator_Controller_Front
    */
   public function index()
   {
-    $db = $this->model('model_test');
-    $this->view->test = $db->method('s');
+
   }
 
   // ---------------------------------------------------------------------------

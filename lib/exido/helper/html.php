@@ -276,7 +276,7 @@ function htmlNbs($num = 1)
  * @param bool $use_span set TRUE if you need to use span instead div
  * @return string
  */
-function htmlMsgBox($msg, $class = 'html-msg', $use_span = false)
+function htmlMsgBox($msg, $class = '-i-box -i-simple-box', $use_span = false)
 {
   $tag = ($use_span) ? 'span' : 'div';
   return '<'.$tag.' class="'.$class.'">'.$msg.'</'.$tag.">".EXIDO_EOL;
@@ -290,7 +290,7 @@ function htmlMsgBox($msg, $class = 'html-msg', $use_span = false)
  * @param string $class
  * @return string
  */
-function htmlDiv($id = '', $class = 'html-block')
+function htmlDiv($id = '', $class = '-i-simple-box')
 {
   return '<div'.((empty($id))?'':' id="'.$id.'" ').((empty($class))?'':' class="'.$class.'" ')."></div>".EXIDO_EOL;
 }
@@ -303,7 +303,7 @@ function htmlDiv($id = '', $class = 'html-block')
  * @param string $class
  * @return string
  */
-function htmlOpenDiv($id = '', $class = 'html-block')
+function htmlOpenDiv($id = '', $class = '-i-simple-box')
 {
   return '<div'.((empty($id))?'':' id="'.$id.'" ').((empty($class))?'':' class="'.$class.'"').">".EXIDO_EOL;
 }
