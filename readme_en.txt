@@ -30,7 +30,7 @@ Contents:
 
 4. Updates
 
-  You can always get the latest version from http://exidoengine.com/download.html
+  You can always get the latest stable version from http://exidoengine.com/download.html
 
 -------------------------------------------------------------------------------
 
