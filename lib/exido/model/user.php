@@ -46,15 +46,75 @@ final class Model_User extends Model_Db_Abstract
 
   /**
    * Get user. Return FALSE if the user does not found.
+   * @param int $user_id
+   * @return mixed
+   */
+  public function getUser($user_id)
+  {
+    if($r = $this->db->select('user', '*')->where(array('user_id' => $user_id))
+            ->limit(1)->exec()->row()) {
+      return Registry::factory('Model_Auth_User', $r);
+    }
+    return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get user. Return FALSE if the user does not found.
+   * @return mixed
+   */
+  public function getCurrentUser()
+  {
+    return $this->_user;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get user. Return FALSE if the user does not found.
    * @param string $name
    * @param string $password
    * @return mixed
    */
-  public function getUser($name, $password)
+  public function getUserSessionId($name, $password)
   {
-    if($r = $this->db->select('user', '*')->where(array('user_name' => $name, 'password' => $password))
-            ->limit(1)->exec()->row()) {
+    if($r = $this->db->select('user', 'unique_session_id')->where(array('user_name' => $name, 'password' => $password))
+      ->limit(1)->exec()->row()) {
+      return $r->unique_session_id;
+    }
+    return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get user. Return FALSE if the user does not found.
+   * @param string $key
+   * @return mixed
+   */
+  public function getUserByUniqueKey($key)
+  {
+    if($r = $this->db->select('user', '*')->where(array('unique_session_id' => $key))
+      ->limit(1)->exec()->row()) {
       return $this->_user = Registry::factory('Model_Auth_User', $r);
+    }
+    return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get user. Return FALSE if the user does not found.
+   * @param int $user_id
+   * @param string $instance
+   * @return mixed
+   */
+  public function getUserAccess($user_id, $instance)
+  {
+    if($r = $this->db->select('user_access', array('component','permissions'))->where(array('user_id' => $user_id, 'instance' => $instance))
+      ->limit(1)->exec()->resultToAssoc('component', 'permissions')) {
+      return $r;
     }
     return false;
   }

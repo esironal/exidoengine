@@ -11,4 +11,4 @@ CREATE TABLE `session` (
   `last_activity` int(10) unsigned DEFAULT 0 NOT NULL,
   `date_modify` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
   `data` text NOT NULL
-) ENGINE = InnoDB;
+) ENGINE = Memory;

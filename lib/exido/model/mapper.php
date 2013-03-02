@@ -78,7 +78,9 @@ abstract class Model_Mapper
   {
     if(preg_match('/^set(.*)/', $method, $m) and isset($m[1]) and $field = strtolower($m[1])) {
       // Set a new property to the $_aData array
-      $this->_aData->$field = implode('', $args);
+      Helper::load('string');
+      $this->_aData->$field = stringNull(reset($args));
+      //pre($this->_aData);
       return true;
     }
 

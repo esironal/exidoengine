@@ -219,4 +219,16 @@ function stringToLower($str)
   return function_exists('mb_strtolower') ? mb_strtolower($str) : strtolower($str);
 }
 
+// ---------------------------------------------------------------------------
+
+/**
+ * Make a string lowercase. Use mb_strtolower if possible.
+ * @param string $str
+ * @return string
+ */
+function stringNull($str)
+{
+  return empty($str) ? null : $str;
+}
+
 ?>

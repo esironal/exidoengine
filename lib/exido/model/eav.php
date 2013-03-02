@@ -51,6 +51,7 @@ final class Model_Eav extends Model_Db_Eav_Abstract
     // Get attribute set
     if( ! $set = $this->getAttributeSet($attribute_set)) {
       // If attribute set doesn't found
+      $this->_setError('attribute_set', sprintf(__('Attribute set %s is not found'), $attribute_set));
       return false;
     }
 
@@ -59,13 +60,14 @@ final class Model_Eav extends Model_Db_Eav_Abstract
     foreach($set as $key => $f) {
       // Check if the required attribute exists
       if($f->is_required) {
-        if( ! isset($attributes[$key])) {
+        if( ! isset($attributes[$key]) and empty($attributes[$key]->default_value)) {
           $this->_setError($key, sprintf(__('Attribute %s is required'), $key));
           return false;
         }
       }
-
     }
+
+
   }
 
   // ---------------------------------------------------------------------------

@@ -62,6 +62,24 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
   public $view;
 
   /**
+   * Current system user
+   * @var View
+   */
+  protected $_system_user;
+
+  /**
+   * Current system user access
+   * @var View
+   */
+  protected $_system_user_access;
+
+  /**
+   * Installed components
+   * @var null
+   */
+  protected $_components = null;
+
+  /**
    * The list of supported environments
    * @var array
    */
@@ -130,6 +148,40 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
     $this->_viewLayout = Registry::factory('View_Layout');
     // Init an action view object
     $this->_viewAction = Registry::factory('View_Action');
+
+    // Get active components
+    $this->_components = $this->model('Model_Component')->getActiveComponents();
+
+    // Get session data
+    $_user = $this->_getCurrentUser();
+    // If current user is unknown so we should start guest session
+    if(empty($_user)) {
+      // Guest session id
+      $_user = '5627a272bf2563cee5877539bd906e7cc3eb33afcefe2b570a08906f9a34ae48';
+    }
+    if($r = $this->model('Model_User')->getUserByUniqueKey($_user)) {
+      $this->_system_user = array(
+        'user_id'     => $r->getUser_id(),
+        'user_name'   => $r->getUser_name(),
+        'password'    => $r->getPassword(),
+        'user_email'  => $r->getUser_email(),
+        'owner_id'    => $r->getOwner_id(),
+        'owner_name'  => $r->getOwner_name(),
+        'group_id'    => $r->getGroup_id(),
+        'group_name'  => $r->getGroup_name(),
+        'role_name'   => $r->getRole_name(),
+        'permissions' => array(
+          'owner' => $r->getPermissions_owner(),
+          'group' => $r->getPermissions_group(),
+          'other' => $r->getPermissions_other()
+        ),
+        'is_enabled'  => $r->getIs_enabled(),
+        'is_dropped'  => $r->getIs_dropped(),
+        'is_system'   => $r->getIs_system()
+      );
+      $this->_system_user_access = $this->model('Model_User')->getUserAccess($r->getUser_id(), EXIDO_ENVIRONMENT_NAME);
+      $this->session->set('system_user', $_user);
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -283,6 +335,17 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
   public function printActionView()
   {
     $this->getActionView(true);
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get current user.
+   * @return mixed
+   */
+  private function _getCurrentUser()
+  {
+    return $this->session->get('system_user');
   }
 
   // ---------------------------------------------------------------------------

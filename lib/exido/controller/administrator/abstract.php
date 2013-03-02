@@ -40,7 +40,9 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
    * Allow all the controllers to run in production by default
    * @var bool
    */
-  private $_is_logged_in = false;
+  private $_has_access = false;
+
+  private $_actions = array('r', 'w', 'x');
 
   // ---------------------------------------------------------------------------
 
@@ -51,42 +53,13 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
   {
     parent::__construct();
 
-    // Get session data
-    $_isAuth = $this->_isAuth();
-    if(isset($_isAuth['password']) and $_isAuth['user_name']) {
-      if($r = $this->model('Model_User')->getUser($_isAuth['user_name'], $_isAuth['password'])) {
-        $this->session->set('logged_user', array(
-            'user_id'     => $r->getUser_id(),
-            'user_name'   => $r->getUser_name(),
-            'password'    => $r->getPassword(),
-            'user_email'  => $r->getUser_email(),
-            'owner_id'    => $r->getOwner_id(),
-            'owner_name'  => $r->getOwner_name(),
-            'group_id'    => $r->getGroup_id(),
-            'group_name'  => $r->getGroup_name(),
-            'role_name'   => $r->getRole_name(),
-            'permissions' => array(
-              'owner' => $r->getPermissions_owner(),
-              'group' => $r->getPermissions_group(),
-              'other' => $r->getPermissions_other()
-            ),
-            'is_enabled'  => $r->getIs_enabled(),
-            'is_dropped'  => $r->getIs_dropped(),
-            'is_system'   => $r->getIs_system()
-          )
-        );
-        $this->_is_logged_in = true;
+    // Configuring main menu
+    $this->view->header_menu = array();
+    if($this->_components != null and ! empty($this->_components)) {
+      foreach($this->_components as $d) {
+        $this->view->header_menu[uriSite($d->component_path)] = __($d->component_name);
       }
     }
-
-    $this->view->header_menu = array(
-      uriSite('dashboard')   => __('Dashboard'),
-      uriSite('user/list')   => __('Users'),
-      uriSite('user/access') => __('Access'),
-      uriSite('page/list')   => __('Static pages'),
-      uriSite('site/config') => __('Site config'),
-      uriSite('component')   => __('...')
-    );
   }
 
   // ---------------------------------------------------------------------------
@@ -97,32 +70,56 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
    */
   public function beforeController()
   {
-    if( ! $this->_is_logged_in) {
+    $path = implode('/', uriSegments());
+    if( ! $this->_checkAccess($path, 'r')) {
       $this->view->getView('action/auth/index');
+      return false;
     }
-    return $this->_is_logged_in;
+    return true;
   }
 
   // ---------------------------------------------------------------------------
 
   /**
-   * Return FALSE if the user is not logged in.
+   * Check access to the component
+   * @param string $path
+   * @param string $action
    * @return bool
    */
-  protected function isLoggedIn()
+  protected function _checkAccess($path, $action)
   {
-    return $this->_is_logged_in;
-  }
+    // Check if an action allowed
+    if( ! in_array($action, $this->_actions))
+      return false;
 
-  // ---------------------------------------------------------------------------
+    // If the user has full access
+    if(isset($this->_system_user_access['ALL'])) {
+      $access = $this->_system_user_access['ALL'];
+    // If the user has access only to specified components
+    } elseif(isset($this->_system_user_access[$path])) {
+      $access = $this->_system_user_access[$path];
+    } else
+      // No access
+      return false;
 
-  /**
-   * Check if the user is authorized.
-   * @return mixed
-   */
-  private function _isAuth()
-  {
-    return $this->session->get('logged_user');
+    // Check actions
+    switch($action) {
+      case 'r' : // Read action
+          if($access[0] != 'r')
+            return false;
+        break;
+      case 'w' : // Write action
+          if($access[1] != 'w')
+            return false;
+        break;
+      case 'x' : // Execute action
+          if($access[2] != 'x')
+            return false;
+        break;
+      default:
+        return false;
+    }
+    return true;
   }
 }
 

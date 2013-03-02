@@ -28,40 +28,35 @@
  *******************************************************************************/
 
 /**
- * Administrator authorisation controller class.
+ * Component model class.
  * @package    core
  * @copyright  Sharapov A.
- * @created    10/11/2012
+ * @created    14/06/2010
  * @version    1.0
  */
-final class Administrator_Controller_Auth extends Controller_Json_Abstract
+final class Model_Component extends Model_Db_Abstract
 {
   /**
-   * Constructor
+   * Active components
+   * @var
    */
-  public function __construct()
-  {
-    parent::__construct();
-  }
+  private $_active_components = null;
 
   // ---------------------------------------------------------------------------
 
   /**
-   * Dashboard page
-   * @return void
+   * Get components.
+   * @return mixed
    */
-  public function index()
+  public function getActiveComponents()
   {
-
-    $uid = $this->input->post('uid');
-    $pwd = $this->input->post('pwd');
-    if($r = $this->model('Model_User')->getUserSessionId($uid, md5($pwd))) {
-      $this->session->set('system_user', $r);
-      $this->jsonText(__('Hi'));
-    } else {
-      $this->jsonErrorCode('403');
-      $this->jsonError(__('User is not found or blocked'));
+    if($this->_active_components == null) {
+      if($r = $this->db->select('component')->where(array('is_installed' => '1', 'is_enabled' => '1'))
+        ->exec()->result()) {
+        return $r;
+      }
     }
+    return null;
   }
 }
 
