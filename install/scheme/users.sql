@@ -95,7 +95,7 @@ CREATE TABLE `user_access` (
   `user_id` int(9) NOT NULL,
   `component` varchar(64) NOT NULL COMMENT "System component key",
   `instance` enum('DEVELOPER', 'ADMINISTRATOR', 'FRONTEND', 'PUBLISHER') NOT NULL DEFAULT 'FRONTEND' COMMENT "System instance name",
-  `permissions` enum('rwx', 'rw-', 'r--', '---', 'r-x', '-wx', '--x', '-w-') NOT NULL DEFAULT 'rwx' COMMENT "Permissions",
+  `permissions` enum('rwx', 'rw-', 'r--', '---', 'r-x', '-wx', '--x', '-w-') NOT NULL DEFAULT 'rwx' COMMENT "User permissions for component within instance",
   UNIQUE KEY `user_access` (`user_id`,`component`,`instance`)
 ) ENGINE = InnoDB;
 

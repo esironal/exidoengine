@@ -95,7 +95,7 @@ abstract class Database_Query_Builder_Abstract extends Db
         $this->_keys[$c][$key] = "`".$key."` ".$cond." '".$this->db->prepareString($val)."'";
       } elseif(strtolower($value) == 'null' or $value == null) {
         $this->_keys[$c][$key] = "`".$key."` IS NULL";
-      } elseif(strtolower($value) == 'is null') {
+      } elseif(strtolower($value) == 'not null') {
         $this->_keys[$c][$key] = "`".$key."` IS NOT NULL";
       } else {
         $this->_keys[$c][$key] = "`".$key."`='".$this->db->prepareString($value)."'";
@@ -110,7 +110,7 @@ abstract class Database_Query_Builder_Abstract extends Db
    * Where construction - "NULL" version.
    * @param array $keys
    * @return Database_Query_Builder_Abstract
-   */
+   *
   public function whereNull($keys)
   {
     if( ! is_array($keys))
@@ -126,7 +126,7 @@ abstract class Database_Query_Builder_Abstract extends Db
    * Where construction - "IS NOT NULL" version.
    * @param mixed $keys
    * @return Database_Query_Builder_Abstract
-   */
+   *
   public function whereNotNull($keys)
   {
     if( ! is_array($keys))
@@ -226,8 +226,14 @@ abstract class Database_Query_Builder_Abstract extends Db
   protected function _constructOrderby()
   {
     $sql = '';
-    if( ! empty($this->_order_by))
-      $sql.= " ORDER BY `".implode('`, `', $this->_order_by).'`';
+    if( ! empty($this->_order_by)
+      and (isset($this->_order_by['ASC'])
+        or isset($this->_order_by['DESC']))
+    ) {
+      foreach($this->_order_by as $order => $field)
+        $sql.= ", `".implode('` '.$order.', `', $this->_order_by[$order])."` ".$order;
+      $sql = " ORDER BY".ltrim($sql, ',');
+    }
     return $sql;
   }
 

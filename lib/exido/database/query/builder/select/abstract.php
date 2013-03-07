@@ -42,13 +42,26 @@ abstract class Database_Query_Builder_Select_Abstract extends Database_Query_Bui
   // ---------------------------------------------------------------------------
 
   /**
-   * Order by construction.
+   * Order by construction. Ascending version
    * @param string $keys
    * @return Database_Query_Builder_Abstract
    */
   public function order($keys)
   {
-    $this->_order_by = func_get_args();
+    $this->_order_by['ASC'] = func_get_args();
+    return $this;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Order by construction. Descending version
+   * @param string $keys
+   * @return Database_Query_Builder_Abstract
+   */
+  public function orderDesc($keys)
+  {
+    $this->_order_by['DESC'] = func_get_args();
     return $this;
   }
 }

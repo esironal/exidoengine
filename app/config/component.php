@@ -22,6 +22,12 @@
  *******************************************************************************/
 
 return array(
+  /**
+   * List of uploaded components
+   * array(
+   *   'component_unique_name' => 'relative_path'
+   * )
+   */
   'namespace_componentname' => 'namespace/componentname'
 );
 ?>

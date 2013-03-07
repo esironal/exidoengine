@@ -34,14 +34,30 @@ return array(
     'benchmark' => true,
     'pconnect'  => false,
     'timeout'   => 60,
-    'unavailable_die' => false, // Throw an error if the DB isn't available
-    'cache_enabled'   => true, // Results caching
-    'cache_folder'    => APPPATH.'data/cache', // Cache directory. Application path by default
-    'cache_lifetime'  => 3600, // Cache life time in seconds
-    'character_set'   => __('__dbcharset'), // Set the DB charset. Depends on language loaded.
-    'dbcollation'     => __('__dbcollation'), // Set collation. Depends on language loaded.
-    'lc_time_names'   => __('__dbtimenames'), // Set time names. Depends on language loaded.
-    'time_zone'       => __('__dbtime_zone'), // Set time zone. Depends on language loaded.
+    /**
+     * Throw an error if database server isn't available
+     */
+    'unavailable_die' => false,
+    /**
+     * Enable results caching
+     */
+    'cache_enabled'   => false,
+    /**
+     * Folder for storing cached files. Application path by default
+     */
+    'cache_folder'    => APPPATH.'data/cache',
+    /**
+     * Cache life time in seconds
+     */
+    'cache_lifetime'  => 3600,
+    /**
+     * Set DB charset, collation, time names and time zone
+     * By default it all depends on language loaded
+     */
+    'character_set'   => __('__dbcharset'),
+    'dbcollation'     => __('__dbcollation'),
+    'lc_time_names'   => __('__dbtimenames'),
+    'time_zone'       => __('__dbtime_zone'),
     'table_prefix'    => ''
   )
 );

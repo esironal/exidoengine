@@ -22,6 +22,9 @@
  *******************************************************************************/
 
 return array(
+  /**
+   * MIME types of files allowed for uploading
+   */
   'image' => array
   (
     'jpeg' => 'image/jpeg',

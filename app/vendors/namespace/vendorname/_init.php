@@ -23,9 +23,8 @@
 
 /*******************************************************************************
  * FUNCTIONS USED IN EXIDOENGINE
- * The name of function should start with prefix "vendor"
- * and the name of a folder where the vendor is placed.
- *
+ * Name of the function should start with prefix "vendor"
+ * and name of folder where the vendor is placed.
  * For example: vendorMaxmindGeoipFunctionName()
  *******************************************************************************/
 

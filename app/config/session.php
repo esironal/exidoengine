@@ -22,12 +22,27 @@
  *******************************************************************************/
 
 return array(
-  'cookie_name'    => 'exido_session_id',
-  'life_time'      => 3600, // Session life time in seconds
+  'cookie_name'    => 'exido_session',
+  /**
+   * Session life time in seconds
+   */
+  'life_time'      => 3600,
   'update_time'    => 300,
-  'use_database'   => false, // Use DB for storing sessions (only for built-in session handler)
-  'use_phpsession' => true, // Use standard PHP sessions handler instead built-in
+  /**
+   * Use DB for storing sessions (only for built-in session handler)
+   */
+  'use_database'   => false,
+  /**
+   * Use standard PHP sessions handler instead built-in handler
+   */
+  'use_phpsession' => true,
+  /**
+   * Session table name
+   */
   'db_table_name'  => 'session',
+  /**
+   * Folder for storing session files
+   */
   'db_files_path'  => APPPATH.'data/cache',
   'cookie_path'    => '/',
   'cookie_domain'  => HOST,

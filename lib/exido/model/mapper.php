@@ -80,7 +80,6 @@ abstract class Model_Mapper
       // Set a new property to the $_aData array
       Helper::load('string');
       $this->_aData->$field = stringNull(reset($args));
-      //pre($this->_aData);
       return true;
     }
 

@@ -22,10 +22,23 @@
  *******************************************************************************/
 
 return array(
-  'alphabet'        => '0123456789abcdefghijklmnopqrstuvwxyz', // do not change without changing font files!
-  'allowed_symbols' => '23456789abcdegikpqsvxyz', // alphabet without similar symbols (o=0, 1=l, i=j, t=f)
-  'fontsdir'        => 'view/fonts', // folder with fonts
-  'length'          => mt_rand(5,7), // string length, random 5 or 6 or 7
+  /**
+   * ATTENTION: DO NOT change alphabet without changing font files!
+   */
+  'alphabet'        => '0123456789abcdefghijklmnopqrstuvwxyz',
+  /**
+   * Alphabet without similar symbols (o=0, 1=l, i=j, t=f)
+   */
+  'allowed_symbols' => '23456789abcdegikpqsvxyz',
+  /**
+   * Relative path to folder with fonts
+   */
+  'fontsdir'        => 'view/fonts',
+  /**
+   * Captcha string length, random 5 or 6 or 7
+   * Can be changed to preferred length
+   */
+  'length'          => mt_rand(5,7),
   'width'           => 160,
   'height'          => 80,
   'fluctuation_amplitude' => 8,

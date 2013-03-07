@@ -26,30 +26,31 @@ return array(
   (
     'index_file'          => 'index.php',
     'permitted_uri_chars' => 'a-z0-9~%:_\-',
-
-    // URI entities with regular expressions
-    // The entities can be used in application routes (APP-PATH/config/route.php)
-    // The entity will be replaced with its regular expression.
-    'uri_entities'        => array(
+    /**
+     * URI entities with regular expressions
+     * The entities can be used in application routes (APPPATH/config/route.php)
+     * The entity will be replaced with its regular expression.
+     */
+     'uri_entities'        => array(
                                ':num' => '([0-9]+)',
                                ':abc' => '([A-z]+)',
                                ':sym' => '([A-z0-9-]+)',
                                ':any' => '(.+)'
                              ),
     'url_suffix'          => '.html',
-    /*
-    To use friendly URLs you will need to enable apache's mod_rewrite or the
-    same mod for another web-server)
-    and create .htaccess file on the web-root directory with the following contents:
-      RewriteEngine on
-      RewriteBase /
-      RewriteCond %{REQUEST_FILENAME} !-f
-      RewriteCond %{REQUEST_FILENAME} !-d
-      RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt)$
-      RewriteRule ^(.*)$ /index.php/$1 [L]
-
-    If you don't know how to do this, please just disable this option.
-    */
+    /**
+     * To use friendly URLs you will need to enable apache's mod_rewrite or the
+     * same mod for another web-server)
+     * and create .htaccess file on the web-root directory with the following contents:
+     * RewriteEngine on
+     * RewriteBase /
+     * RewriteCond %{REQUEST_FILENAME} !-f
+     * RewriteCond %{REQUEST_FILENAME} !-d
+     * RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt)$
+     * RewriteRule ^(.*)$ /index.php/$1 [L]
+     *
+     * If you don't know how to do this, please just disable this option.
+     */
     // TODO: Do the friendly URLs handler
     'use_friendly_url'    => false
   )

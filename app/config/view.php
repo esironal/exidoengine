@@ -22,9 +22,18 @@
  *******************************************************************************/
 
 return array(
-  'cache_enabled'   => false, // Enable views caching
-  'cache_folder'    => APPPATH.'data/cache', // Cache directory. Application path by default.
-  'cache_lifetime'  => 3600, // Cache life time in seconds
+  /**
+   * Enable views caching
+   */
+  'cache_enabled'   => false,
+  /**
+   * Folder for storing cached files. Application path by default
+   */
+  'cache_folder'    => APPPATH.'data/cache',
+  /**
+   * Cache life time in seconds
+   */
+  'cache_lifetime'  => 3600
 );
 
 ?>

@@ -67,8 +67,12 @@ final class Database_Query_Builder_Update extends Database_Query_Builder_Update_
    */
   public function setFields(array $fields)
   {
-    foreach($fields as $key => $value)
-      $this->_fields[$key] = "`".$key."` = '".$this->db->prepareString($value)."'";
+    foreach($fields as $key => $value) {
+      if($value === null)
+        $this->_fields[$key] = "`".$key."` = NULL";
+      else
+        $this->_fields[$key] = "`".$key."` = '".$this->db->prepareString($value)."'";
+    }
     return $this;
   }
 

@@ -41,7 +41,7 @@ $sys_dir = '/Users/alex/Projects/exidoengine/lib/exido'; // Path to the System d
 $vnd_dir = '/Users/alex/Projects/exidoengine/app/vendors'; // Path to the Vendors dir
 
 /*************************************************/
-// PLEASE DO NOT CHANGE ANYTHING UNDER THIS LINE *
+/* PLEASE DO NOT CHANGE ANYTHING UNDER THIS LINE */
 /*************************************************/
 
 // Set the full path to the docroot
@@ -49,15 +49,13 @@ define('DOCROOT', realpath(dirname(__FILE__)));
 
 // Make the application relative to the docroot
 $app_dir = rtrim($app_dir, '/');
-if(is_dir(DOCROOT.$app_dir)) {
+if(is_dir(DOCROOT.$app_dir))
   $app_dir = DOCROOT.$app_dir;
-}
 
 // Make the components relative to the docroot
 $com_dir = rtrim($com_dir, '/');
-if(is_dir(DOCROOT.$com_dir)) {
+if(is_dir(DOCROOT.$com_dir))
   $com_dir = DOCROOT.$com_dir;
-}
 
 // Make the system relative to the docroot
 $sys_dir = rtrim($sys_dir, '/');

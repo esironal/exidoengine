@@ -461,7 +461,7 @@ abstract class Session_Base
   // ---------------------------------------------------------------------------
 
   /**
-   * Gets the "now" time.
+   * Gets "now" time.
    * @return int
    */
   private function _getTime()
