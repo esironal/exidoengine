@@ -57,7 +57,7 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
     $this->view->header_menu = array();
     if($this->_components != null and ! empty($this->_components)) {
       foreach($this->_components as $d) {
-        $this->view->header_menu[uriSite($d->component_path)] = __($d->component_name);
+        $this->view->header_menu[$d->component_path] = __($d->component_name);
       }
     }
   }

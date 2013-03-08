@@ -67,6 +67,7 @@ class Administrator_Controller_Page_List extends Controller_Administrator_Abstra
     if($this->input->checkPost()) {
       $post = $this->input->post();
       $this->model('Model_Eav', 'page')->addEntity($post);
+      uriSiteRedirect('page/list');
     }
     $this->view->attribute_form = $this->model('Model_Eav', 'page')->getAttributeSet('default');
   }
@@ -77,10 +78,18 @@ class Administrator_Controller_Page_List extends Controller_Administrator_Abstra
    * Pages edit page
    * @param int $entity_id
    * @return void
+   * @throws Exception_Exido
    */
   public function edit($entity_id = null)
   {
-    $this->view->attribute_form = $this->model('Model_Eav', 'page')->getEntityById($entity_id);
+    if( ! $this->view->attribute_form = $this->model('Model_Eav', 'page')->getEntityById($entity_id)) {
+      throw new Exception_Exido(__('Page not found'), array(), 404);
+    };
+    if($this->input->checkPost()) {
+      $post = $this->input->post();
+      $this->model('Model_Eav', 'page')->editAttributeValues($entity_id, $post);
+      uriSiteRedirect('page/list');
+    }
   }
 }
 

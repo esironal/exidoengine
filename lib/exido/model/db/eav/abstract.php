@@ -89,7 +89,7 @@ abstract class Model_Db_Eav_Abstract extends Model_Mapper
     $this->db           = Registry::factory('Database_Query_Builder');
     $this->_data_types  = $this->_getDataTypes();
     $this->eav_instance = $this->_checkInstance($instance);
-    $this->_aData       = Model_Registry::instance();
+    $this->_aData       = Model_Registry::instance(true);
   }
 
   // ---------------------------------------------------------------------------

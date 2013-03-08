@@ -29,7 +29,9 @@
 
 ?>
 <ul>
-  <?php foreach($view->header_menu as $k => $v) : ?>
-  <li><a href="<?=$k;?>"><?=$v;?></a></li>
-  <?php endforeach;?>
+  <?php foreach($view->header_menu as $k => $v) {
+    print '<li>';
+    $helper->a($k, $v);
+    print '</li>';
+  } ?>
 </ul>

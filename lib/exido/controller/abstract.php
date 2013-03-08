@@ -153,13 +153,13 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
     $this->_components = $this->model('Model_Component')->getActiveComponents();
 
     // Get session data
-    $_user = $this->_getCurrentUser();
+    $_user_key = $this->_getCurrentUser();
     // If current user is unknown so we should start guest session
-    if(empty($_user)) {
+    if(empty($_user_key)) {
       // Guest session id
-      $_user = '5627a272bf2563cee5877539bd906e7cc3eb33afcefe2b570a08906f9a34ae48';
+      $_user_key = '5627a272bf2563cee5877539bd906e7cc3eb33afcefe2b570a08906f9a34ae48';
     }
-    if($r = $this->model('Model_User')->getUserByUniqueKey($_user)) {
+    if($r = $this->model('Model_User')->getUserByUniqueKey($_user_key)) {
       $this->_system_user = array(
         'user_id'     => $r->getUser_id(),
         'user_name'   => $r->getUser_name(),
@@ -179,8 +179,15 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
         'is_dropped'  => $r->getIs_dropped(),
         'is_system'   => $r->getIs_system()
       );
+
+      // User constants
+      define('@SU.GROUP_ID'   , $r->getGroup_id());
+      define('@SU.GROUP_NAME' , $r->getGroup_name());
+      define('@SU.USER_ID'    , $r->getUser_id());
+      define('@SU.USER_NAME'  , $r->getUser_name());
+
       $this->_system_user_access = $this->model('Model_User')->getUserAccess($r->getUser_id(), EXIDO_ENVIRONMENT_NAME);
-      $this->session->set('system_user', $_user);
+      $this->session->set('system_user', $_user_key);
     }
   }
 

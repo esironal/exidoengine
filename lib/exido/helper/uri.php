@@ -51,6 +51,20 @@ function uriRedirect($location, $type = 'header', $timeout = 3000)
 // -----------------------------------------------------------------------------
 
 /**
+ * Redirecting inside the web-site pages.
+ * @param string $location
+ * @param string $type
+ * @param int $timeout
+ * @return void
+ */
+function uriSiteRedirect($location, $type = 'header', $timeout = 3000)
+{
+  uriRedirect(uriSite($location), $type, $timeout);
+}
+
+// -----------------------------------------------------------------------------
+
+/**
  * Gets the site uri.
  * @param $uri
  * @return string

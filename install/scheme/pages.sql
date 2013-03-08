@@ -41,14 +41,14 @@ CREATE TABLE `page_attribute` (
   `attribute_key` varchar(32) NOT NULL UNIQUE,
   `created_at` datetime NOT NULL,
   `updated_at` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-  `is_private` bool NOT NULL DEFAULT false COMMENT 'Cannot be removed',
+  `is_system` bool NOT NULL DEFAULT false COMMENT 'Cannot be removed',
   `is_user_defined` bool NOT NULL DEFAULT false COMMENT 'Can be changed via UI',
   `is_unique` bool NOT NULL DEFAULT false COMMENT 'Defines is unique',
   `is_required` bool NOT NULL DEFAULT false COMMENT 'Defines is required',
   `default_value` text DEFAULT NULL,
   `description` text DEFAULT NULL,
   `backend_object` varchar(32) DEFAULT NULL,
-  `order` int(3) NOT NULL DEFAULT '0',
+  `position` int(4) NOT NULL DEFAULT '0' COMMENT "Sorting order"
 )  ENGINE = InnoDB AUTO_INCREMENT = 100;
 
 ALTER TABLE `page_attribute` ADD FOREIGN KEY (`data_type_key`) REFERENCES `data_type`(`data_type_key`);
@@ -154,20 +154,21 @@ INSERT INTO `data_type` (`data_type_key`, `data_type_table`) VALUES ('text','tex
 INSERT INTO `data_type` (`data_type_key`, `data_type_table`) VALUES ('varchar','varchar');
 INSERT INTO `data_type` (`data_type_key`, `data_type_table`) VALUES ('datetime','datetime');
 
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (100, 'title','text', NOW());
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (101, 'keywords','text', NOW());
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (102, 'description','text', NOW());
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `backend_object`, `description`) VALUES (100, 'title','text', NOW(),'eav/eavFormInput', 'Page title');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `backend_object`, `description`) VALUES (101, 'keywords','text', NOW(),'eav/eavFormTextarea', 'Page keywords');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `backend_object`, `description`) VALUES (102, 'description','text', NOW(),'eav/eavFormTextarea', 'Page description');
 INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (103, 'created_at', 'datetime', NOW());
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (104, 'updated_at', 'datetime', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (105, 'is_enabled', 'bool', NOW());
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (104, 'updated_at', 'datetime', NOW());
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `backend_object`, `description`) VALUES (105, 'is_enabled', 'bool', NOW(),'eav/eavFormCheckbox', 'Enable?');
 INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`) VALUES (106, 'is_draft', 'bool', NOW());
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (107, 'group_id', 'int', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (108, 'group_name', 'varchar', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (109, 'owner_id', 'int', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (110, 'owner_name', 'varchar', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (111, 'permissions_owner', 'varchar', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (112, 'permissions_group', 'varchar', NOW(), '1');
-INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`) VALUES (113, 'permissions_other', 'varchar', NOW(), '1');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (107, 'group_id', 'int', NOW(), '1', '@SU.GROUP_ID');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (108, 'group_name', 'varchar', NOW(), '1', '@SU.GROUP_NAME');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (109, 'owner_id', 'int', NOW(), '1', '@SU.USER_ID');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (110, 'owner_name', 'varchar', NOW(), '1', '@SU.USER_NAME');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (111, 'permissions_owner', 'varchar', NOW(), '1', 'rwx');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (112, 'permissions_group', 'varchar', NOW(), '1', 'r--');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `is_system`, `default_value`) VALUES (113, 'permissions_other', 'varchar', NOW(), '1', 'r--');
+INSERT INTO `page_attribute` (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`, `backend_object`, `description`) VALUES (114, 'content','text', NOW(),'eav/eavFormTextarea', 'Page content');
 
 INSERT INTO `page_attribute_set` (`attribute_set_key`,`created_at`,`is_private`,`description`) VALUES ('default', NOW(),true,'default');
 INSERT INTO `page_attribute_set_list` (`attribute_set_key`,`attribute_id`) VALUES ('default', 100);
@@ -184,3 +185,4 @@ INSERT INTO `page_attribute_set_list` (`attribute_set_key`,`attribute_id`) VALUE
 INSERT INTO `page_attribute_set_list` (`attribute_set_key`,`attribute_id`) VALUES ('default', 111);
 INSERT INTO `page_attribute_set_list` (`attribute_set_key`,`attribute_id`) VALUES ('default', 112);
 INSERT INTO `page_attribute_set_list` (`attribute_set_key`,`attribute_id`) VALUES ('default', 113);
+INSERT INTO `page_attribute_set_list` (`attribute_set_key`,`attribute_id`) VALUES ('default', 114);

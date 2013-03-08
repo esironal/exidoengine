@@ -168,7 +168,7 @@ function eavFormInput(Database_Mapper_Result $attributes)
                     'id'    => '-x-input-'.$attributes->attribute_key,
                     'name'  => $attributes->attribute_key,
                     'class' => '-i-text'
-                  ));
+                  ),((isset($attributes->value))?$attributes->value:''));
   $output.= formFieldsetClose();
   return $output;
 }
@@ -185,7 +185,7 @@ function eavFormTextarea(Database_Mapper_Result $attributes)
                        'id'    => '-x-input-'.$attributes->attribute_key,
                        'name'  => $attributes->attribute_key,
                        'class' => '-i-textarea'
-                     ));
+                     ),((isset($attributes->value))?$attributes->value:''));
   $output.= formFieldsetClose();
   return $output;
 }
@@ -198,7 +198,11 @@ function eavFormCheckbox(Database_Mapper_Result $attributes)
     'id' => '-x-field-'.$attributes->attribute_key
   ));
 
-  $output.= formCheckbox($attributes->attribute_key);
+  $checked = false;
+  if(isset($attributes->value) and $attributes->value == true)
+    $checked = true;
+
+  $output.= formCheckbox($attributes->attribute_key, '1', $checked);
   $is_required = (bool)(isset($attributes->is_required) and (bool)$attributes->is_required == true);
   $output.= formLabel($attributes->description.($is_required ? '<sup>*</sup>' : ''));
   $output.= formFieldsetClose();

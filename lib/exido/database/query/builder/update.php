@@ -70,6 +70,8 @@ final class Database_Query_Builder_Update extends Database_Query_Builder_Update_
     foreach($fields as $key => $value) {
       if($value === null)
         $this->_fields[$key] = "`".$key."` = NULL";
+      elseif(strtolower($value) == 'now()')
+        $this->_fields[$key] = "`".$key."` = NOW()";
       else
         $this->_fields[$key] = "`".$key."` = '".$this->db->prepareString($value)."'";
     }

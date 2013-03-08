@@ -14,7 +14,7 @@ CREATE TABLE `group` (
   `description` text DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-  `position` tinyint(4) NOT NULL DEFAULT 0,
+  `position` int(4) NOT NULL DEFAULT '0' COMMENT "Sorting order",
   `is_enabled` bool NOT NULL DEFAULT true,
   `is_system` bool NOT NULL DEFAULT false COMMENT "The system group couldn't be deleted via WEB-UI",
   PRIMARY KEY (`group_id`)
@@ -39,7 +39,7 @@ CREATE TABLE `user_role` (
   `description` text DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-  `position` tinyint(4) NOT NULL DEFAULT 0,
+  `position` int(4) NOT NULL DEFAULT '0' COMMENT "Sorting order",
   `is_system` bool NOT NULL DEFAULT false COMMENT "The system role couldn't be deleted via WEB-UI"
 ) ENGINE = InnoDB;
 

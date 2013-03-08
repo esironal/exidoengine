@@ -46,18 +46,21 @@ if($view->item_list) {
                     __('Owner'),
                     __('Group'),
                     __('Added at'),
-                    __('Status')
+                    __('Status'),
+                    __('Actions')
                   ));
   foreach($view->item_list as $item) {
-    print '<tr>';
-    print '<td>'.formCheckbox('item[]', $item->entity_id, false, 'class="item-list-checkbox"').'</td>';
-    print '<td>'.$item->entity_id.'</td>';
-    print '<td>'.eavFetchValue('title', $item->attributes).'</td>';
-    print '<td>'.eavFetchValue('owner_name', $item->attributes).'</td>';
-    print '<td>'.eavFetchValue('group_name', $item->attributes).'</td>';
-    print '<td>'.eavFetchValue('created_at', $item->attributes).'</td>';
-    print '<td>'.eavFetchValue('is_enabled', $item->attributes, 'htmlStatus').'</td>';
-    print '</tr>';
+    print '<tr>'
+         .'<td>'.formCheckbox('item[]', $item->entity_id, false, 'class="item-list-checkbox"').'</td>'
+         .'<td>'.$item->entity_id.'</td>'
+         .'<td>'.eavFetchValue('title', $item->attributes).'</td>'
+         .'<td>'.eavFetchValue('owner_name', $item->attributes).'</td>'
+         .'<td>'.eavFetchValue('group_name', $item->attributes).'</td>'
+         .'<td>'.eavFetchValue('created_at', $item->attributes).'</td>'
+         .'<td>'.eavFetchValue('is_enabled', $item->attributes, 'htmlStatus').'</td>'
+         .'<td>';
+    $helper->a('page/list/edit/'.$item->entity_id, __('Edit'));
+    print '</td></tr>';
   }
   print tableClose();
 }

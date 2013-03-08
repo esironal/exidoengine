@@ -68,8 +68,14 @@ final class Database_Query_Builder_Insert extends Database_Query_Builder_Insert_
    */
   public function setInsertFields(array $fields)
   {
-    foreach($fields as $key => $field)
-      $this->_fields[$key] = $this->db->prepareString($field);
+    foreach($fields as $key => $value) {
+      if($value === null)
+        $this->_fields[$key] = 'NULL';
+      elseif(strtolower($value) == 'now()')
+        $this->_fields[$key] = 'NOW()';
+      else
+        $this->_fields[$key] = "'".$this->db->prepareString($value)."'";
+    }
     return $this;
   }
 
@@ -87,7 +93,7 @@ final class Database_Query_Builder_Insert extends Database_Query_Builder_Insert_
     $sql = (($this->_use_replace) ? 'REPLACE' : 'INSERT')." INTO `".$this->_table."` ";
     $sql.= "(`".implode('`, `', array_keys($this->_fields))."`) ";
     $sql.= "VALUES (";
-    $sql.= "'".implode("', '", $this->_fields)."'";
+    $sql.= implode(', ', $this->_fields);
     $sql.= ");";
     return $sql;
   }
