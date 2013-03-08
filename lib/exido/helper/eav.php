@@ -111,7 +111,7 @@ function eavCreateFormValidationJS($id, array $attributes)
     $script.= '}';
   }
   $script.= ', errorClass: "-i-error",';
-  $script.= "submitHandler: function(form) { form.submit(); }});";
+  $script.= "submitHandler: function(form){ $('input[name=submit]',form).attr('disabled', true).val('".__('Saving...')."');form.submit();}});";
   $script.= '});'.EXIDO_EOL;
   $script.= '</script>'.EXIDO_EOL;
   return $script;
@@ -160,7 +160,7 @@ function eavCreateForm($id, array $attributes, $action = '')
 
 function eavFormInput(Database_Mapper_Result $attributes)
 {
-  $output = formFieldsetOpen($attributes->description, array(
+  $output = formFieldsetOpen(__($attributes->description), array(
     'id'          => '-x-field-'.$attributes->attribute_key,
     'is_required' => $attributes->is_required
   ));
@@ -177,7 +177,7 @@ function eavFormInput(Database_Mapper_Result $attributes)
 
 function eavFormTextarea(Database_Mapper_Result $attributes)
 {
-  $output = formFieldsetOpen($attributes->description, array(
+  $output = formFieldsetOpen(__($attributes->description), array(
     'id'          => '-x-field-'.$attributes->attribute_key,
     'is_required' => $attributes->is_required
   ));
@@ -204,7 +204,7 @@ function eavFormCheckbox(Database_Mapper_Result $attributes)
 
   $output.= formCheckbox($attributes->attribute_key, '1', $checked);
   $is_required = (bool)(isset($attributes->is_required) and (bool)$attributes->is_required == true);
-  $output.= formLabel($attributes->description.($is_required ? '<sup>*</sup>' : ''));
+  $output.= formLabel(__($attributes->description).($is_required ? '<sup>*</sup>' : ''));
   $output.= formFieldsetClose();
   return $output;
 }

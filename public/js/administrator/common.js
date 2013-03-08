@@ -18,6 +18,6 @@ function ui_notification(text, css) {
     .addClass(css)
     .fadeIn();
   setTimeout(function() {
-    //$('#notification').fadeOut();
+    $('#notification').fadeOut();
   }, 5000);
 }
