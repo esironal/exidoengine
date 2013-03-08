@@ -9,3 +9,15 @@
 $(function(){
 
 });
+
+function ui_notification(text, css) {
+  $('#notification')
+    .removeClass('ui-popup-success')
+    .removeClass('ui-popup-error')
+    .html(text)
+    .addClass(css)
+    .fadeIn();
+  setTimeout(function() {
+    //$('#notification').fadeOut();
+  }, 5000);
+}

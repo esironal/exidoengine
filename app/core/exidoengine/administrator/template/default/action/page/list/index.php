@@ -29,7 +29,7 @@
 
 // List actions menu
 $view->action_menu = array(
-  '/page/list/create' => __('Create a new page'),
+  '/page/action/create' => __('Create a new page'),
   '/page/list/remove' => __('Remove page')
 );
 // Include menu code
@@ -56,10 +56,10 @@ if($view->item_list) {
          .'<td>'.eavFetchValue('title', $item->attributes).'</td>'
          .'<td>'.eavFetchValue('owner_name', $item->attributes).'</td>'
          .'<td>'.eavFetchValue('group_name', $item->attributes).'</td>'
-         .'<td>'.eavFetchValue('created_at', $item->attributes).'</td>'
+         .'<td>'.dateConvertSQL2Human(eavFetchValue('created_at', $item->attributes), Exido::config('global.date.format_long')).'</td>'
          .'<td>'.eavFetchValue('is_enabled', $item->attributes, 'htmlStatus').'</td>'
          .'<td>';
-    $helper->a('page/list/edit/'.$item->entity_id, __('Edit'));
+    $helper->a('page/action/edit/'.$item->entity_id, __('Edit'));
     print '</td></tr>';
   }
   print tableClose();

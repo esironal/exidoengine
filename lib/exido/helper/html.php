@@ -202,7 +202,7 @@ function htmlCSS($css, $folder = '')
  */
 function htmlScript($code)
 {
-  return '<script language="JavaScript"><!-- '.$code.' --></script>'.EXIDO_EOL;
+  return '<script language="JavaScript"><!--'.EXIDO_EOL.$code.EXIDO_EOL.'--></script>'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------

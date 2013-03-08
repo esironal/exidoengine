@@ -52,11 +52,11 @@ function eavFetchValue($key, array $attributes, $callback = null)
 
 // ---------------------------------------------------------------------------
 
-function eavCreateFormValidationJS(array $attributes)
+function eavCreateFormValidationJS($id, array $attributes)
 {
   $script = '<script type="text/javascript">'.EXIDO_EOL;
   $script.= '$(function() {';
-  $script.= "$('#-x-page-edit').validate({";
+  $script.= "$('#".$id."').validate({";
   $rules  = array();
   foreach($attributes as $field) {
     if($field->backend_object != null) {
@@ -111,7 +111,7 @@ function eavCreateFormValidationJS(array $attributes)
     $script.= '}';
   }
   $script.= ', errorClass: "-i-error",';
-  $script.= 'submitHandler: function(form) { form.submit(); }});';
+  $script.= "submitHandler: function(form) { form.submit(); }});";
   $script.= '});'.EXIDO_EOL;
   $script.= '</script>'.EXIDO_EOL;
   return $script;
@@ -121,7 +121,7 @@ function eavCreateFormValidationJS(array $attributes)
 
 function eavCreateForm($id, array $attributes, $action = '')
 {
-  print eavCreateFormValidationJS($attributes);
+  print eavCreateFormValidationJS($id, $attributes);
   if(empty($action))
     $action = uriFull();
   // Print open tag

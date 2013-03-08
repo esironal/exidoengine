@@ -289,3 +289,21 @@ TODO: images for checkboxes and radios are disabled for now.
 .-i-box-admin-signin {
 
 }
+
+/* Ondemand popup notifications */
+#notification {
+  position: fixed;
+  top: 0;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  padding: 0.5em;
+  border-top: 0 !important;
+  display: none;
+  z-index: 10000;
+  font-size: 1.4em;
+  text-align: center;
+  -webkit-border-radius: 0 0 0.4em 0.4em;
+  -moz-border-radius: 0 0 0.4em 0.4em;
+  border-radius: 0 0 0.4em 0.4em;
+}

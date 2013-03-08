@@ -59,7 +59,7 @@ final class Model_Eav extends Model_Db_Eav_Abstract
       // Check if the required attribute exists
       if($f->is_required) {
         if( ! isset($attributes[$key]) and empty($f->default_value)) {
-          $this->_setError($key, sprintf(__('Attribute %s is required'), $key));
+          $this->_setError($key, sprintf(__('Attribute %s is required but is not found'), $key));
           return false;
         }
       }

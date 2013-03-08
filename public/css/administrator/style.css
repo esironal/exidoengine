@@ -11,3 +11,16 @@
   height: auto !important;
   line-height: 1em !important;
 }
+
+/* Page add/edit form */
+#-x-input-keywords, #-x-input-description {
+  width: 40em;
+  height: 6em;
+}
+#-x-input-title {
+  width: 40em;
+}
+#-x-input-content {
+  width: 99%;
+  height: 200em;
+}

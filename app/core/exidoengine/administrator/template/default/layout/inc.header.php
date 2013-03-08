@@ -28,5 +28,7 @@
  *******************************************************************************/
 
 $helper
-  ->notifier($view->getView('layout/inc.header-menu-panel', true), '-i-tabs')
+  ->notifier($view->getView('layout/inc.header-menu-panel', true), '-i-tabs');
+if(isset($view->notify_text) and isset($view->notify_style))
+  print $helper->script("ui_notification('".$view->notify_text."', '".$view->notify_style."');");
 ?>

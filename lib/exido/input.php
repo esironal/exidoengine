@@ -82,13 +82,11 @@ final class Input
     if( ! isset($_POST) or empty($_POST))
       return false;
     if(empty($key))
-      return $_POST;
+      return ($xss_clean_enabled) ? Registry::factory('security')->cleanXSS($_POST) : $_POST;
     if( ! isset($_POST[$key]))
       return false;
     // Sanitize variable
-    if($xss_clean_enabled)
-      return Registry::factory('security')->cleanXSS($_POST[$key]);
-    return $_POST[$key];
+    return ($xss_clean_enabled) ? Registry::factory('security')->cleanXSS($_POST[$key]) : $_POST[$key];
   }
 
   // -----------------------------------------------------------------------------
@@ -115,10 +113,10 @@ final class Input
     if( ! isset($_GET) or empty($_GET))
       return false;
     if(empty($key))
-      return $_GET;
+      return ($xss_clean_enabled) ? Registry::factory('security')->cleanXSS($_GET) : $_GET;
     if( ! isset($_GET[$key]))
       return false;
-    return $_GET[$key];
+    return ($xss_clean_enabled) ? Registry::factory('security')->cleanXSS($_GET[$key]) : $_GET[$key];
   }
 
   // -----------------------------------------------------------------------------
@@ -146,13 +144,11 @@ final class Input
     if( ! isset($_COOKIE) or empty($_COOKIE))
       return false;
     if(empty($key))
-      return $_COOKIE;
+      return ($xss_clean_enabled) ? Registry::factory('security')->cleanXSS($_COOKIE) : $_COOKIE;
     if( ! isset($_COOKIE[$key]))
       return false;
     // Sanitize variable
-    if($xss_clean_enabled)
-      return Registry::factory('security')->cleanXSS($_COOKIE[$key]);
-    return $_COOKIE[$key];
+    return ($xss_clean_enabled) ? Registry::factory('security')->cleanXSS($_COOKIE[$key]) : $_COOKIE[$key];
   }
 
   // ---------------------------------------------------------------------------

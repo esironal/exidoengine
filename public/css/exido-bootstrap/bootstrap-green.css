@@ -39,6 +39,17 @@ a:hover, a:active{
   background: -o-linear-gradient(#5ad136, #42ab26);
   background: linear-gradient(#5ad136, #42ab26);
 }
+/* Ondemand popup notifications */
+.ui-popup-success {
+  background-color: #D9E7CD;
+  border: 1px solid #488831;
+  color: #1D6902;
+}
+.ui-popup-error {
+  background-color: #F52020;
+  border: 1px solid #CC0A0A;
+  color: #fff;
+}
 
 /* Form fields */
 .-i-text, .-i-textarea {

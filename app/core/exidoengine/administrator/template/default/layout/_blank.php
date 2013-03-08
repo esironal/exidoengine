@@ -47,6 +47,7 @@ $helper
   ->js('administrator/common')
   ->closeHead()
   ->openBody()
+  ->target('notification')
   ->open('wrapper', '-i-wrapper')
   ->notifier($view->getView('layout/inc.header', true), '-i-box-header')
   ->open('container')

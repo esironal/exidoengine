@@ -43,7 +43,7 @@ if($view->item_list) {
   ));
   foreach($view->item_list as $item) {
     $item->is_enabled = htmlStatus($item->is_enabled);
-    $item->created_at = dateConvertSQL2Human($item->created_at, '%e %b %Y %H:%M');
+    $item->created_at = dateConvertSQL2Human($item->created_at, Exido::config('global.date.format_long'));
     print tableTR(arrayExtract((array)$item, array(
       'user_id', 'user_name', 'user_email',
       'owner_name', 'group_name', 'role_name',

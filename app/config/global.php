@@ -53,6 +53,9 @@ return array(
      */
     // TODO: Do the friendly URLs handler
     'use_friendly_url'    => false
+  ),
+  'date' => array(
+    'format_long' => '%e %B %Y, %H:%M'
   )
 );
 

@@ -43,6 +43,18 @@ class Administrator_Controller_Page_List extends Controller_Administrator_Abstra
   {
     parent::__construct();
     Helper::load('table', 'date', 'eav', 'form');
+
+    // UI error notifications
+    if($text = $this->session->get('action_success')) {
+      $this->view->notify_text  = $text;
+      $this->view->notify_style = 'ui-popup-success';
+      $this->session->set('action_success', false);
+    }
+    if($text = $this->session->get('action_error')) {
+      $this->view->notify_text  = $text;
+      $this->view->notify_style = 'ui-popup-error';
+      $this->session->set('action_error', false);
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -54,42 +66,6 @@ class Administrator_Controller_Page_List extends Controller_Administrator_Abstra
   public function index()
   {
     $this->view->item_list = $this->model('Model_Eav', 'page')->getEntities();
-  }
-
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Pages create page
-   * @return void
-   */
-  public function create()
-  {
-    if($this->input->checkPost()) {
-      $post = $this->input->post();
-      $this->model('Model_Eav', 'page')->addEntity($post);
-      uriSiteRedirect('page/list');
-    }
-    $this->view->attribute_form = $this->model('Model_Eav', 'page')->getAttributeSet('default');
-  }
-
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Pages edit page
-   * @param int $entity_id
-   * @return void
-   * @throws Exception_Exido
-   */
-  public function edit($entity_id = null)
-  {
-    if( ! $this->view->attribute_form = $this->model('Model_Eav', 'page')->getEntityById($entity_id)) {
-      throw new Exception_Exido(__('Page not found'), array(), 404);
-    };
-    if($this->input->checkPost()) {
-      $post = $this->input->post();
-      $this->model('Model_Eav', 'page')->editAttributeValues($entity_id, $post);
-      uriSiteRedirect('page/list');
-    }
   }
 }
 
