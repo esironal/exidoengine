@@ -61,13 +61,13 @@ final class Exido
   public static $is_xml  = false;
 
   /**
-   * Use the system debug log
+   * Use system debug log
    * @var bool
    */
-  public static $log_debug = false;
+  public static $log_debug = true;
 
   /**
-   * Use the system error log
+   * Use system error log
    * @var bool
    */
   public static $log_error = true;

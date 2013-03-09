@@ -144,9 +144,9 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
     $this->view   = View::instance();
     // Session object
     $this->session = Registry::factory('Session');
-    // Init a layout view object
+    // Init layout view object
     $this->_viewLayout = Registry::factory('View_Layout');
-    // Init an action view object
+    // Init action view object
     $this->_viewAction = Registry::factory('View_Action');
 
     // Get active components

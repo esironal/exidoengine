@@ -17,7 +17,7 @@
   width: 40em;
   height: 6em;
 }
-#-x-input-title {
+#-x-input-title,#-x-input-urlpath {
   width: 40em;
 }
 #-x-input-content {

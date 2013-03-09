@@ -27,7 +27,7 @@
  * @filesource
  *******************************************************************************/
 
-print $helper->heading(__('Users'));
+$helper->heading(__('Users'));
 
 if($view->item_list) {
   print tableOpen('-i-table -i-table-striped');

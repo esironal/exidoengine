@@ -131,12 +131,13 @@ function htmlTitle($title)
  * Returns an A tag.
  * @param string $url
  * @param string $title
+ * @param string $class
  * @return string
  */
-function htmlA($url, $title)
+function htmlA($url, $title, $class = '')
 {
   Helper::load('uri');
-  return '<a href="'.uriSite($url).'">'.$title."</a>".EXIDO_EOL;
+  return '<a'.((empty($class))?'':' class="'.$class.'"').' href="'.uriSite($url).'">'.$title."</a>".EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------

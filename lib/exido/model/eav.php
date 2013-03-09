@@ -148,6 +148,68 @@ final class Model_Eav extends Model_Db_Eav_Abstract
   // ---------------------------------------------------------------------------
 
   /**
+   * Remove entity.
+   * @param int $entity_id
+   * @return bool
+   */
+  public function removeEntity($entity_id, $attribute_set = 'default')
+  {
+    // Get attribute set
+    if( ! $set = $this->getAttributeSet($attribute_set)) {
+      // If attribute set doesn't found
+      $this->_setError('attribute_set', sprintf(__('Attribute set %s is not found'), $attribute_set));
+      return false;
+    }
+
+    // First, we remove an attribute values
+    foreach($set as $key => $f) {
+      if( ! $this->_removeAttributeValues($entity_id, $f->attribute_id, $f->data_type_key)) {
+        $this->_setError($f->attribute_key, sprintf(__('There is an error was occurred while removing value of attribute %s'), $f->attribute_key));
+        return false;
+      }
+    }
+
+    // Remove entity
+    if( ! $this->_removeEntity($entity_id)) {
+      $this->_setError($entity_id, sprintf(__('There is an error was occurred while removing entity %s'), $entity_id));
+      return false;
+    }
+    return true;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Remove entity.
+   * @param int $entity_id
+   * @return bool
+   */
+  private function _removeEntity($entity_id)
+  {
+    return $this->db->delete($this->eav_instance.'_entity')
+      ->where(array('entity_id' => $entity_id))
+      ->exec();
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Add attribute value.
+   * @param int $entity_id
+   * @param int $attribute_id
+   * @param string $type_key
+   * @return bool
+   */
+  private function _removeAttributeValues($entity_id, $attribute_id, $type_key)
+  {
+    return $this->db->delete($this->eav_instance.'_attribute_value_'.$type_key)
+      ->where(array('attribute_id' => $attribute_id, 'entity_id' => $entity_id))
+      ->exec();
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Add attribute value.
    * @return mixed  ID of entity or false
    */

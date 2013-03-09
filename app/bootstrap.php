@@ -62,7 +62,7 @@ set_exception_handler(array('Exception_Exido', 'handlerException'));
 
 // Initialize framework
 Exido::initialize();
-// You can attach a log writer by uncomment the next line
+// You can attach a log writer by uncomment next line
 //Exido::$log->attach(new Log_File(APPPATH.'data/cache/log'));
 // Initialize components
 Exido::initComponents();
@@ -71,17 +71,17 @@ Exido::initComponents();
 //Exido::$i18n->attach(new I18n_File('en_US'));
 Exido::$i18n->attach(new I18n_File('ru_RU'));
 
-// Set the application time zone. Depends on language loaded.
+// Set application time zone. Depends on language loaded.
 // It's UTC default.
 // @see  http://php.net/timezones
 date_default_timezone_set(__('__time_zone'));
 
-// Set the application locale. Depends on language loaded.
+// Set application locale. Depends on language loaded.
 // It's en_US.UTF-8 by default.
 // @see  http://php.net/setlocale
 setlocale(LC_ALL, __('__locale'));
 
-// Set the application charset. Depends on language loaded.
+// Set application charset. Depends on language loaded.
 // It's UTF-8 default.
 header('Content-Type: text/html; charset='.__('__charset'), true);
 

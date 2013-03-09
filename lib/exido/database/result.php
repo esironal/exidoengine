@@ -75,9 +75,8 @@ abstract class Database_Result implements Database_Interface_Result
    */
   public function result($type = 'object')
   {
-    if($this->cache_data != false) {
+    if($this->cache_data != false)
       return ($type == 'object') ? $this->_getObjectFromCache() : $this->_getArrayFromCache();
-    }
     return ($type == 'object') ? $this->_getObject() : $this->_getArray();
   }
 
@@ -92,16 +91,17 @@ abstract class Database_Result implements Database_Interface_Result
    */
   public function resultToAssoc($needle_key, $needle_value)
   {
+    $result = $this->resultArray();
+    if( ! is_array($result))
+      return false;
     $output = array();
     $i      = 0;
-    foreach($this->resultArray() as $d) {
-      if($needle_key == null) {
+    foreach($result as $d) {
+      if($needle_key == null)
         $output[$i] = $d[$needle_value];
-      } else {
-        if(isset($d[$needle_key]) and isset($d[$needle_value])) {
+      else
+        if(isset($d[$needle_key]) and isset($d[$needle_value]))
           $output[$d[$needle_key]] = $d[$needle_value];
-        }
-      }
       $i++;
     }
     return empty($output) ? false : $output;
@@ -127,15 +127,12 @@ abstract class Database_Result implements Database_Interface_Result
    */
   public function row($type = 'object')
   {
-    if($this->cache_data != false) {
+    if($this->cache_data != false)
       return ($type == 'object') ? $this->_fetchObjectFromCache() : $this->_fetchArrayFromCache();
-    }
-    if($this->result_id === false or $this->getNumRows() == 0) {
+    if($this->result_id === false or $this->getNumRows() == 0)
       return false;
-    }
-    if($type == 'object') {
+    if($type == 'object')
       return $this->_fetchObject();
-    }
     return $this->_fetchAssoc();
   }
 
@@ -149,9 +146,8 @@ abstract class Database_Result implements Database_Interface_Result
   public function getFirstRow($type = 'object')
   {
     $result = $this->result($type);
-    if(count($result) == 0) {
+    if(count($result) == 0)
       return $result;
-    }
     return $result[0];
   }
 
@@ -165,9 +161,8 @@ abstract class Database_Result implements Database_Interface_Result
   public function getLastRow($type = 'object')
   {
     $result = $this->result($type);
-    if(count($result) == 0) {
+    if(count($result) == 0)
       return $result;
-    }
     return $result[count($result) - 1];
   }
 
@@ -181,12 +176,10 @@ abstract class Database_Result implements Database_Interface_Result
   public function getNextRow($type = 'object')
   {
     $result = $this->result($type);
-    if(count($result) == 0) {
+    if(count($result) == 0)
       return $result;
-    }
-    if( ! isset($result[$this->current_row + 1])) {
+    if( ! isset($result[$this->current_row + 1]))
       return false;
-    }
     $this->current_row++;
     return $result[$this->current_row];
   }
@@ -201,12 +194,10 @@ abstract class Database_Result implements Database_Interface_Result
   public function getPreviousRow($type = 'object')
   {
     $result = $this->result($type);
-    if(count($result) == 0) {
+    if(count($result) == 0)
       return $result;
-    }
-    if( ! isset($result[$this->current_row - 1])) {
+    if( ! isset($result[$this->current_row - 1]))
       return false;
-    }
     $this->current_row--;
     return $result[$this->current_row];
   }
@@ -219,15 +210,12 @@ abstract class Database_Result implements Database_Interface_Result
    */
   private function _getObject()
   {
-    if(count($this->result_object) > 0) {
+    if(count($this->result_object) > 0)
       return $this->result_object;
-    }
-    if($this->result_id === false or $this->getNumRows() == 0) {
+    if($this->result_id === false or $this->getNumRows() == 0)
       return false;
-    }
-    while($row = $this->_fetchObject()) {
+    while($row = $this->_fetchObject())
       $this->result_object[] = $row;
-    }
     // If cache enabled
     if($this->cache_enabled) {
       // Initialize the cache class
@@ -268,15 +256,12 @@ abstract class Database_Result implements Database_Interface_Result
    */
   private function _getArray()
   {
-    if(count($this->result_array) > 0) {
+    if(count($this->result_array) > 0)
       return $this->result_array;
-    }
-    if($this->result_id === false or $this->getNumRows() == 0) {
+    if($this->result_id === false or $this->getNumRows() == 0)
       return false;
-    }
-    while($row = $this->_fetchAssoc()) {
+    while($row = $this->_fetchAssoc())
       $this->result_array[] = $row;
-    }
     // If cache enabled
     if($this->cache_enabled) {
       $cache = new Database_Cache_Write($this);
@@ -295,9 +280,8 @@ abstract class Database_Result implements Database_Interface_Result
   private function _getArrayFromCache()
   {
     $result = array();
-    foreach($this->cache_data as $i => $v) {
+    foreach($this->cache_data as $i => $v)
       $result[$i] = (array)$v;
-    }
     return $result;
   }
 

@@ -58,10 +58,10 @@ body {
 .msg1 {
   border-right: 1px dashed #666;
   position: absolute;
-  top: -50px;
+  top: -60px;
   left: -150px;
   width: 250px;
-  height: 35px;
+  height: 45px;
   visibility: visible;
   display: block; border-top: 1px dashed #666; padding: 5px;
 }
@@ -80,7 +80,7 @@ body {
   padding: 5px 0 0 30px; color: #046E12;
 }
 .signin-form .-i-form fieldset {
-  margin: 0;
+  margin: 0; height: 70px;
 }
 .signin-form .-i-form label {
   display: block; color: red; font-size: 0.9em;

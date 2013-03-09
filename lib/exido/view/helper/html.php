@@ -91,11 +91,12 @@ abstract class View_Helper_Html extends View_Helper_Meta
    * The alias of helper function htmlA() for simple using in views.
    * @param string $url
    * @param string $title
+   * @param string $class
    * @return View_Helper_Html
    */
-  public function a($url, $title)
+  public function a($url, $title, $class = '')
   {
-    print htmlA($url, $title);
+    print htmlA($url, $title, $class);
     return $this;
   }
 

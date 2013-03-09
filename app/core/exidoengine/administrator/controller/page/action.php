@@ -112,6 +112,33 @@ class Administrator_Controller_Page_Action extends Controller_Administrator_Abst
       uriSiteRedirect('page/list');
     }
   }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Pages edit page
+   * @param int $entity_id
+   * @return void
+   * @throws Exception_Exido
+   */
+  public function remove($entity_id = null)
+  {
+    // Get page data
+    if( ! $this->view->attribute_form = $this->db_page->getEntityById($entity_id)) {
+      throw new Exception_Exido(__('Page not found'), array(), 404);
+    };
+
+    if($this->db_page->removeEntity($entity_id)) {
+      // Errors
+      $this->session->set('action_success', __('Page has been successfully removed.'));
+    } else {
+      // Error when removing
+      $this->session->set('action_error',
+                          sprintf(__('There is an error while removing a page. Details: %s'), implode(', ', $this->db_page->getErrors()))
+      );
+    }
+    uriSiteRedirect('page/list');
+  }
 }
 
 ?>

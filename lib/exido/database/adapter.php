@@ -158,10 +158,8 @@ abstract class Database_Adapter implements Database_Interface_Adapter//, Databas
     }
 
     // No connection resource?  Throw an error
-    if( ! $this->conn_id) {
+    if( ! $this->conn_id)
       return false;
-    }
-
     // Save the  query for debugging
     if($this->save_queries == true)
       $this->queries[] = $this->last_sql;
@@ -169,13 +167,11 @@ abstract class Database_Adapter implements Database_Interface_Adapter//, Databas
     // Start benchmarking
     if($this->benchmark)
       $time_start = microtime(true);
-
     // If the query caching is enabled
     if($this->cache_enabled) {
       // Set the parameters
-      if($cache_lifetime != 0) {
+      if($cache_lifetime != 0)
         $this->cache_lifetime = $cache_lifetime;
-      }
       $cache = new Database_Cache_Read($this);
     }
 
@@ -185,10 +181,9 @@ abstract class Database_Adapter implements Database_Interface_Adapter//, Databas
     // Check cache for cached query
     if($no_cache or ! $this->cache_enabled or ! $cache_result = $cache->getCache()) {
       // Execute a query
-      if(false === ($this->result_id = $this->_execSimpleQuery($this->last_sql))) {
+      if(false === ($this->result_id = $this->_execSimpleQuery($this->last_sql)))
         // Throw an error if the query has been failed
         throw new Exception_Database($this);
-      }
     }
 
     // Stop benchmarking and calculate the results
@@ -275,9 +270,8 @@ abstract class Database_Adapter implements Database_Interface_Adapter//, Databas
    */
   public function getBenchmark()
   {
-    if($this->benchmark == false) {
+    if($this->benchmark == false)
       return array();
-    }
     return $this->bm_times;
   }
 

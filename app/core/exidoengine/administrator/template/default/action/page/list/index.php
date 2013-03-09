@@ -29,13 +29,12 @@
 
 // List actions menu
 $view->action_menu = array(
-  '/page/action/create' => __('Create a new page'),
-  '/page/list/remove' => __('Remove page')
+  '/page/action/create' => __('Create a new page')
 );
 // Include menu code
 $view->getView('layout/inc.list-action-menu-panel');
 
-print $helper->heading(__('Static pages'));
+$helper->heading(__('Static pages'));
 
 if($view->item_list) {
   print tableOpen('-i-table -i-table-striped');
@@ -60,8 +59,11 @@ if($view->item_list) {
          .'<td>'.eavFetchValue('is_enabled', $item->attributes, 'htmlStatus').'</td>'
          .'<td>';
     $helper->a('page/action/edit/'.$item->entity_id, __('Edit'));
+    $helper->a('page/action/remove/'.$item->entity_id, __('Remove'), 'remove');
     print '</td></tr>';
   }
   print tableClose();
+} else {
+  $helper->notifier(__('No pages created'));
 }
 ?>

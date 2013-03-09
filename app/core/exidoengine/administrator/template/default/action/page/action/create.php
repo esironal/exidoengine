@@ -36,6 +36,6 @@ $view->getView('layout/inc.list-action-menu-panel');
 ?>
 
 <?
-print $helper->heading(__('Static pages - Create a new page'));
+$helper->heading(__('Static pages - Create a new page'));
 print eavCreateForm('-x-page-edit', $view->attribute_form);
 ?>

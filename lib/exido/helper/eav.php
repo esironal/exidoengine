@@ -58,6 +58,7 @@ function eavCreateFormValidationJS($id, array $attributes)
   $script.= '$(function() {';
   $script.= "$('#".$id."').validate({";
   $rules  = array();
+  $messages = array();
   foreach($attributes as $field) {
     if($field->backend_object != null) {
       switch($field->data_type_key) {
@@ -65,16 +66,26 @@ function eavCreateFormValidationJS($id, array $attributes)
           $rules[$field->attribute_key] = array(
             'required' => ((bool)$field->is_required) ? 'true' : 'false'
           );
+          $messages[$field->attribute_key] = array(
+            'required' => __('This field is required')
+          );
           break;
         case 'varchar' :
           $rules[$field->attribute_key] = array(
             'required' => ((bool)$field->is_required) ? 'true' : 'false'
+          );
+          $messages[$field->attribute_key] = array(
+            'required' => __('This field is required')
           );
           break;
         case 'int' :
           $rules[$field->attribute_key] = array(
             'required' => ((bool)$field->is_required) ? 'true' : 'false',
             'number'      => true
+          );
+          $messages[$field->attribute_key] = array(
+            'required' => __('This field is required'),
+            'number' => __('Please enter a valid number')
           );
           break;
         case 'decimal' :
@@ -87,10 +98,14 @@ function eavCreateFormValidationJS($id, array $attributes)
           $rules[$field->attribute_key] = array(
             'required' => ((bool)$field->is_required) ? 'true' : 'false'
           );
+          $messages[$field->attribute_key] = array(
+            'required' => __('This field is required')
+          );
           break;
       }
     }
   }
+  // Rules
   if( ! empty($rules)) {
     $script.= 'rules: {';
     $c_rule = count($rules);
@@ -106,6 +121,25 @@ function eavCreateFormValidationJS($id, array $attributes)
       }
       $script.= '}';
       if($c < $c_rule) $script.=',';
+      $c++;
+    }
+    $script.= '}';
+  }
+  if( ! empty($messages)) {
+    $script.= ',messages: {';
+    $c_msg = count($messages);
+    $c = 1;
+    foreach($messages as $key => $message) {
+      $script.= $key.': {';
+      $b_msg = count($message);
+      $b = 1;
+      foreach($message as $k => $v) {
+        $script.= $k.": '".$v."'";
+        if($b < $b_msg) $script.=',';
+        $b++;
+      }
+      $script.= '}';
+      if($c < $c_msg) $script.=',';
       $c++;
     }
     $script.= '}';
