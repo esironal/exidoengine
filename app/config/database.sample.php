@@ -54,10 +54,10 @@ return array(
      * Set DB charset, collation, time names and time zone
      * By default it all depends on language loaded
      */
-    'character_set'   => __('__dbcharset'),
-    'dbcollation'     => __('__dbcollation'),
-    'lc_time_names'   => __('__dbtimenames'),
-    'time_zone'       => __('__dbtime_zone'),
+    'character_set'   => __('__db_charset'),
+    'dbcollation'     => __('__db_collation'),
+    'lc_time_names'   => __('__db_time_names'),
+    'time_zone'       => __('__db_time_zone'),
     'table_prefix'    => ''
   )
 );
