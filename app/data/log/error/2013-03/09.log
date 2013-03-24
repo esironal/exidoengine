@@ -1,6 +1,0 @@
-[2013-03-09 07:29:38] [EXIDO_ERROR_LOG] Error [ 2 ]: Invalid argument supplied for foreach() ~ database/result.php [ 97 ]
-[2013-03-09 07:30:55] [EXIDO_ERROR_LOG] Error [ 2 ]: Invalid argument supplied for foreach() ~ database/result.php [ 97 ]
-[2013-03-09 07:33:52] [EXIDO_ERROR_LOG] Error [ 2 ]: Invalid argument supplied for foreach() ~ database/result.php [ 97 ]
-[2013-03-09 07:36:43] [EXIDO_ERROR_LOG] Error [ 2 ]: Invalid argument supplied for foreach() ~ database/result.php [ 97 ]
-[2013-03-09 07:36:55] [EXIDO_ERROR_LOG] Error [ 2 ]: Invalid argument supplied for foreach() ~ database/result.php [ 97 ]
-[2013-03-09 07:36:55] [EXIDO_ERROR_LOG] Error [ 8 ]: Undefined variable: access ~ controller/administrator/abstract.php [ 108 ]
