@@ -112,25 +112,25 @@ final class Exido
    * Default database charset
    * @var string
    */
-  public static $dbcharset = 'utf8';
+  public static $db_charset = 'utf8';
 
   /**
    * Default database collation
    * @var string
    */
-  public static $dbcollation = 'utf8_general_ci';
+  public static $db_collation = 'utf8_general_ci';
 
   /**
    * Default database time names
    * @var string
    */
-  public static $dbtimenames = 'en_US';
+  public static $db_time_names = 'en_US';
 
   /**
    * Default database time names
    * @var string
    */
-  public static $dbtime_zone  = 'UTC';
+  public static $db_time_zone  = 'UTC';
 
   /**
    * Default core application name
@@ -489,10 +489,10 @@ final class Exido
       if($line == '__charset')     return self::$charset;
       if($line == '__locale')      return self::$locale;
       if($line == '__time_zone')   return self::$timezone;
-      if($line == '__dbcharset')   return self::$dbcharset;
-      if($line == '__dbcollation') return self::$dbcollation;
-      if($line == '__dbtimenames') return self::$dbtimenames;
-      if($line == '__dbtime_zone') return self::$dbtime_zone;
+      if($line == '__db_charset')    return self::$db_charset;
+      if($line == '__db_collation')  return self::$db_collation;
+      if($line == '__db_time_names') return self::$db_time_names;
+      if($line == '__db_time_zone')  return self::$db_time_zone;
       return $line;
     }
   }

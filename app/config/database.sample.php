@@ -55,7 +55,7 @@ return array(
      * By default it all depends on language loaded
      */
     'character_set'   => __('__db_charset'),
-    'dbcollation'     => __('__db_collation'),
+    'db_collation'    => __('__db_collation'),
     'lc_time_names'   => __('__db_time_names'),
     'time_zone'       => __('__db_time_zone'),
     'table_prefix'    => ''

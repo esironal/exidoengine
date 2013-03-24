@@ -46,7 +46,7 @@ abstract class Database_Adapter implements Database_Interface_Adapter//, Databas
   public $type;
   public $pconnect;
   public $character_set;
-  public $dbcollation;
+  public $db_collation;
   public $lc_time_names;
   public $time_zone;
   public $table_prefix    = '';
@@ -146,7 +146,7 @@ abstract class Database_Adapter implements Database_Interface_Adapter//, Databas
         } else return false;
       } else {
         // Set a connection charset
-        if( ! $this->setCharset($this->character_set, $this->dbcollation))
+        if( ! $this->setCharset($this->character_set, $this->db_collation))
           return false;
         // Set time names
         if( ! $this->setTimeNames($this->lc_time_names))

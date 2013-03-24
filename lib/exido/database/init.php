@@ -56,7 +56,7 @@ final class Database_Init
     'benchmark'     => true,
     'pconnect'      => false,
     'character_set' => 'utf8',
-    'dbcollation'   => 'utf8_general_ci',
+    'db_collation'  => 'utf8_general_ci',
     'table_prefix'  => ''
   );
 

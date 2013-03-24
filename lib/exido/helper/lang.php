@@ -33,7 +33,7 @@
  * @return string
  */
 function __($line) {
-  file_put_contents(APPPATH.'data/lang.txt', "'".$line."' => '',".EXIDO_EOL, FILE_APPEND);
+  //file_put_contents(APPPATH.'data/lang.txt', "'".$line."' => '',".EXIDO_EOL, FILE_APPEND);
   return Exido::i18n($line);
 }
 

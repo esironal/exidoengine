@@ -31,10 +31,10 @@ return array(
   '__charset'     => 'UTF-8',
   '__time_zone'   => 'Asia/Omsk',
   '__locale'      => 'ru_RU.UTF-8',
-  '__dbcharset'   => 'utf8',
-  '__dbcollation' => 'utf8_general_ci',
-  '__dbtimenames' => 'ru_RU',
-  '__dbtime_zone' => '+08:00',
+  '__db_charset'   => 'utf8',
+  '__db_collation' => 'utf8_general_ci',
+  '__db_time_names' => 'ru_RU',
+  '__db_time_zone' => '+08:00',
   'Dashboard' => 'Консоль',
   'Users' => 'Пользователи',
   'Access' => 'Доступ',
@@ -91,4 +91,5 @@ return array(
   'After third incorrect attempt, you will be rejected for a some time.' => 'После третьей неудачной попытки, вы будете заблокированы на некоторое время',
   'Welcome' => 'Добро пожаловать',
   'User is not found or blocked' => 'Такой пользователь не найден или заблокирован',
+  'Components' => 'Компоненты'
 );

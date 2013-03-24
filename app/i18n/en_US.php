@@ -31,8 +31,8 @@ return array(
   '__charset'     => 'UTF-8',
   '__time_zone'   => 'America/New_York',
   '__locale'      => 'en_US.UTF-8',
-  '__dbcharset'   => 'utf8',
-  '__dbcollation' => 'utf8_general_ci',
-  '__dbtimenames' => 'en_US',
-  '__dbtime_zone' => '-14:00'
+  '__db_charset'   => 'utf8',
+  '__db_collation' => 'utf8_general_ci',
+  '__db_time_names' => 'en_US',
+  '__db_time_zone' => '-14:00'
 );
