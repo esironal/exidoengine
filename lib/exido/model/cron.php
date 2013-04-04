@@ -21,7 +21,7 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html (GNU General Public License v3)
  * @author    ExidoTeam
- * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
+ * @copyright Copyright (c) 2009 - 2013, ExidoEngine Solutions
  * @link      http://www.exidoengine.com/
  * @since     Version 1.0
  * @filesource
