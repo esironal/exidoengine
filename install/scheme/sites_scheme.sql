@@ -14,5 +14,3 @@ CREATE TABLE `site` (
   `is_enabled` bool NOT NULL DEFAULT true,
   `is_system` bool NOT NULL DEFAULT false COMMENT "Couldn't be removed via WEB-UI"
 )  ENGINE = InnoDB;
-
-INSERT INTO `site` (`domain`, `administrator_path`, `site_title`) VALUES ('e.local', 'e.local', 'test web-site');

@@ -22,14 +22,6 @@ CREATE TABLE `group` (
 
 ALTER TABLE `group` ADD FOREIGN KEY (`group_pid`) REFERENCES `group`(`group_id`);
 
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (1, 'root', NOW(), true);
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (100, 'administrators', NOW(), true);
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (101, 'exidoengine', NOW(), true);
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (102, 'publishers', NOW(), true);
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (103, 'developers', NOW(), true);
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (104, 'visitors', NOW(), true);
-INSERT INTO `group` (`group_id`, `group_name`, `created_at`, `is_system`) VALUES (105, 'others', NOW(), true);
-
 -- -----------------------------------------------------------------------------
 -- USER ROLE TABLE
 -- -----------------------------------------------------------------------------
@@ -42,12 +34,6 @@ CREATE TABLE `user_role` (
   `position` int(4) NOT NULL DEFAULT '0' COMMENT "Sorting order",
   `is_system` bool NOT NULL DEFAULT false COMMENT "The system role couldn't be deleted via WEB-UI"
 ) ENGINE = InnoDB;
-
-INSERT INTO `user_role` (`role_name`, `created_at`, `is_system`) VALUES ('root', NOW(), true);
-INSERT INTO `user_role` (`role_name`, `created_at`, `is_system`) VALUES ('administrator', NOW(), true);
-INSERT INTO `user_role` (`role_name`, `created_at`, `is_system`) VALUES ('developer', NOW(), true);
-INSERT INTO `user_role` (`role_name`, `created_at`, `is_system`) VALUES ('publisher', NOW(), true);
-INSERT INTO `user_role` (`role_name`, `created_at`, `is_system`) VALUES ('visitor', NOW(), true);
 
 -- -----------------------------------------------------------------------------
 -- USER TABLE
@@ -82,9 +68,6 @@ ALTER TABLE `user` ADD FOREIGN KEY (`group_id`) REFERENCES `group`(`group_id`);
 ALTER TABLE `user` ADD FOREIGN KEY (`group_name`) REFERENCES `group`(`group_name`);
 ALTER TABLE `user` ADD FOREIGN KEY (`role_name`) REFERENCES `user_role`(`role_name`);
 
-INSERT INTO `user` (`user_id`,`user_name`,`password`,`user_email`,`owner_id`,`owner_name`,`group_id`,`group_name`,`role_name`,`created_at`,`is_system`) VALUES (100,'root',MD5(RAND()),'root@root',NULL,NULL,1,'root','root',NOW(),true);
-INSERT INTO `user` (`user_id`,`user_name`,`password`,`user_email`,`owner_id`,`owner_name`,`group_id`,`group_name`,`role_name`,`created_at`,`is_system`) VALUES (500,'exidoengine',MD5('exidoengine'),'exido@exidoengine.com',100,'root',101,'exidoengine','administrator',NOW(),true);
-INSERT INTO `user` (`user_id`,`user_name`,`user_email`,`password`,`unique_session_id`,`owner_id`,`owner_name`,`group_id`,`group_name`, `role_name`,`created_at`,`is_system`) VALUES ('600', 'guest', 'guest@exidoengine.com', MD5('guest'),'5627a272bf2563cee5877539bd906e7cc3eb33afcefe2b570a08906f9a34ae48', '100', 'root', '104', 'visitors', 'visitor', NOW(), true);
 -- -----------------------------------------------------------------------------
 
 -- -----------------------------------------------------------------------------
@@ -100,7 +83,3 @@ CREATE TABLE `user_access` (
 ) ENGINE = InnoDB;
 
 ALTER TABLE `user_access` ADD FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
-
-INSERT INTO `user_access` (`user_id`, `component`, `instance`, `permissions`) VALUES
-(500, 'ALL', 'ADMINISTRATOR', 'rwx'),
-(600, 'ALL', 'FRONTEND', 'rwx');

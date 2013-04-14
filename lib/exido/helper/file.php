@@ -50,9 +50,10 @@ function fileIsReallyWritable($file)
     @chmod($file, DIR_WRITE_MODE);
     @unlink($file);
     return true;
-  } elseif(($fp = @fopen($file, FOPEN_WRITE_CREATE)) === false)
+  } elseif(($fp = @fopen($file, FOPEN_WRITE_CREATE)) === false) {
+    fclose($fp);
     return false;
-  fclose($fp);
+  }
   return true;
 }
 
