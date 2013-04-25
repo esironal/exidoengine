@@ -1,0 +1,68 @@
+-- -----------------------------------------------------------------------------
+-- GEO
+-- -----------------------------------------------------------------------------
+
+INSERT INTO `geo_area` (`area_id`, `area_name`, `country_code_iso2`) VALUES
+(200,'United States of America','US');
+
+INSERT INTO `geo_region` (`region_name`,`region_abbr`,`country_code_iso2`,`area_id`) VALUES
+('Alabama','AL','US',200),
+('Alaska','AK','US',200),
+('Arizona','AZ','US',200),
+('Arkansas','AR','US',200),
+('California','CA','US',200),
+('Colorado','CO','US',200),
+('Connecticut','CT','US',200),
+('Delaware','DE','US',200),
+('Florida','FL','US',200),
+('Georgia','GA','US',200),
+('Hawaii','HI','US',200),
+('Idaho','ID','US',200),
+('Illinois','IL','US',200),
+('Indiana','IN','US',200),
+('Iowa','IA','US',200),
+('Kansas','KS','US',200),
+('Kentucky','KY','US',200),
+('Louisiana','LA','US',200),
+('Maine','ME','US',200),
+('Maryland','MD','US',200),
+('Massachusetts','MA','US',200),
+('Michigan','MI','US',200),
+('Minnesota','MN','US',200),
+('Mississippi','MS','US',200),
+('Missouri','MO','US',200),
+('Montana','MT','US',200),
+('Nebraska','NE','US',200),
+('Nevada','NV','US',200),
+('New Hampshire','NH','US',200),
+('New Jersey','NJ','US',200),
+('New Mexico','NM','US',200),
+('New York','NY','US',200),
+('North Carolina','NC','US',200),
+('North Dakota','ND','US',200),
+('Ohio','OH','US',200),
+('Oklahoma','OK','US',200),
+('Oregon','OR','US',200),
+('Pennsylvania','PA','US',200),
+('Rhode Island','RI','US',200),
+('South Carolina','SC','US',200),
+('South Dakota','SD','US',200),
+('Tennessee','TN','US',200),
+('Texas','TX','US',200),
+('Utah','UT','US',200),
+('Vermont','VT','US',200),
+('Virginia','VA','US',200),
+('Washington','WA','US',200),
+('West Virginia','WV','US',200),
+('Wisconsin','WI','US',200),
+('Wyoming','WY','US',200);
+
+INSERT INTO `geo_area` (`area_name`, `country_code_iso2`) VALUES
+('Central Federal District','RU'),
+('Southern Federal District','RU'),
+('Northwestern Federal District','RU'),
+('Far Eastern Federal District','RU'),
+('Siberian Federal District','RU'),
+('Ural Federal District','RU'),
+('Volga Federal District','RU'),
+('North Caucasian Federal District','RU');

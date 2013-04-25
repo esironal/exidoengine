@@ -1,14 +1,14 @@
 <?php defined('SYSPATH') or die('No direct script access allowed.');
 
 /*******************************************************************************
- * ExidoEngine Web-sites manager
+ * ExidoEngine Content Management System
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the GNU General Public License (3.0)
  * that is bundled with this package in the file license_en.txt
  * It is also available through the world-wide-web at this URL:
- * http://www.exidoengine.com/license/gpl-3.0.html
+ * http://exidoengine.com/license/gpl-3.0.html
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@exidoengine.com so we can send you a copy immediately.
@@ -19,10 +19,10 @@
  * versions in the future. If you wish to customize ExidoEngine for your
  * needs please refer to http://www.exidoengine.com for more information.
  *
- * @license   http://www.exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
+ * @license   http://exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
  * @author    ExidoTeam
- * @copyright Copyright (c) 2009 - 2013, ExidoEngine Solutions
- * @link      http://www.exidoengine.com/
+ * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
+ * @link      http://exidoengine.com/
  * @since     Version 1.0
  * @filesource
  *******************************************************************************/
@@ -41,8 +41,18 @@ abstract class Image_Base
   public $new_image_path    = '';
   public $create_thumb    = true;
   public $thumb_prfx      = '_tmb_';
-  public $maintain_ratio  = true; // Whether to maintain aspect ratio when resizing or use hard values
-  public $master_dim      = 'auto'; // auto, height, or width. Determines what to use as the master dimension
+
+  /*
+   * Whether to maintain aspect ratio when resizing or use hard values
+   * @var
+   */
+  public $maintain_ratio  = true;
+
+  /*
+   * auto, height, or width. Determines what to use as the master dimension
+   * @var
+   */
+  public $master_dim      = 'auto';
   public $rotation_angle  = '';
   public $x_axis          = '';
   public $y_axis          = '';
@@ -51,6 +61,15 @@ abstract class Image_Base
   public $quality         = '90';
   public $action          = '';
   public $increase_small  = false;
+
+  /*
+   * Allowed mimes
+   */
+  public $mimes = array(
+    'jpg'  => 'image/jpeg',
+    'png'  => 'image/png',
+    'gif'  => 'image/gif'
+  );
 
   // ---------------------------------------------------------------------------
 
@@ -64,6 +83,14 @@ abstract class Image_Base
       $params = array();
     }
     $params['degs'] = range(1, 360);
+
+    if( ! isset($params['mimes'])) {
+      // Get mimes from config file
+      if($mimes = Exido::config('mime.image')) {
+        $params['mimes'] = $mimes;
+      }
+    }
+
     $this->setup($params);
   }
 
@@ -93,33 +120,33 @@ abstract class Image_Base
   public function clear()
   {
     $props = array( '_source_folder',
-                    '_dest_folder',
-                    'source_image_path',
-                    '_full_src_path',
-                    '_full_dst_path',
-                    'new_image_path',
-                    '_image_type',
-                    '_size_str',
-                    'quality',
-                    '_orig_width',
-                    '_orig_height',
-                    'rotation_angle',
-                    'x_axis',
-                    'y_axis',
-                    'wm_overlay_path',
-                    'wm_use_truetype',
-                    'wm_font_size',
-                    'wm_text',
-                    'wm_vrt_alignment',
-                    'wm_hor_alignment',
-                    'wm_padding',
-                    'wm_hor_offset',
-                    'wm_vrt_offset',
-                    'wm_font_color',
-                    'wm_use_drop_shadow',
-                    'wm_shadow_color',
-                    'wm_shadow_distance',
-                    'wm_opacity'
+      '_dest_folder',
+      'source_image_path',
+      '_full_src_path',
+      '_full_dst_path',
+      'new_image_path',
+      '_image_type',
+      '_size_str',
+      'quality',
+      '_orig_width',
+      '_orig_height',
+      'rotation_angle',
+      'x_axis',
+      'y_axis',
+      'wm_overlay_path',
+      'wm_use_truetype',
+      'wm_font_size',
+      'wm_text',
+      'wm_vrt_alignment',
+      'wm_hor_alignment',
+      'wm_padding',
+      'wm_hor_offset',
+      'wm_vrt_offset',
+      'wm_font_color',
+      'wm_use_drop_shadow',
+      'wm_shadow_color',
+      'wm_shadow_distance',
+      'wm_opacity'
     );
     foreach($props as $val) {
       $this->$val = '';
@@ -169,10 +196,10 @@ abstract class Image_Base
       $ext  = ($ext == '.jpeg') ? '.jpg' : $ext;
     }
     return array
-           (
-             'ext'  => $ext,
-             'name' => $name
-           );
+    (
+      'ext'  => $ext,
+      'name' => $name
+    );
   }
 
   // ---------------------------------------------------------------------------

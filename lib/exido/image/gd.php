@@ -1,14 +1,14 @@
 <?php defined('SYSPATH') or die('No direct script access allowed.');
 
 /*******************************************************************************
- * ExidoEngine Web-sites manager
+ * ExidoEngine Content Management System
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the GNU General Public License (3.0)
  * that is bundled with this package in the file license_en.txt
  * It is also available through the world-wide-web at this URL:
- * http://www.exidoengine.com/license/gpl-3.0.html
+ * http://exidoengine.com/license/gpl-3.0.html
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@exidoengine.com so we can send you a copy immediately.
@@ -19,10 +19,10 @@
  * versions in the future. If you wish to customize ExidoEngine for your
  * needs please refer to http://www.exidoengine.com for more information.
  *
- * @license   http://www.exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
+ * @license   http://exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
  * @author    ExidoTeam
- * @copyright Copyright (c) 2009 - 2013, ExidoEngine Solutions
- * @link      http://www.exidoengine.com/
+ * @copyright Copyright (c) 2009 - 2012, ExidoEngine Solutions
+ * @link      http://exidoengine.com/
  * @since     Version 1.0
  * @filesource
  *******************************************************************************/
@@ -74,7 +74,6 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   protected $_full_dst_path      = '';
   protected $_actions            = array('crop', 'resize', 'rotate', 'mirror', 'watermark');
   protected $_degs               = array(); // Allowed rotation values
-  protected $_types              = array('gif', 'jpg', 'png');
   protected $_display            = true;
   protected $_wm_use_drop_shadow = false;
   protected $_wm_use_truetype    = false;
@@ -83,13 +82,13 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
 
   /**
    * Constructor.
-   * @param null $params
+   * @param array $params
    * @throws Exception_Exido
    */
-  public function __construct($params = null)
+  public function __construct(array $params = array())
   {
     if( ! $this->_isGdLoaded()) {
-      throw new Exception_Exido("The GD library doesn't installed");
+      throw new Exception_Exido(__("The GD library doesn't installed."));
     }
     parent::__construct($params);
   }
@@ -124,12 +123,17 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     if( ! $vals = @getimagesize($path)) {
       return false;
     }
-    $mime = (isset($this->_types[$vals['2'] - 1])) ? 'image/'.$this->_types[$vals['2'] - 1] : 'image/jpg';
+    if( ! isset($vals['mime'])) {
+      return false;
+    }
+    if( ! in_array($vals['mime'], $this->mimes)) {
+      return false;
+    }
     $v['width']      = $vals['0'];
     $v['height']     = $vals['1'];
     $v['image_type'] = $vals['2'];
     $v['size_str']   = $vals['3'];
-    $v['mime_type']  = $mime;
+    $v['mime_type']  = $vals['mime'];
     return $v;
   }
 
@@ -143,12 +147,14 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   protected function _processImage()
   {
     if($this->action == '' or ! in_array($this->action, $this->_actions)) {
-      throw new Exception_Exido("The method %s you called doesn't found", array($this->action));
+      throw new Exception_Exido(__("The method :method you called doesn't found."), array(
+        ':method' => $this->action
+      ));
     }
 
     // Is there a source image? If not, there's no reason to continue
     if($this->source_image_path == '') {
-      throw new Exception_Exido("You must specify a source image in your preferences");
+      throw new Exception_Exido(__("You must specify a source image in your preferences."));
     }
 
     // The source image may or may not contain a path.
@@ -167,12 +173,12 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     // Is getimagesize() available?
     // We use it to determine the image properties (width/height).
     if( ! function_exists('getimagesize')) {
-      throw new Exception_Exido("Your server must support the GD image library in order to determine the image properties");
+      throw new Exception_Exido(__("Your server must support the GD image library in order to determine the image properties."));
     }
 
     // Get image properties
     if( ! $image_props = $this->getImageProperties($this->_source_folder.$this->source_image_path)) {
-      throw new Exception_Exido("Couldn't get the image properties");
+      throw new Exception_Exido(__("Couldn't get the image properties. Perhaps it is not an image."));
     }
 
     // Set image properties
@@ -231,7 +237,8 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     $xp  = $this->explodeName($this->_dest_image);
     $filename = $xp['name'];
     //$file_ext = $xp['ext'];
-    $this->_new_image_ext = '.'.$this->_types[$this->_image_type - 1];
+    // Get file extension
+    $this->_new_image_ext = '.'.array_search($this->_mime_type, $this->mimes);
     $this->_full_src_path = $this->_source_folder.$this->source_image_path;
     $this->_full_dst_path = $this->_dest_folder.$this->thumb_prfx.$filename.$this->_new_image_ext;
     // If the destination width/height was
@@ -392,10 +399,10 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   private function _rotateImage()
   {
     if($this->rotation_angle == '' or ! in_array($this->rotation_angle, $this->_degs)) {
-      throw new Exception_Exido("Angle of rotation is required to rotate the image");
+      throw new Exception_Exido(__("An angle of rotation is required to rotate the image."));
     }
     if( ! function_exists('imagerotate')) {
-      throw new Exception_Exido("Image rotation does not appear to be supported by your server");
+      throw new Exception_Exido(__("Image rotation does not appear to be supported by your server."));
     }
     //  Create the image handle
     if( ! ($src_img = $this->_createImage())) {
@@ -433,27 +440,27 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     switch($image_type) {
       case 1 :
         if( ! function_exists('imagecreatefromgif')) {
-          throw new Exception_Exido("GIF images are often not supported");
+          throw new Exception_Exido(__("GIF images are often not supported."));
         }
         return imagecreatefromgif($path);
-      break;
+        break;
 
       case 2 :
         if( ! function_exists('imagecreatefromjpeg')) {
-          throw new Exception_Exido("JPG images are often not supported");
+          throw new Exception_Exido(__("JPG images are often not supported."));
         }
         return imagecreatefromjpeg($path);
-      break;
+        break;
 
       case 3 :
         if( ! function_exists('imagecreatefrompng')) {
-          throw new Exception_Exido("PNG images are often not supported");
+          throw new Exception_Exido(__("PNG images are often not supported."));
         }
         return imagecreatefrompng($path);
-      break;
+        break;
 
       default :
-        throw new Exception_Exido("Your server does not support the GD function required to process this type of image");
+        throw new Exception_Exido(__("Your server does not support the GD function required to process this type of image."));
     }
   }
 
@@ -471,33 +478,33 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     switch($this->_image_type) {
       case 1 :
         if( ! function_exists('imagegif')) {
-          throw new Exception_Exido("GIF images are often not supported");
+          throw new Exception_Exido(__("GIF images are often not supported."));
         }
         if( ! @imagegif($resource, $this->_full_dst_path)) {
-          throw new Exception_Exido("Couldn't save a GIF image");
+          throw new Exception_Exido(__("Couldn't save a GIF image."));
         }
-      break;
+        break;
 
       case 2  :
         if( ! function_exists('imagejpeg')) {
-          throw new Exception_Exido("JPG images are often not supported");
+          throw new Exception_Exido(__("JPG images are often not supported."));
         }
         if( ! @imagejpeg($resource, $this->_full_dst_path, $this->quality)) {
-          throw new Exception_Exido("Couldn't save a JPG image");
+          throw new Exception_Exido(__("Couldn't save a JPG image."));
         }
-      break;
+        break;
 
       case 3  :
         if( ! function_exists('imagepng')) {
-          throw new Exception_Exido("PNG images are often not supported");
+          throw new Exception_Exido(__("PNG images are often not supported."));
         }
         if( ! @imagepng($resource, $this->_full_dst_path)) {
-          throw new Exception_Exido("Couldn't save a PNG image");
+          throw new Exception_Exido(__("Couldn't save a PNG image."));
         }
-      break;
+        break;
 
       default :
-        throw new Exception_Exido("Your server does not support the GD function required to process this type of image");
+        throw new Exception_Exido(__("Your server does not support the GD function required to process this type of image."));
     }
     return true;
   }
@@ -524,7 +531,7 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
       case 3   : @imagepng($resource);
         break;
       default  :
-        print __('Unable to display image');
+        print __('Unable to display image.');
         break;
     }
   }
@@ -571,7 +578,7 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   private function _overlayWatermark()
   {
     if( ! function_exists('imagecolortransparent')) {
-      throw new Exception_Exido("The GD image library is required for this feature");
+      throw new Exception_Exido(__("The GD image library is required for this feature."));
     }
     // Fetch source image properties
     $image_props = $this->getImageProperties($this->_full_src_path);
@@ -648,7 +655,7 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   private function _textWatermark()
   {
     if($this->_wm_use_truetype == true and ! file_exists($this->wm_font_path)) {
-      throw new Exception_Exido("Unable to find the required font file");
+      throw new Exception_Exido(__("Unable to find the font."));
     }
     // Fetch source image properties
     $image_props = $this->getImageProperties($this->_full_src_path);
@@ -724,14 +731,14 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
       case "L":
         break;
       case "R":
-            if($this->_wm_use_drop_shadow)
-              $x_shad += ($image_props['width'] - $fontwidth*strlen($this->wm_text));
-              $x_axis += ($image_props['width'] - $fontwidth*strlen($this->wm_text));
+        if($this->_wm_use_drop_shadow)
+          $x_shad += ($image_props['width'] - $fontwidth*strlen($this->wm_text));
+        $x_axis += ($image_props['width'] - $fontwidth*strlen($this->wm_text));
         break;
       case "C":
-            if($this->_wm_use_drop_shadow)
-              $x_shad += floor(($image_props['width'] - $fontwidth*strlen($this->wm_text))/2);
-              $x_axis += floor(($image_props['width']  -$fontwidth*strlen($this->wm_text))/2);
+        if($this->_wm_use_drop_shadow)
+          $x_shad += floor(($image_props['width'] - $fontwidth*strlen($this->wm_text))/2);
+        $x_axis += floor(($image_props['width']  -$fontwidth*strlen($this->wm_text))/2);
         break;
     }
     // Add the text to the source image
