@@ -1,0 +1,64 @@
+/*******************************************************************************
+ * ExidoEngine Installation script CSS styles
+ * Copyright (c) 2009 - 2013, ExidoEngine Solutions
+ * Licensed under GNU General Public License v3
+ * http://www.exidoengine.com/license/gpl-3.0.html
+ *******************************************************************************/
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font: 0.9em/2em normal Lucida Grande, Lucida Sans, Arial, Helvetica, sans-serif;
+}
+b, .b {
+  font-weight: bold;
+}
+i, .i {
+  font-style: italic;
+}
+a, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+a:hover, a:active {
+  text-decoration: underline;
+}
+.green {
+  color: #008000;
+}
+.red {
+  color: red;
+}
+.wrapper {
+  width: 600px;
+  margin: auto;
+  border: 1px solid #97DB0F;
+}
+.wrapper table {
+  width: 100%;
+  margin: 5px 0 15px 0;
+}
+.wrapper table th, .wrapper table td {
+  padding: 5px;
+}
+.wrapper table th {
+  font-size: 1.2em;
+  color: #2C4201;
+}
+.wrapper table td {
+  text-align: center;
+}
+.wrapper table td.db {
+  width: 35%;
+  text-align: right;
+}
+.wrapper table td.db-field {
+  text-align: left;
+}
+.wrapper table td.db-field input[type=text] {
+  width: 20em;
+}
+h3{
+  background: #97DB0F;
+  margin: 0;
+  padding: 0 15px;
+}
