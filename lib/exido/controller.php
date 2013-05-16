@@ -28,6 +28,7 @@
  *******************************************************************************/
 
 require_once 'controller/abstract.php';
+require_once 'controller/ajax/abstract.php';
 require_once 'controller/json/abstract.php';
 require_once 'controller/cron/abstract.php';
 require_once 'controller/administrator/abstract.php';

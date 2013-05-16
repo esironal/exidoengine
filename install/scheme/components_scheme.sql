@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS `component`;
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE `component` (
-  `component_path` varchar(64) NOT NULL UNIQUE,
+  `component_key` varchar(64) NOT NULL UNIQUE,
   `component_name` varchar(32) NOT NULL,
   `created_at` datetime NOT NULL,
   `has_backend` bool NOT NULL DEFAULT true COMMENT "If TRUE the component has an administration UI",

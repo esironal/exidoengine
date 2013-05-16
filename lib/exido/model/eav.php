@@ -56,10 +56,18 @@ final class Model_Eav extends Model_Db_Eav_Abstract
     }
 
     foreach($set as $key => $f) {
-      // Check if the required attribute exists
+      // Check if the required attribute is exists
       if($f->is_required) {
+        // Return FALSE if the required attribute isn't exists and doesn't have a default value
         if( ! isset($attributes[$key]) and empty($f->default_value)) {
-          $this->_setError($key, sprintf(__('Attribute %s is required but is not found'), $key));
+          $this->_setError($key, sprintf(__('Attribute %s must not be empty'), $key));
+          return false;
+        }
+      }
+      // Check if unique attribute is unique
+      if($f->is_unique) {
+        if( ! $this->_checkUniqueAttributeValue($key, $attributes[$key], $f->data_type_key)) {
+          $this->_setError($key, sprintf(__('Attribute %s must be unique'), $key));
           return false;
         }
       }
@@ -83,7 +91,12 @@ final class Model_Eav extends Model_Db_Eav_Abstract
         $value = $f->default_value;
       }
       if(substr($value, 0, 1) == '@') {
-        $value = constant($value);
+        if(defined($value)) {
+          $value = constant($value);
+        } else {
+          $this->_setError($key, sprintf(__('Undefined constant %s'), $value));
+          return false;
+        }
       }
       $this->setValue($value);
       $this->setAttribute_id($f->attribute_id);
@@ -119,7 +132,14 @@ final class Model_Eav extends Model_Db_Eav_Abstract
       // Check if the required attribute exists
       if($f->is_required) {
         if( ! isset($attributes[$key]) and empty($f->default_value)) {
-          $this->_setError($key, sprintf(__('Attribute %s is required'), $key));
+          $this->_setError($key, sprintf(__('Attribute %s must not be empty'), $key));
+          return false;
+        }
+      }
+      // Check if unique attribute is unique
+      if($f->is_unique) {
+        if( ! $this->_checkUniqueAttributeValue($key, $attributes[$key], $f->data_type_key, $entity_id)) {
+          $this->_setError($key, sprintf(__('Attribute %s must be unique'), $key));
           return false;
         }
       }
@@ -133,7 +153,12 @@ final class Model_Eav extends Model_Db_Eav_Abstract
         $value = $f->default_value;
       }
       if(substr($value, 0, 1) == '@') {
-        $value = constant($value);
+        if(defined($value)) {
+          $value = constant($value);
+        } else {
+          $this->_setError($key, sprintf(__('Undefined constant %s'), $value));
+          return false;
+        }
       }
       $this->setValue($value);
       if( ! $this->_updateAttributeValue($entity_id, $f->attribute_id, $f->data_type_key)) {
@@ -173,6 +198,44 @@ final class Model_Eav extends Model_Db_Eav_Abstract
     if( ! $this->_removeEntity($entity_id)) {
       $this->_setError($entity_id, sprintf(__('There is an error was occurred while removing entity %s'), $entity_id));
       return false;
+    }
+    return true;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Check if attribute value is unique. Returns TRUE if atttibute is unique.
+   * @param array $attributes
+   * @param string $attribute_set
+   * @param int $skip_entity_id
+   * @return bool
+   */
+  public function checkIfValueIsUnique(array $attributes, $skip_entity_id = 0)
+  {
+    // Get attributes
+    if( ! $set = $this->getAllAttributes()) {
+      $this->_setError('no_attributes', __('No attributes found'));
+      return false;
+    }
+
+    foreach($attributes as $key => $value) {
+      // Check if an attribute exists in chosen attribute set
+      if( ! isset($set[$key])) {
+        $this->_setError($key, sprintf(__('Attribute %s is not found'), $key));
+        return false;
+      } else {
+        // Check if an attribute is set as unique in chosen attribute set
+        if($set[$key]->is_unique == 1) {
+          if( ! $this->_checkUniqueAttributeValue($key, $value, $set[$key]->data_type_key, $skip_entity_id)) {
+            $this->_setError($key, sprintf(__('Attribute %s must be unique'), $key));
+            return false;
+          }
+        } else {
+          $this->_setError($key, sprintf(__('Attribute %s may not be unique'), $key));
+          return false;
+        }
+      }
     }
     return true;
   }
@@ -365,6 +428,25 @@ final class Model_Eav extends Model_Db_Eav_Abstract
   // ---------------------------------------------------------------------------
 
   /**
+   * Get entity by key.
+   * @param string $entity_key
+   * @return mixed
+   */
+  public function getAllAttributes()
+  {
+    if($r = $this->db->select($this->eav_instance.'_attribute')
+      ->orderDesc('position')
+      ->exec()
+      ->result()
+    ) {
+      return $this->_sortAttributes($r);
+    }
+    return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Get entity attribute by data type and entity id.
    * @param string $data_type
    * @param int $entity_id
@@ -406,10 +488,52 @@ final class Model_Eav extends Model_Db_Eav_Abstract
     return $attributes;
   }
 
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Generate a random entity key. Using when creating an entity.
+   * @param int $chars
+   * @param int $groups
+   * @param string $delimiter
+   * @param bool $lowcase
+   * @return string
+   */
   private function _genEntityKey($chars = 8, $groups = 1, $delimiter = '', $lowcase = true)
   {
     Helper::load('guid');
     return guidGet($chars, $groups, $delimiter, $lowcase);
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Check if an unique attribute value is unique.
+   * Returns TRUE if the value is unique.
+   * @param string $attribute_key
+   * @param string $value
+   * @param string $type_key
+   * @param int $skip_entity_id
+   * @return bool
+   */
+  private function _checkUniqueAttributeValue($attribute_key, $value, $data_type, $skip_entity_id = 0)
+  {
+    $sql = "SELECT t2.`value_id` FROM ";
+    $sql.= "`:instance_attribute` as t1,";
+    $sql.= "`:instance_attribute_value_:data_type` as t2 WHERE ";
+    $sql.= "t1.`attribute_key`=':attribute_key' AND ";
+    $sql.= "t2.`attribute_id`=t1.`attribute_id` AND ";
+    $sql.= "t2.`value`=':value'";
+    $sql.= ((int)$skip_entity_id != 0) ? ' AND t2.entity_id != ":entity_id"' : '';
+    if($r = $this->db->query($sql, array(
+      ':attribute_key' => $attribute_key,
+      ':entity_id' => (int)$skip_entity_id,
+      ':value'     => $value,
+      ':data_type' => $data_type,
+      ':instance'  => $this->eav_instance
+    ))->exec() and $r->getNumRows() == 0) {
+      return true;
+    }
+    return false;
   }
 }
 

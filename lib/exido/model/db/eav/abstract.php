@@ -197,6 +197,18 @@ abstract class Model_Db_Eav_Abstract extends Model_Mapper
   // ---------------------------------------------------------------------------
 
   /**
+   * Get errors in string.
+   * @param string $delimiter
+   * @return array
+   */
+  public function getErrorString($delimiter = ", ")
+  {
+    return implode($delimiter, $this->getErrors());
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Get error.
    * @param string $key
    * @return string

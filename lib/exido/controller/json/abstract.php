@@ -28,32 +28,18 @@
  *******************************************************************************/
 
 /**
- * Abstract controller class. Checks if we have an XML request.
+ * Abstract json class. Manipulate with json response fields.
  * @package    core
  * @copyright  Sharapov A.
  * @created    25/12/2009
  * @version    1.0
  */
-abstract class Controller_Json_Abstract extends Controller_Abstract
+abstract class Controller_Json_Abstract extends Controller_Ajax_Abstract
 {
   private $_responseStatus = true;
   private $_responseText   = '';
   private $_responseCode   = null;
   private $_responseFields = array();
-
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Checks if we have an XML request.
-   * @throws Exception_Exido
-   */
-  public function __construct()
-  {
-    if(Exido::$is_xml == false) {
-      throw new Exception_Exido('We accept only XML requests');
-    }
-    parent::__construct();
-  }
 
   // ---------------------------------------------------------------------------
 

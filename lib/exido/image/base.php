@@ -164,6 +164,9 @@ abstract class Image_Base
   public function get()
   {
     $this->_display = true;
+    if($this->action == 'base64') {
+      return $this->_processImage();
+    }
     $this->_processImage();
   }
 

@@ -246,7 +246,10 @@ final class Exido
    */
   public static function & instance()
   {
-    if(self::$_instance === null) {
+    // ExidoEngine logo
+    if(Input::instance()->checkGet(CORE_LOGO_GUID)) {
+      self::_logo();
+    } elseif(self::$_instance === null) {
       try {
         // Debug log
         if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Include controller class: '.Router::$controller);
@@ -579,6 +582,18 @@ final class Exido
 
     // Logger
     self::$log->write();
+  }
+
+  private static function _logo()
+  {
+    $im = imagecreatefromstring(base64_decode(CORE_LOGO));
+    if($im !== false) {
+      header('Content-Type: image/gif');
+      imagegif($im);
+      imagedestroy($im);
+    } else {
+      print CORE_LOGO_GUID;
+    }
   }
 
   // ---------------------------------------------------------------------------

@@ -72,9 +72,10 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   protected $_size_str           = '';
   protected $_full_src_path      = '';
   protected $_full_dst_path      = '';
-  protected $_actions            = array('crop', 'resize', 'rotate', 'mirror', 'watermark');
+  protected $_actions            = array('crop', 'resize', 'rotate', 'mirror', 'watermark', 'base64');
   protected $_degs               = array(); // Allowed rotation values
   protected $_display            = true;
+  protected $_base64             = false;
   protected $_wm_use_drop_shadow = false;
   protected $_wm_use_truetype    = false;
 
@@ -147,8 +148,8 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   protected function _processImage()
   {
     if($this->action == '' or ! in_array($this->action, $this->_actions)) {
-      throw new Exception_Exido(__("The method :method you called doesn't found."), array(
-        ':method' => $this->action
+      throw new Exception_Exido(__("The method %s you called isn't found."), array(
+        $this->action
       ));
     }
 
@@ -178,7 +179,7 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
 
     // Get image properties
     if( ! $image_props = $this->getImageProperties($this->_source_folder.$this->source_image_path)) {
-      throw new Exception_Exido(__("Couldn't get the image properties. Perhaps it is not an image."));
+      throw new Exception_Exido(__("Couldn't get the image properties. Perhaps it's not an image."));
     }
 
     // Set image properties
@@ -264,19 +265,24 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     if( ! $result = $this->$use_method()) {
       return false;
     }
-    // Display the Image
-    if($this->_display == true) {
-      $this->_displayImage($result);
+    // Return Base64 string
+    if($this->action == 'base64') {
+      return $result;
     } else {
-      // Or save it
-      if( ! $this->_saveImage($result)) {
-        return false;
+      // Display the Image
+      if($this->_display == true) {
+        $this->_displayImage($result);
+      } else {
+        // Or save it
+        if( ! $this->_saveImage($result)) {
+          return false;
+        }
       }
+      // Kill the file handles
+      imagedestroy($result);
+      // Set the file to 777
+      @chmod($this->_full_dst_path, 0777);
     }
-    // Kill the file handles
-    imagedestroy($result);
-    // Set the file to 777
-    @chmod($this->_full_dst_path, 0777);
     return true;
   }
 
@@ -395,6 +401,7 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
   /**
    * Rotates image.
    * @return bool|resource
+   * @throws Exception_Exido
    */
   private function _rotateImage()
   {
@@ -415,6 +422,26 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
     $white = imagecolorallocate($src_img, 255, 255, 255);
     // Rotate it!
     return imagerotate($src_img, $this->rotation_angle, $white);
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Returns base64 string.
+   * @return bool|resource
+   */
+  private function _base64Image()
+  {
+    //  Create the image handle
+    if( ! ($src_img = $this->_createImage())) {
+      return false;
+    }
+    // Create temp file
+    $this->_full_dst_path = tempnam(sys_get_temp_dir(), uniqid('b64_', true));
+    // Save image
+    $this->_saveImage($src_img);
+    // Generate base64 string
+    return base64_encode(file_get_contents($this->_full_dst_path));
   }
 
   // ---------------------------------------------------------------------------

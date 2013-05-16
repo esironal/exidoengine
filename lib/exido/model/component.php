@@ -51,14 +51,14 @@ final class Model_Component extends Model_Db_Abstract
   public function getActiveComponents()
   {
     if($this->_active_components == null) {
-      if($r = $this->db->select('component')
+      if($this->_active_components = $this->db->select('component')
         ->where(array('is_installed' => '1', 'is_enabled' => '1'))
         ->orderDesc('position')
         ->exec()->result()) {
-        return $r;
+        return $this->_active_components;
       }
     }
-    return null;
+    return $this->_active_components;
   }
 }
 

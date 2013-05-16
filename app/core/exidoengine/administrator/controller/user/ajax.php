@@ -34,14 +34,47 @@
  * @created    10/11/2012
  * @version    1.0
  */
-class Administrator_Controller_Page_Json extends Controller_Json_Abstract
+class Administrator_Controller_User_Ajax extends Controller_Ajax_Abstract
 {
+  public $db_user;
+
+  // ---------------------------------------------------------------------------
+
   /**
    * Constructor
    */
   public function __construct()
   {
     parent::__construct();
+    // Load model
+    $this->db_user= $this->model('Model_User');
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Pages index page
+   * @return void
+   */
+  public function unique()
+  {
+    $this->disableViews();
+    if($this->input->get('user_name')) {
+      // Check if all the values are unique
+      if($this->db_user->checkIfUsernameIsUnique($this->input->get('user_name'))) {
+        print 'true';
+      } else {
+        print 'false';
+      }
+    }
+    if($this->input->get('user_email')) {
+      // Check if all the values are unique
+      if($this->db_user->checkIfEmailIsUnique($this->input->get('user_email'))) {
+        print 'true';
+      } else {
+        print 'false';
+      }
+    }
   }
 }
 

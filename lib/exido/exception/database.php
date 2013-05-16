@@ -28,25 +28,30 @@
  *******************************************************************************/
 
 /**
- * Prints array or object in User-Friendly form.
- * @param array $object
- * @param string $title
- * @return void
+ * Main exido exception class.
+ * @package    core
+ * @subpackage exception
+ * @copyright  Sharapov A.
+ * @created    26/10/2011
+ * @version    1.0
  */
-function pre($object, $title = '') {
-  print ' <pre>'.$title;
-  print_r($object);
-  print '</pre>';
-}
+class Exception_Database extends Exception_Exido
+{
+  public $errstr;
+  public $errquery;
 
-// ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
-/**
- * Returns logo guid.
- * @return string
- */
-function exido_logo_guid() {
-  return CORE_LOGO_GUID;
+  /**
+   * Constructor. Throws an error returned by SQL server.
+   * @param Database_Adapter $adapter
+   */
+  public function __construct(Database_Adapter $adapter)
+  {
+    $this->errquery = $adapter->getLastQuery();
+    $this->errstr   = $adapter->getErrorText();
+    parent::__construct($this->errstr, array(), $adapter->getErrorNo());
+  }
 }
 
 ?>

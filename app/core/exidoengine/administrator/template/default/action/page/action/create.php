@@ -29,7 +29,7 @@
 
 // List actions menu
 $view->action_menu = array(
-  '/page/list' => __('Go back')
+  '/page/' => __('Go back')
 );
 // Include menu code
 $view->getView('layout/inc.list-action-menu-panel');
@@ -37,5 +37,5 @@ $view->getView('layout/inc.list-action-menu-panel');
 
 <?
 $helper->heading(__('Static pages - Create a new page'));
-print eavCreateForm('-x-page-edit', $view->attribute_form);
+print eavCreateForm('-x-page-add', $view->attribute_form);
 ?>

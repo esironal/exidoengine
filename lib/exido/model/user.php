@@ -89,7 +89,7 @@ final class Model_User extends Model_Db_Abstract
   // ---------------------------------------------------------------------------
 
   /**
-   * Get user. Return FALSE if the user does not found.
+   * Get user. Return FALSE if the user is not found.
    * @param string $key
    * @return mixed
    */
@@ -105,6 +105,21 @@ final class Model_User extends Model_Db_Abstract
   // ---------------------------------------------------------------------------
 
   /**
+   * Get roles list.
+   * @return mixed
+   */
+  public function getRoleList()
+  {
+    return $this->db->select('user_role', array('role_key', 'description'))
+      ->orderDesc('position')
+      ->order('role_key')
+      ->exec()
+      ->resultToAssoc('role_key', 'description');
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Get user. Return FALSE if the user does not found.
    * @param int $user_id
    * @param string $instance
@@ -114,6 +129,7 @@ final class Model_User extends Model_Db_Abstract
   {
     if($r = $this->db->select('user_access', array('component','permissions'))->where(array('user_id' => $user_id, 'instance' => $instance))
       ->limit(1)->exec()->resultToAssoc('component', 'permissions')) {
+      $this->_clearData();
       return $r;
     }
     return false;
@@ -127,7 +143,7 @@ final class Model_User extends Model_Db_Abstract
    */
   public function addUser()
   {
-    if($r = $this->db->insert('user', $this->_getData())->exec()) {
+    if($r = $this->db->insert('user', $this->_getData())->exec(1)) {
       $this->_clearData();
       return $r->getInsertId();
     }
@@ -159,6 +175,40 @@ final class Model_User extends Model_Db_Abstract
     return $this->db->select('user', '*')
       //->where()
       ->limit()->order('user_id')->exec()->result();
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Check if user name is unique. Returns TRUE if it is.
+   * @param array $user_name
+   * @return bool
+   */
+  public function checkIfUsernameIsUnique($user_name)
+  {
+    if($r = $this->db->select('user', 'user_id')
+      ->where(array('user_name' => $user_name))
+      ->exec()) {
+      return ($r->getNumRows() == 0) ? true : false;
+    }
+    return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Check if user email is unique. Returns TRUE if it is.
+   * @param array $user_email
+   * @return bool
+   */
+  public function checkIfEmailIsUnique($user_email)
+  {
+    if($r = $this->db->select('user', 'user_id')
+      ->where(array('user_email' => $user_email))
+      ->exec()) {
+      return ($r->getNumRows() == 0) ? true : false;
+    }
+    return false;
   }
 }
 

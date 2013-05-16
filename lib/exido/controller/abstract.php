@@ -169,7 +169,7 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
         'owner_name'  => $r->getOwner_name(),
         'group_id'    => $r->getGroup_id(),
         'group_name'  => $r->getGroup_name(),
-        'role_name'   => $r->getRole_name(),
+        'role_name'   => $r->getRole_key(),
         'permissions' => array(
           'owner' => $r->getPermissions_owner(),
           'group' => $r->getPermissions_group(),

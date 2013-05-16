@@ -29,7 +29,7 @@
 
 // List actions menu
 $view->action_menu = array(
-  '/page/list' => __('Go back')
+  '/page/' => __('Go back')
 );
 // Include menu code
 $view->getView('layout/inc.list-action-menu-panel');

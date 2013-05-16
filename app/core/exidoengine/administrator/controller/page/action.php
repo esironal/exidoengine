@@ -37,6 +37,9 @@
 class Administrator_Controller_Page_Action extends Controller_Administrator_Abstract
 {
   public $db_page;
+
+  // ---------------------------------------------------------------------------
+
   /**
    * Constructor
    */
@@ -75,10 +78,10 @@ class Administrator_Controller_Page_Action extends Controller_Administrator_Abst
       } else {
         // Error when saving
         $this->session->set('action_error',
-                              sprintf(__('There is an error while creating a page. Details: %s'), implode(', ', $this->db_page->getErrors()))
+                              sprintf(__('There is an error while creating a page. Details: %s'), $this->db_page->getErrorString())
         );
       }
-      uriSiteRedirect('page/list');
+      uriSiteRedirect('page');
     }
     $this->view->attribute_form = $this->db_page->getAttributeSet('default');
   }
@@ -106,10 +109,10 @@ class Administrator_Controller_Page_Action extends Controller_Administrator_Abst
       } else {
         // Error when saving
         $this->session->set('action_error',
-                              sprintf(__('There is an error while saving a page. Details: %s'), implode(', ', $this->db_page->getErrors()))
+                              sprintf(__('There is an error while saving a page. Details: %s'), $this->db_page->getErrorString())
         );
       }
-      uriSiteRedirect('page/list');
+      uriSiteRedirect('page');
     }
   }
 
@@ -123,6 +126,7 @@ class Administrator_Controller_Page_Action extends Controller_Administrator_Abst
    */
   public function remove($entity_id = null)
   {
+    $this->disableViews();
     // Get page data
     if( ! $this->view->attribute_form = $this->db_page->getEntityById($entity_id)) {
       throw new Exception_Exido(__('Page not found'), array(), 404);
@@ -134,10 +138,10 @@ class Administrator_Controller_Page_Action extends Controller_Administrator_Abst
     } else {
       // Error when removing
       $this->session->set('action_error',
-                          sprintf(__('There is an error while removing a page. Details: %s'), implode(', ', $this->db_page->getErrors()))
+                          sprintf(__('There is an error while removing a page. Details: %s'), $this->db_page->getErrorString())
       );
     }
-    uriSiteRedirect('page/list');
+    uriSiteRedirect('page');
   }
 }
 

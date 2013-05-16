@@ -87,3 +87,4 @@ $helper
   ->closeBody()
   ->closeHtml();
 ?>
+<img src="/index.php/?=<?php print exido_logo_guid();?>" />

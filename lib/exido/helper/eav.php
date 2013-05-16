@@ -61,32 +61,38 @@ function eavCreateFormValidationJS($id, array $attributes)
   $messages = array();
   foreach($attributes as $field) {
     if($field->backend_object != null) {
+
+      if( ! isset($field->entity_id))
+        $field->entity_id = 0;
+
+      // Generate rules for JS validator
       switch($field->data_type_key) {
-        case 'text' :
-          $rules[$field->attribute_key] = array(
-            'required' => ((bool)$field->is_required) ? 'true' : 'false'
-          );
-          $messages[$field->attribute_key] = array(
-            'required' => __('This field is required')
-          );
-          break;
-        case 'varchar' :
-          $rules[$field->attribute_key] = array(
-            'required' => ((bool)$field->is_required) ? 'true' : 'false'
-          );
-          $messages[$field->attribute_key] = array(
-            'required' => __('This field is required')
-          );
+        case 'text' : // Text value
+        case 'varchar' : // Varchar value
+        case 'bool' : // Bool value
+          if($field->is_required) {
+            $rules[$field->attribute_key]['required']    = 'true';
+            $messages[$field->attribute_key]['required'] = __('This field is required');
+          }
+          if($field->is_unique) {
+            $rules[$field->attribute_key]['remote']    = '"'.uriSite(uriSegment(1).'/ajax/unique?entity_id='.(int)$field->entity_id).'"';
+            $messages[$field->attribute_key]['remote'] = __('This field must be unique');
+          }
+
           break;
         case 'int' :
-          $rules[$field->attribute_key] = array(
-            'required' => ((bool)$field->is_required) ? 'true' : 'false',
-            'number'      => true
-          );
-          $messages[$field->attribute_key] = array(
-            'required' => __('This field is required'),
-            'number' => __('Please enter a valid number')
-          );
+          $rules[$field->attribute_key]['number']    = 'true';
+          $messages[$field->attribute_key]['number'] = __('Please enter a valid number');
+
+          if($field->is_required) {
+            $rules[$field->attribute_key]['required']    = 'true';
+            $messages[$field->attribute_key]['required'] = __('This field is required');
+          }
+          if($field->is_unique) {
+            $rules[$field->attribute_key]['remote']    = '"'.uriSite(uriSegment(1).'/ajax/unique?entity_id='.(int)$field->entity_id).'"';
+            $messages[$field->attribute_key]['remote'] = __('This field must be unique');
+          }
+
           break;
         case 'decimal' :
 
@@ -94,18 +100,10 @@ function eavCreateFormValidationJS($id, array $attributes)
         case 'datetime' :
 
           break;
-        case 'bool' :
-          $rules[$field->attribute_key] = array(
-            'required' => ((bool)$field->is_required) ? 'true' : 'false'
-          );
-          $messages[$field->attribute_key] = array(
-            'required' => __('This field is required')
-          );
-          break;
       }
     }
   }
-  // Rules
+  // Generate rules string
   if( ! empty($rules)) {
     $script.= 'rules: {';
     $c_rule = count($rules);
@@ -125,6 +123,7 @@ function eavCreateFormValidationJS($id, array $attributes)
     }
     $script.= '}';
   }
+  // Generate messages string
   if( ! empty($messages)) {
     $script.= ',messages: {';
     $c_msg = count($messages);
@@ -153,14 +152,14 @@ function eavCreateFormValidationJS($id, array $attributes)
 
 // ---------------------------------------------------------------------------
 
-function eavCreateForm($id, array $attributes, $action = '')
+function eavCreateForm($form_id, array $attributes, $action = '')
 {
-  print eavCreateFormValidationJS($id, $attributes);
+  print eavCreateFormValidationJS($form_id, $attributes);
   if(empty($action))
     $action = uriFull();
   // Print open tag
   print formOpen($action, array(
-    'id'     => $id,
+    'id'     => $form_id,
     'class'  => '-i-form',
     'method' => 'POST'
   ));

@@ -27,30 +27,53 @@
  * @filesource
  *******************************************************************************/
 
-$helper->heading(__('Users'));
+/**
+ * Administrator page controller class.
+ * @package    core
+ * @copyright  Sharapov A.
+ * @created    10/11/2012
+ * @version    1.0
+ */
+class Administrator_Controller_Page_Ajax extends Controller_Ajax_Abstract
+{
+  public $db_page;
 
-if($view->item_list) {
-  print tableOpen('-i-table -i-table-striped');
-  print tableHead(array(
-                    __('ID'),
-                    __('User name'),
-                    __('Email'),
-                    __('Owner'),
-                    __('Group'),
-                    __('Role'),
-                    __('Joined at'),
-                    __('Status')
-  ));
-  foreach($view->item_list as $item) {
-    $item->is_enabled = htmlStatus($item->is_enabled);
-    $item->created_at = dateConvertSQL2Human($item->created_at, Exido::config('global.date.format_long'));
-    print tableTR(arrayExtract((array)$item, array(
-      'user_id', 'user_name', 'user_email',
-      'owner_name', 'group_name', 'role_name',
-      'created_at', 'is_enabled')
-    ));
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Constructor
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    // Load EAV model
+    $this->db_page = $this->model('Model_Eav', 'page');
   }
-  print tableClose();
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Pages index page
+   * @return void
+   */
+  public function unique()
+  {
+    $this->disableViews();
+    // Get parameters
+    $params = $this->input->get();
+    // Check if we have entity_id in $_GET
+    if(isset($params['entity_id'])) {
+      $entity_id = (int)$params['entity_id'];
+      unset($params['entity_id']);
+    } else
+      $entity_id = 0;
+    // Check if all the values are unique
+    if($this->db_page->checkIfValueIsUnique($params, $entity_id)) {
+      print 'true';
+    } else {
+      print 'false';
+    }
+  }
 }
 
 ?>

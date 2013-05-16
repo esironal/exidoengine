@@ -28,25 +28,45 @@
  *******************************************************************************/
 
 /**
- * Prints array or object in User-Friendly form.
- * @param array $object
- * @param string $title
- * @return void
+ * Administrator page controller class.
+ * @package    core
+ * @copyright  Sharapov A.
+ * @created    10/11/2012
+ * @version    1.0
  */
-function pre($object, $title = '') {
-  print ' <pre>'.$title;
-  print_r($object);
-  print '</pre>';
-}
+class Administrator_Controller_Page extends Controller_Administrator_Abstract
+{
+  /**
+   * Constructor
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    Helper::load('table', 'date', 'eav', 'form');
 
-// ---------------------------------------------------------------------------
+    // UI error notifications
+    if($text = $this->session->get('action_success')) {
+      $this->view->notify_text  = $text;
+      $this->view->notify_style = 'ui-popup-success';
+      $this->session->set('action_success', false);
+    }
+    if($text = $this->session->get('action_error')) {
+      $this->view->notify_text  = $text;
+      $this->view->notify_style = 'ui-popup-error';
+      $this->session->set('action_error', false);
+    }
+  }
 
-/**
- * Returns logo guid.
- * @return string
- */
-function exido_logo_guid() {
-  return CORE_LOGO_GUID;
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Pages index page
+   * @return void
+   */
+  public function index()
+  {
+    $this->view->item_list = $this->model('Model_Eav', 'page')->getEntities();
+  }
 }
 
 ?>

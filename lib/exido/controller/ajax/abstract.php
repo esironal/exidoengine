@@ -28,32 +28,24 @@
  *******************************************************************************/
 
 /**
- * Administrator user controller class.
+ * Abstract controller class. Checks if we have an XML request.
  * @package    core
  * @copyright  Sharapov A.
- * @created    10/11/2012
+ * @created    25/12/2009
  * @version    1.0
  */
-class Administrator_Controller_User_List extends Controller_Administrator_Abstract
+abstract class Controller_Ajax_Abstract extends Controller_Abstract
 {
   /**
-   * Constructor
+   * Checks if we have an XML request.
+   * @throws Exception_Exido
    */
   public function __construct()
   {
+    if(Exido::$is_xml == false) {
+      throw new Exception_Exido('We accept only XML requests');
+    }
     parent::__construct();
-    Helper::load('table', 'date');
-  }
-
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Users index page
-   * @return void
-   */
-  public function index()
-  {
-    $this->view->item_list = $this->model('Model_User')->getUserList();
   }
 }
 

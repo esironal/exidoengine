@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/.idea" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/components_data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/components_scheme.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/data_geo.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/pages_data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/pages_scheme.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/scheme_geo.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/scheme_geo_city_phone.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/scheme_geo_country_domain.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/scheme_geo_country_phone_code.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/session_scheme.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/sites_data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/sites_scheme.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/users_data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/install/scheme/users_scheme.sql" dialect="MySQL" />
+  </component>
+</project>
+

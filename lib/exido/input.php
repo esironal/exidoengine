@@ -98,7 +98,11 @@ final class Input
    */
   public function checkPost($key = '')
   {
-    return (( ! isset($_POST) or empty($_POST)) and ! isset($_POST[$key])) ? false : true;
+    if( ! isset($_POST) or empty($_POST))
+      return false;
+    if( ! empty($key) and ! isset($_POST[$key]))
+      return false;
+    return true;
   }
 
   // ---------------------------------------------------------------------------
@@ -106,9 +110,10 @@ final class Input
   /**
    * Gets the value of given key.
    * @param string $key
+   * @param bool $xss_clean_enabled
    * @return array|string
    */
-  public function get($key = '')
+  public function get($key = '', $xss_clean_enabled = true)
   {
     if( ! isset($_GET) or empty($_GET))
       return false;
@@ -128,7 +133,11 @@ final class Input
    */
   public function checkGet($key = '')
   {
-    return (( ! isset($_GET) or empty($_GET)) and ! isset($_GET[$key])) ? false : true;
+    if( ! isset($_GET) or empty($_GET))
+      return false;
+    if( ! empty($key) and ! isset($_GET[$key]))
+      return false;
+    return true;
   }
 
   // ---------------------------------------------------------------------------

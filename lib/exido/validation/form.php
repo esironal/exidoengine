@@ -495,6 +495,18 @@ class Validation_Form
   // ---------------------------------------------------------------------------
 
   /**
+   * Get errors in string.
+   * @param string $delimiter
+   * @return array
+   */
+  public function getErrorString($delimiter = ", ")
+  {
+    return implode($delimiter, $this->getErrors());
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Returns TRUE if at least one error exists.
    * @return bool
    */

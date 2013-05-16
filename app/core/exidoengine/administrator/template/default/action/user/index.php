@@ -27,26 +27,37 @@
  * @filesource
  *******************************************************************************/
 
-/**
- * Prints array or object in User-Friendly form.
- * @param array $object
- * @param string $title
- * @return void
- */
-function pre($object, $title = '') {
-  print ' <pre>'.$title;
-  print_r($object);
-  print '</pre>';
-}
+// List actions menu
+$view->action_menu = array(
+  '/user/action/create' => __('Create user')
+);
+// Include menu code
+$view->getView('layout/inc.list-action-menu-panel');
 
-// ---------------------------------------------------------------------------
+$helper->heading(__('Users'));
 
-/**
- * Returns logo guid.
- * @return string
- */
-function exido_logo_guid() {
-  return CORE_LOGO_GUID;
+if($view->item_list) {
+  print tableOpen('-i-table -i-table-striped');
+  print tableHead(array(
+                    __('ID'),
+                    __('User name'),
+                    __('Email'),
+                    __('Owner'),
+                    __('Group'),
+                    __('Role'),
+                    __('Joined at'),
+                    __('Status')
+  ));
+  foreach($view->item_list as $item) {
+    $item->is_enabled = htmlStatus($item->is_enabled);
+    $item->created_at = dateConvertSQL2Human($item->created_at, Exido::config('global.date.format_long'));
+    print tableTR(arrayExtract((array)$item, array(
+      'user_id', 'user_name', 'user_email',
+      'owner_name', 'group_name', 'role_name',
+      'created_at', 'is_enabled')
+    ));
+  }
+  print tableClose();
 }
 
 ?>

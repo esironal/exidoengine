@@ -27,26 +27,5 @@
  * @filesource
  *******************************************************************************/
 
-/**
- * Prints array or object in User-Friendly form.
- * @param array $object
- * @param string $title
- * @return void
- */
-function pre($object, $title = '') {
-  print ' <pre>'.$title;
-  print_r($object);
-  print '</pre>';
-}
-
-// ---------------------------------------------------------------------------
-
-/**
- * Returns logo guid.
- * @return string
- */
-function exido_logo_guid() {
-  return CORE_LOGO_GUID;
-}
-
+print sprintf(__('Please use this password %s'), $view->password);
 ?>

@@ -28,25 +28,33 @@
  *******************************************************************************/
 
 /**
- * Prints array or object in User-Friendly form.
- * @param array $object
- * @param string $title
- * @return void
+ * Administrator user controller class.
+ * @package    core
+ * @copyright  Sharapov A.
+ * @created    10/11/2012
+ * @version    1.0
  */
-function pre($object, $title = '') {
-  print ' <pre>'.$title;
-  print_r($object);
-  print '</pre>';
-}
+class Administrator_Controller_User extends Controller_Administrator_Abstract
+{
+  /**
+   * Constructor
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    Helper::load('table', 'date');
+  }
 
-// ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
-/**
- * Returns logo guid.
- * @return string
- */
-function exido_logo_guid() {
-  return CORE_LOGO_GUID;
+  /**
+   * Users index page
+   * @return void
+   */
+  public function index()
+  {
+    $this->view->item_list = $this->model('Model_User')->getUserList();
+  }
 }
 
 ?>

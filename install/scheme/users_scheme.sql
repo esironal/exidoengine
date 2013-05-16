@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `user_access`
+DROP TABLE IF EXISTS `user_access`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `user_role`;
 DROP TABLE IF EXISTS `group`;
@@ -27,7 +27,7 @@ ALTER TABLE `group` ADD FOREIGN KEY (`group_pid`) REFERENCES `group`(`group_id`)
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE `user_role` (
-  `role_name` varchar(32) NOT NULL UNIQUE,
+  `role_key` varchar(32) NOT NULL UNIQUE,
   `description` text DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `user` (
   `owner_name` varchar(32) DEFAULT NULL,
   `group_id` int(9) NOT NULL,
   `group_name` varchar(32) NOT NULL,
-  `role_name` varchar(32) NOT NULL,
+  `role_key` varchar(32) NOT NULL,
   `description` text DEFAULT NULL,
   `permissions_owner` enum('rwx', 'rw-', 'r--', '---', 'r-x', '-wx', '--x', '-w-') NOT NULL DEFAULT 'rwx',
   `permissions_group` enum('rwx', 'rw-', 'r--', '---', 'r-x', '-wx', '--x', '-w-') NOT NULL DEFAULT 'r--',
@@ -66,7 +66,7 @@ ALTER TABLE `user` ADD FOREIGN KEY (`owner_id`) REFERENCES `user`(`user_id`);
 ALTER TABLE `user` ADD FOREIGN KEY (`owner_name`) REFERENCES `user`(`user_name`);
 ALTER TABLE `user` ADD FOREIGN KEY (`group_id`) REFERENCES `group`(`group_id`);
 ALTER TABLE `user` ADD FOREIGN KEY (`group_name`) REFERENCES `group`(`group_name`);
-ALTER TABLE `user` ADD FOREIGN KEY (`role_name`) REFERENCES `user_role`(`role_name`);
+ALTER TABLE `user` ADD FOREIGN KEY (`role_key`) REFERENCES `user_role`(`role_key`);
 
 -- -----------------------------------------------------------------------------
 

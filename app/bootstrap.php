@@ -57,9 +57,9 @@ include_once 'base.php';
 error_reporting(E_ALL & ~E_DEPRECATED);
 
 // Check if an installation folder is exists
-if(file_exists(APPPATH.'install/index.php')) {
-  include_once APPPATH.'install/index.php';
-}
+//if(file_exists(APPPATH.'install/index.php')) {
+  //include_once APPPATH.'install/index.php';
+//}
 
 // Set error handlers
 set_error_handler    (array('Exception_Exido', 'handlerError'));
