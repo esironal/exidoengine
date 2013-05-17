@@ -27,6 +27,14 @@
  * @filesource
  *******************************************************************************/
 
+print '<pre> GET ';
+print_r($_GET);
+print '</pre>';
+
+print '<pre> server ';
+print_r($_SERVER);
+print '</pre>';
+die;
 // Set the constant in TRUE when production
 define('IN_PRODUCTION', false);
 

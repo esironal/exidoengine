@@ -204,10 +204,10 @@ final class Router
       self::$current_uri = inputServer('PATH_INFO');
     elseif(inputServer('ORIG_PATH_INFO'))
       self::$current_uri = inputServer('ORIG_PATH_INFO');
-    elseif(inputServer('PHP_SELF'))
+    /*elseif(inputServer('PHP_SELF'))
       self::$current_uri = inputServer('PHP_SELF');
     elseif(inputServer('QUERY_STRING'))
-      self::$current_uri = inputServer('QUERY_STRING');
+      self::$current_uri = inputServer('QUERY_STRING');*/
     elseif(inputServer('REQUEST_URI'))
       self::$current_uri = inputServer('REQUEST_URI');
     else

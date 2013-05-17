@@ -121,11 +121,11 @@ function eavCreateFormValidationJS($id, array $attributes)
       if($c < $c_rule) $script.=',';
       $c++;
     }
-    $script.= '}';
+    $script.= '},';
   }
   // Generate messages string
   if( ! empty($messages)) {
-    $script.= ',messages: {';
+    $script.= 'messages: {';
     $c_msg = count($messages);
     $c = 1;
     foreach($messages as $key => $message) {
@@ -141,9 +141,9 @@ function eavCreateFormValidationJS($id, array $attributes)
       if($c < $c_msg) $script.=',';
       $c++;
     }
-    $script.= '}';
+    $script.= '},';
   }
-  $script.= ', errorClass: "-i-error",';
+  $script.= 'errorClass: "-i-error",';
   $script.= "submitHandler: function(form){ $('input[name=submit]',form).attr('disabled', true).val('".__('Saving...')."');form.submit();}});";
   $script.= '});'.EXIDO_EOL;
   $script.= '</script>'.EXIDO_EOL;

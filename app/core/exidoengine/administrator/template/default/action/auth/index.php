@@ -27,7 +27,7 @@
  * @filesource
  *******************************************************************************/
 
-$form = '<script>$(function(){$("#welcome_dialog").dialog({height:140,modal:true,autoOpen:false,open:function(event,ui){$("button").attr("title","'.__('Close').'");}});$("form").validate({rules:{username:"required",password:"required"},messages:{username:"'.__('Please enter a username').'",password:"'.__('Please enter a password').'"},submitHandler:function(form){$.post("/index.php/auth",{uid:$("input[name=username]").val(),pwd:$("input[name=password]").val()},function(data){if(data.status == true){
+$form = '<script>$(function(){$("#welcome_dialog").dialog({height:140,modal:true,autoOpen:false,open:function(event,ui){$("button").attr("title","'.__('Close').'");}});$("form").validate({rules:{username:"required",password:"required"},messages:{username:"'.__('Please enter a username').'",password:"'.__('Please enter a password').'"},submitHandler:function(form){$.post("'.uriSite('auth').'",{uid:$("input[name=username]").val(),pwd:$("input[name=password]").val()},function(data){if(data.status == true){
       $("#welcome_dialog p").html(data.text);
       $("#welcome_dialog").dialog("open");
       setTimeout(function(){window.location.reload();},1000);
