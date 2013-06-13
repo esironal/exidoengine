@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e157abd1-e8cc-487e-8730-89bc02f59bbd" name="Default" comment="" />
+    <ignored path="exidoengine.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/" />
+    <ignored path=".idea/libraries/sass_stdlib.xml" />
+    <ignored path=".idea/cssxfire.xml" />
+    <ignored path=".idea/.name" />
+    <ignored path=".idea/modules.xml" />
+    <ignored path=".idea/misc.xml" />
+    <ignored path=".idea/encodings.xml" />
+    <ignored path=".idea/vcs.xml" />
+    <ignored path=".idea/exidoengine.iml" />
+    <ignored path=".idea/scopes/scope_settings.xml" />
+    <ignored mask="*.log" />
+    <file path="/Dummy.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1371144000507" ignored="false" />
+    <file path="/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370767956877" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/myastium/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365942289786" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/companies/ivr/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366046373775" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/companies/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365943525306" ignored="false" />
+    <file path="/geo_advanced_scheme.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365952146835" ignored="false" />
+    <file path="/geo_city_phone.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365951457760" ignored="false" />
+    <file path="/geo_city_advanced.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365951577093" ignored="false" />
+    <file path="/scheme_geo_country_domain.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365952058426" ignored="false" />
+    <file path="/scheme_geo_country_phone_code.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365952213696" ignored="false" />
+    <file path="/data_geo.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365956730010" ignored="false" />
+    <file path="/cc.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365955198650" ignored="false" />
+    <file path="/data_geo_country_phone_code.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1365955790180" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/controller/companies/ivr.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369508997977" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/companies/ivr/edit.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366047353423" ignored="false" />
+    <file path="/edit.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369757576636" ignored="false" />
+    <file path="/lpbx.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369509243514" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/model/lpbx.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369509258068" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/controller/register.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366647277729" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/action/categories/choose.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366015631827" ignored="false" />
+    <file path="/choose.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366015528040" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/model/catalog.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366022200263" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/controller/categories.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366016954980" ignored="false" />
+    <file path="/categories.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366016873649" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/sql/dump.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366643828868" ignored="false" />
+    <file path="/dump.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366630463497" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/lib/exido/input.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366116055070" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/action/register/ofw.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366017898375" ignored="false" />
+    <file path="/ofw.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366017898375" ignored="false" />
+    <file path="/register.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369731200739" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/action/profile/user_profile.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366019929425" ignored="false" />
+    <file path="/user_profile.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369727499692" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/action/profile/edit.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366116588476" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/css/inner.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366106329030" ignored="false" />
+    <file path="/inner.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369757117098" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/controller/profile.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366106329030" ignored="false" />
+    <file path="/profile.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369765335992" ignored="false" />
+    <file path="/catalog.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366022171625" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/layout/_blank.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366106329030" ignored="false" />
+    <file path="$PROJECT_DIR$/../tests/geoip/sample.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366035491233" ignored="false" />
+    <file path="$PROJECT_DIR$/../tests/geoip/sample_city.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366035717372" ignored="false" />
+    <file path="/data_geo_regional.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366039415794" ignored="false" />
+    <file path="/scheme_geo_regional.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366038313807" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/model/pbx.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366043824102" ignored="false" />
+    <file path="/pbx.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366043823542" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/model/user.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366642936559" ignored="false" />
+    <file path="/user.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369765205666" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/action/profile/possibleconnections.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366105809025" ignored="false" />
+    <file path="/possibleconnections.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369755599571" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/js/general.js" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366106329030" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/default/sidebar.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366106329030" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/cron/genPossibleConnections.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366114469049" ignored="false" />
+    <file path="/genPossibleConnections.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366113565836" ignored="false" />
+    <file path="/sms.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366609408932" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/config/global.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366645091756" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/vendors/maxmind/webservice/_init.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366607495586" ignored="false" />
+    <file path="/_init.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366607546031" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/vendors/maxmind/omni/_init.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366607615294" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366641247215" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/template/exception/error.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366633393357" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/core/exidoengine/frontend/model/geo/country/phone.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366647057047" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/js/inituploader.js" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366896206169" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/app/config/mime.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366896206169" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/lib/exido/image/gd.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366896206169" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw.com/lib/exido/image/base.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1366896206169" ignored="false" />
+    <file path="/base.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1367681250619" ignored="false" />
+    <file path="/function.inc.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1367681940542" ignored="false" />
+    <file path="/bootstrap.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1367681960882" ignored="false" />
+    <file path="/router.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368781917147" ignored="false" />
+    <file path="/abstract.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370766994548" ignored="false" />
+    <file path="/input.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370763685794" ignored="false" />
+    <file path="/exido.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370759904766" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.hankhasselhoff.dk/img.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1367685551174" ignored="false" />
+    <file path="/database.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368725401165" ignored="false" />
+    <file path="/global.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368783079431" ignored="false" />
+    <file path="/inc.header-menu-panel.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368726320045" ignored="false" />
+    <file path="/pages_data.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369469603627" ignored="false" />
+    <file path="/password.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368782669578" ignored="false" />
+    <file path="/action.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368784099835" ignored="false" />
+    <file path="/users_scheme.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368783754760" ignored="false" />
+    <file path="/insert.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1368783926304" ignored="false" />
+    <file path="/forbidden.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370763460602" ignored="false" />
+    <file path="/eav.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369487661228" ignored="false" />
+    <file path="/_blank.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369549118895" ignored="false" />
+    <file path="/html.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369479557551" ignored="false" />
+    <file path="/view.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369474170572" ignored="false" />
+    <file path="/tinymce.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369473749773" ignored="false" />
+    <file path="/create.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369474118474" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369579955916" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/data/rewrite.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369547630399" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/model/catalog.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369478005681" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/controller/profile.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369832292115" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/config/route.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369581982424" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/controller/postque.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369548622732" ignored="false" />
+    <file path="/postque.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369478061239" ignored="false" />
+    <file path="/a.dummy" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370766391415" ignored="false" />
+    <file path="/page.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369487277117" ignored="false" />
+    <file path="/ivr.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369508944855" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/helper/ivr.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369505671267" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/js/ivr.js" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369508948329" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/companies/ivr/getnode.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369504530424" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/companies/ivr/nodeform.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369504879506" ignored="false" />
+    <file path="/nodeform.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369504879506" ignored="false" />
+    <file path="/ivr.js" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369508787032" ignored="false" />
+    <file path="$PROJECT_DIR$/../mpbx/mpbx/app/local/comtalk/virtualpbx/frontend/template/default/action/companies/ivr/graph.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369508682144" ignored="false" />
+    <file path="/graph.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369508677317" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/css/inner.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369833421591" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/layout/_blank.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369816352467" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/signedin-usermenu.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369549148599" ignored="false" />
+    <file path="/signedin-usermenu.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369549148599" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/profile/user.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369815628445" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/js/general.js" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369816319762" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/myqa/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550191488" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/profile/posts.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550208104" ignored="false" />
+    <file path="/posts.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550208104" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/postque/allquestions.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550238466" ignored="false" />
+    <file path="/allquestions.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550237970" ignored="false" />
+    <file path="/category.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550361392" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/postque/category.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369550361062" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/profile/user_profile.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369727579040" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/model/user.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369730945127" ignored="false" />
+    <file path="/general.js" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369816311986" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/css/inner-ie.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369814797371" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/home/index.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369678766079" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/controller/home.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369756539871" ignored="false" />
+    <file path="/home.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369756539871" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/home/possibleconnections.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369814656147" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/controller/register.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369731200739" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/profile/possibleconnections.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369757269605" ignored="false" />
+    <file path="$PROJECT_DIR$/../buhayofw/app/core/exidoengine/frontend/template/default/action/profile/edit.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1369757576636" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.hankhasselhoff.dk/eetgroup/getproducts.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370794349780" ignored="false" />
+    <file path="/getproducts.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370794326163" ignored="false" />
+    <file path="/dashboard.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370757822216" ignored="false" />
+    <file path="/component.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370760527996" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.comtalk.dk/trunk/magmi/web/brightpoint_getcsv.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370802140497" ignored="false" />
+    <file path="/ecommerce.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370759825485" ignored="false" />
+    <file path="/components_scheme.sql" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370760667783" ignored="false" />
+    <file path="/brightpoint_getcsv.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370798875152" ignored="false" />
+    <file path="/auth.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370762990689" ignored="false" />
+    <file path="/style.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370766628515" ignored="false" />
+    <file path="/inc.header-user-panel.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370766763705" ignored="false" />
+    <file path="/logout.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370767175184" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.hankhasselhoff.dk/skin/frontend/default/MAGFREE001/css/eet.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370795082869" ignored="false" />
+    <file path="/eet.css" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370795081448" ignored="false" />
+    <file path="/lob_danish.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370799686437" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.comtalk.dk/trunk/magmi/var/bp_data/lob_danish.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370799686437" ignored="false" />
+    <file path="/get_mcategories.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370800236139" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.comtalk.dk/trunk/soap/bp_old/get_mcategories.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370800237996" ignored="false" />
+    <file path="$PROJECT_DIR$/../tests/shipping/ems/rates.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370800794900" ignored="false" />
+    <file path="/rates.php" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370800793964" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.comtalk.dk/trunk/magmi/var/import/import.csv" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370802076903" ignored="false" />
+    <file path="$PROJECT_DIR$/../shop.comtalk.dk/trunk/magmi/var/bp_data/brand_danish.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1370801724798" ignored="false" />
+    <file path="/readme_ru.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1371143335158" ignored="false" />
+    <file path="/readme_en.txt" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1371143303958" ignored="false" />
+    <file path="/README.md" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1371143364871" ignored="false" />
+    <file path="/.gitignore" changelist="e157abd1-e8cc-487e-8730-89bc02f59bbd" time="1371144021321" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="exidoengine" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="logout.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/controller/logout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="0" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logout.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/auth/logout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="44" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_admin/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".htaccess" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_admin/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="34" selection-start="960" selection-end="960" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="0" selection-start="113" selection-end="113" vertical-scroll-proportion="0.21462639">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme_ru.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme_ru.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="78" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme_en.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme_en.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="43" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/page/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="38" selection-start="1889" selection-end="1889" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/controller/auth.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="b18aec6" />
+      </map>
+    </option>
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/lib/exido/controller/abstract.php" />
+        <option value="$PROJECT_DIR$/lib/exido/model/user.php" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/auth/forbidden.php" />
+        <option value="$PROJECT_DIR$/lib/exido/input.php" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/layout/inc.header.php" />
+        <option value="$PROJECT_DIR$/public_admin/css/administrator/style.css" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/layout/inc.header-user-panel.php" />
+        <option value="$PROJECT_DIR$/lib/exido/controller/administrator/abstract.php" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/controller/logout.php" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/auth/logout.php" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/page/index.php" />
+        <option value="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/user/index.php" />
+        <option value="$PROJECT_DIR$/readme_en.txt" />
+        <option value="$PROJECT_DIR$/readme_ru.txt" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1280" />
+    <option name="height" value="774" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents ProjectPane="true" />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public_frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public_admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="install" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scheme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exidoengine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="99" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="101" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="99" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../shop.comtalk.dk" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="105" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="899" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="899" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="105" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="101" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="PublishConfig" serverName="cms.exidoengine.com" serverId="cb3a7404-19a8-407d-9dea-016ae3bef445" promptOnLocalOverwrite="false">
+    <servers>
+      <server id="035f235b-7afe-4a9f-bbd2-f0e1d98f334b">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="176d807c-ab94-4857-a87f-0964efa3cdf6">
+        <serverdata />
+      </server>
+      <server id="1956d07f-f603-4009-9713-19339dfe90af">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="1b254a90-c4c7-4300-b461-8f1819c13028">
+        <serverdata />
+      </server>
+      <server id="1bf5e760-a13f-45a3-9347-82752e4600c9">
+        <serverdata>
+          <mappings>
+            <mapping deploy="" local="" web="" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="4903eac4-228e-427d-b47a-988b70e4a726">
+        <serverdata />
+      </server>
+      <server id="67e4c10c-6bef-4119-adc8-4be70e9274de">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="705ffc72-095d-4d82-9b88-4f1a476d9c10">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="72ef6b16-54e6-4358-8f5d-e42acb3ee6b3">
+        <serverdata />
+      </server>
+      <server id="8058a3f0-bcd1-41ab-9e2e-09c551ad4ab9">
+        <serverdata />
+      </server>
+      <server id="85beb83e-cf18-4afe-8ff9-93746a81a6b7">
+        <serverdata />
+      </server>
+      <server id="8b0182a1-16e0-44e7-a87c-a9a91b72e695">
+        <serverdata />
+      </server>
+      <server id="9db52632-b287-4d33-b278-e186ce11b176">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="ad0a9ecf-d76c-43aa-b37e-83ff72b15bdc">
+        <serverdata />
+      </server>
+      <server id="c90ce2ef-6c96-4873-8dd7-a4cb8ecb78ce">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="cb3a7404-19a8-407d-9dea-016ae3bef445">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="cba753c9-d865-4767-ab0d-59909fb45842">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="e2b16700-0d18-415e-b683-09cf7a20dde9">
+        <serverdata />
+      </server>
+      <server id="ea61af39-bac8-4397-9de6-d39cf5fad147">
+        <serverdata />
+      </server>
+    </servers>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/auth" />
+      <recent name="$PROJECT_DIR$/app/core/exidoengine/administrator/controller" />
+      <recent name="$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/layout" />
+      <recent name="$PROJECT_DIR$/app/local/exidoteam/ecommerce/administrator/controller" />
+      <recent name="$PROJECT_DIR$/app/core/exidoengine/frontend/template/default/action/page" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/js/administrator" />
+      <recent name="$PROJECT_DIR$/public/js/general" />
+      <recent name="$PROJECT_DIR$/public/css/administrator" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="1bf5e760-a13f-45a3-9347-82752e4600c9" server_name="newmpbx.comtalk.dk">
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <configuration useDefault="false">$USER_HOME$/.subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e157abd1-e8cc-487e-8730-89bc02f59bbd" name="Default" comment="" />
+      <created>1361860738451</created>
+      <updated>1361860738451</updated>
+    </task>
+    <task id="LOCAL-00001" summary="changing name">
+      <created>1361863569790</created>
+      <updated>1361863569791</updated>
+    </task>
+    <task id="LOCAL-00002" summary="adding jquery ui, modifying sign in box">
+      <created>1361880835040</created>
+      <updated>1361880835040</updated>
+    </task>
+    <task id="LOCAL-00003" summary="adding access to components">
+      <created>1362248587915</created>
+      <updated>1362248587915</updated>
+    </task>
+    <task id="LOCAL-00004" summary="changes">
+      <created>1362637849659</created>
+      <updated>1362637849659</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changes">
+      <created>1362749544680</created>
+      <updated>1362749544680</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changes">
+      <created>1362760301242</created>
+      <updated>1362760301242</updated>
+    </task>
+    <task id="LOCAL-00007" summary="changes">
+      <created>1362761501321</created>
+      <updated>1362761501321</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changes">
+      <created>1362820506535</created>
+      <updated>1362820506535</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changes">
+      <created>1362821329842</created>
+      <updated>1362821329842</updated>
+    </task>
+    <task id="LOCAL-00010" summary="adding tinymce">
+      <created>1362858478748</created>
+      <updated>1362858478748</updated>
+    </task>
+    <task id="LOCAL-00011" summary="changes">
+      <created>1363205195000</created>
+      <updated>1363205195000</updated>
+    </task>
+    <task id="LOCAL-00012" summary="changes">
+      <created>1363205229871</created>
+      <updated>1363205229871</updated>
+    </task>
+    <task id="LOCAL-00013" summary="changes">
+      <created>1364141948929</created>
+      <updated>1364141948929</updated>
+    </task>
+    <task id="LOCAL-00014" summary="changing _db_timenames to _db_time_names">
+      <created>1364143148361</created>
+      <updated>1364143148361</updated>
+    </task>
+    <task id="LOCAL-00015" summary="removing unnecessary files">
+      <created>1364143296941</created>
+      <updated>1364143296941</updated>
+    </task>
+    <task id="LOCAL-00016" summary="changes">
+      <created>1364143871367</created>
+      <updated>1364143871367</updated>
+    </task>
+    <task id="LOCAL-00017" summary="changing date">
+      <created>1365095205488</created>
+      <updated>1365095205488</updated>
+    </task>
+    <task id="LOCAL-00018" summary="changing sql files">
+      <created>1365941820988</created>
+      <updated>1365941820988</updated>
+    </task>
+    <task id="LOCAL-00019" summary="changing sql files">
+      <created>1366895775934</created>
+      <updated>1366895775934</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1280" height="774" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.99852943" sideWeight="0.493517" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CSS-X-Fire" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39141005" sideWeight="0.0014705883" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36790925" sideWeight="0.0014705883" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.99852943" sideWeight="0.5008104" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32794118" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing sql files" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="changing name" />
+    <MESSAGE value="adding jquery ui, modifying sign in box" />
+    <MESSAGE value="adding access to components" />
+    <MESSAGE value="adding tinymce" />
+    <MESSAGE value="changing _db_timenames to _db_time_names" />
+    <MESSAGE value="removing unnecessary files" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="changing date" />
+    <MESSAGE value="changing sql files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/layout/inc.header-user-panel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="21" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/exido/component.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="22" selection-start="1891" selection-end="1891" vertical-scroll-proportion="-0.185567" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/exido/exido.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="479" column="25" selection-start="13328" selection-end="13328" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/exido/controller/administrator/abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="8" selection-start="2723" selection-end="2769" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/exido/controller/abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="25" selection-start="4274" selection-end="4293" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/controller/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/page/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="38" selection-start="1889" selection-end="1889" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/user/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="21" selection-start="2176" selection-end="2176" vertical-scroll-proportion="0.6958763" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/template/default/action/auth/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="44" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_admin/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/exidoengine/administrator/controller/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme_en.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="43" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme_ru.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="78" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="34" selection-start="960" selection-end="960" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="113" selection-end="113" vertical-scroll-proportion="0.21462639">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+
