@@ -175,6 +175,7 @@ final class Model_Eav extends Model_Db_Eav_Abstract
   /**
    * Remove entity.
    * @param int $entity_id
+   * @param string $attribute_set
    * @return bool
    */
   public function removeEntity($entity_id, $attribute_set = 'default')
@@ -207,7 +208,6 @@ final class Model_Eav extends Model_Db_Eav_Abstract
   /**
    * Check if attribute value is unique. Returns TRUE if atttibute is unique.
    * @param array $attributes
-   * @param string $attribute_set
    * @param int $skip_entity_id
    * @return bool
    */
@@ -400,6 +400,27 @@ final class Model_Eav extends Model_Db_Eav_Abstract
   // ---------------------------------------------------------------------------
 
   /**
+   * Get entity id by attribute value.
+   * @param string $value
+   * @param string $data_type
+   * @return mixed
+   */
+  public function getEntityIdByAttributeValue($value, $data_type)
+  {
+    if($r = $this->db->select($this->eav_instance.'_entity', '*')
+      ->where(array('entity_key' => $entity_key))
+      ->exec()
+      ->row()
+    ) {
+      $r->attributes = $this->_getAllAttributesByEntityId($r->entity_id);
+      return $r;
+    }
+    return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Get an attribute set.
    * @param string $set
    * @return array
@@ -429,7 +450,6 @@ final class Model_Eav extends Model_Db_Eav_Abstract
 
   /**
    * Get entity by key.
-   * @param string $entity_key
    * @return mixed
    */
   public function getAllAttributes()
@@ -511,7 +531,7 @@ final class Model_Eav extends Model_Db_Eav_Abstract
    * Returns TRUE if the value is unique.
    * @param string $attribute_key
    * @param string $value
-   * @param string $type_key
+   * @param string $data_type
    * @param int $skip_entity_id
    * @return bool
    */

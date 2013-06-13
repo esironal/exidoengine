@@ -63,13 +63,13 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
 
   /**
    * Current system user
-   * @var View
+   * @var string
    */
   protected $_system_user;
 
   /**
    * Current system user access
-   * @var View
+   * @var string
    */
   protected $_system_user_access;
 
@@ -93,13 +93,13 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
 
   /**
    * Action view object
-   * @var
+   * @var View
    */
   private $_viewAction;
 
   /**
    * Layout view object
-   * @var
+   * @var View
    */
   private $_viewLayout;
 
@@ -151,7 +151,6 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
 
     // Get active components
     $this->_components = $this->model('Model_Component')->getActiveComponents();
-
     // Get session data
     $_user_key = $this->_getCurrentUser();
     // If current user is unknown so we should start guest session

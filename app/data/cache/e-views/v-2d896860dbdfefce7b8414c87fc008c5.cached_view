@@ -1,0 +1,37 @@
+1369483003:|<!DOCTYPE html>
+<html>
+<head>
+<base href="http://e.local/" />
+<title>Панель управления ExidoEngine</title>
+<meta charset="UTF-8" />
+<link rel="shortcut icon" href="css/images/exidoengine.ico" />
+<link rel="icon" href="css/images/exidoengine.ico" />
+<link rel="stylesheet" type="text/css" href="css/exido-bootstrap/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/exido-bootstrap/bootstrap-green.css" />
+<link rel="stylesheet" type="text/css" href="css/administrator/signin-form.css" />
+<link rel="stylesheet" type="text/css" href="css/administrator/jqueryui.css" />
+<script src="js/administrator/jquery.js"></script>
+<script src="js/administrator/jqueryui.js"></script>
+<script src="js/administrator/form.validate.js"></script>
+<script src="js/administrator/common.js"></script>
+</head>
+<body>
+<div id="wrapper"  class="wrapper">
+<div id="container"  class="-i-simple-box">
+<div id="form-text"  class="-i-simple-box">
+<div class="msg1 messages"><span>Добро пожаловать в панель управления</span><span>Пожалуйста авторизуйтесь</span></div>
+<div class="signin-form"><script>$(function(){$("#welcome_dialog").dialog({height:140,modal:true,autoOpen:false,open:function(event,ui){$("button").attr("title","Close");}});$("form").validate({rules:{username:"required",password:"required"},messages:{username:"Введите имя пользователя",password:"Введите пароль"},submitHandler:function(form){$.post("http://e.local/auth",{uid:$("input[name=username]").val(),pwd:$("input[name=password]").val()},function(data){if(data.status == true){
+      $("#welcome_dialog p").html(data.text);
+      $("#welcome_dialog").dialog("open");
+      setTimeout(function(){window.location.reload();},1000);
+    } else {
+      alert(data.text);
+      form.reset();
+    }},"json");}});});</script><form class="-i-form" method="POST" action=""><fieldset><legend>Имя пользователя</legend><input class="-i-text" type="text" name="username" value="" maxlength="32" autocomplete="off" /><label for="username" generated="true" class="error">&nbsp;</label></fieldset><fieldset><legend>Пароль</legend><input class="-i-text" type="password" name="password" value="" /><label for="password" generated="true" class="error">&nbsp;</label></fieldset><fieldset><input class="-b-button" type="submit" name="submit" value="Войти" /></fieldset></form></div>
+<div class="msg2 messages"><span>Введите ваши данные в поля выше.</span><span>У вас есть три попытки для авторизации.</span><span>После третьей неудачной попытки, вы будете заблокированы на некоторое время</span></div>
+<div id="welcome_dialog" title="Добро пожаловать"><p></p></div></div>
+</div>
+</div>
+<div class="footer"><a href="http://www.exidoengine.com" target="_blank">ExidoEngine Web-sites manager</a></div>
+</body>
+</html>

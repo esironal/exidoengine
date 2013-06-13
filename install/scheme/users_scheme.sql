@@ -56,7 +56,7 @@ CREATE TABLE `user` (
   `permissions_other` enum('rwx', 'rw-', 'r--', '---', 'r-x', '-wx', '--x', '-w-') NOT NULL DEFAULT 'r--',
   `created_at` datetime NOT NULL,
   `updated_at` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-  `is_enabled` bool NOT NULL DEFAULT true,
+  `is_enabled` bool NOT NULL DEFAULT false,
   `is_dropped` bool NOT NULL DEFAULT false COMMENT "Dropped (removed) users couldn't be restored via WEB-UI",
   `is_system` bool NOT NULL DEFAULT false COMMENT "System users couldn't be removed via WEB-UI",
   PRIMARY KEY (`user_id`)

@@ -54,7 +54,7 @@ function eavFetchValue($key, array $attributes, $callback = null)
 
 function eavCreateFormValidationJS($id, array $attributes)
 {
-  $script = '<script type="text/javascript">'.EXIDO_EOL;
+  $script = '<script>';
   $script.= '$(function() {';
   $script.= "$('#".$id."').validate({";
   $rules  = array();
@@ -143,10 +143,10 @@ function eavCreateFormValidationJS($id, array $attributes)
     }
     $script.= '},';
   }
-  $script.= 'errorClass: "-i-error",';
-  $script.= "submitHandler: function(form){ $('input[name=submit]',form).attr('disabled', true).val('".__('Saving...')."');form.submit();}});";
-  $script.= '});'.EXIDO_EOL;
-  $script.= '</script>'.EXIDO_EOL;
+  $script.= 'errorClass: "-i-error"';
+  //$script.= ",submitHandler: function(form){ $('input[name=submit]').attr('disabled', true).val('".__('Saving...')."');}";
+  $script.= '});});'.EXIDO_EOL;
+  $script.= '</script>';
   return $script;
 }
 
@@ -154,7 +154,9 @@ function eavCreateFormValidationJS($id, array $attributes)
 
 function eavCreateForm($form_id, array $attributes, $action = '')
 {
+  // Print form javascript to View object
   print eavCreateFormValidationJS($form_id, $attributes);
+
   if(empty($action))
     $action = uriFull();
   // Print open tag
@@ -221,6 +223,20 @@ function eavFormTextarea(Database_Mapper_Result $attributes)
                      ),((isset($attributes->value))?$attributes->value:''));
   $output.= formFieldsetClose();
   return $output;
+}
+
+// ---------------------------------------------------------------------------
+
+function eavFormTextareaWysiwyg(Database_Mapper_Result $attributes)
+{
+  // Add Wysiwyg initialization function to View object
+  $script = htmlJS('tinymce.min', 'js/administrator/tinymce');
+  $script.= '<script>';
+  $script.= '$(function() {';
+  $script.= 'tinymce.init({selector:"textarea[name=content]",content_css:"/css/default/tinymce.css?"+new Date().getTime()});';
+  $script.= '});';
+  $script.= '</script>';
+  return $script.eavFormTextarea($attributes);
 }
 
 // ---------------------------------------------------------------------------

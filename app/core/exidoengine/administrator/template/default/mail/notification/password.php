@@ -27,5 +27,7 @@
  * @filesource
  *******************************************************************************/
 
-print sprintf(__('Please use this password %s'), $view->password);
 ?>
+<div><?php print __('Please use this credentials');?></div>
+<div><?php print sprintf(__('Username: %s'), $view->username);?> </div>
+<div><?php print sprintf(__('Password: %s'), $view->password);?> </div>

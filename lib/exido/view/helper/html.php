@@ -60,10 +60,15 @@ abstract class View_Helper_Html extends View_Helper_Meta
    */
   public function css($file, $folder = 'css')
   {
-    $folder = str_replace('\\', '/', $folder);
-    $path   = rtrim($folder, '/').'/'.$file.'.css';
-    self::$_css[$file] = $path;
-    print htmlCSS($file, $folder);
+    if(is_array($file)) {
+      foreach($file as $f)
+        $this->css($f, $folder);
+    } else {
+      $folder = str_replace('\\', '/', $folder);
+      $path   = rtrim($folder, '/').'/'.$file.'.css';
+      self::$_css[$file] = $path;
+      print htmlCSS($file, $folder);
+    }
     return $this;
   }
 
@@ -78,10 +83,15 @@ abstract class View_Helper_Html extends View_Helper_Meta
    */
   public function js($file, $folder = 'js')
   {
-    $folder = str_replace('\\', '/', $folder);
-    $path   = rtrim($folder, '/').'/'.$file.'.js';
-    self::$_js[$file] = $path;
-    print htmlJS($file, $folder);
+    if(is_array($file)) {
+      foreach($file as $f)
+        $this->js($f, $folder);
+    } else {
+      $folder = str_replace('\\', '/', $folder);
+      $path   = rtrim($folder, '/').'/'.$file.'.js';
+      self::$_js[$file] = $path;
+      print htmlJS($file, $folder);
+    }
     return $this;
   }
 

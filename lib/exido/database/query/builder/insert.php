@@ -68,6 +68,7 @@ final class Database_Query_Builder_Insert extends Database_Query_Builder_Insert_
    */
   public function setInsertFields(array $fields)
   {
+    pre($fields);
     foreach($fields as $key => $value) {
       if($value === null)
         $this->_fields[$key] = 'NULL';

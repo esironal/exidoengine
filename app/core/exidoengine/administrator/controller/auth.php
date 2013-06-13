@@ -52,11 +52,11 @@ final class Administrator_Controller_Auth extends Controller_Json_Abstract
    */
   public function index()
   {
-
     $uid = $this->input->post('uid');
     $pwd = $this->input->post('pwd');
     if($r = $this->model('Model_User')->getUserSessionId($uid, md5($pwd))) {
       $this->session->set('system_user', $r);
+      $this->session->set('_passw_entered', true);
       $this->jsonText(__('Hi'));
     } else {
       $this->jsonErrorCode('403');

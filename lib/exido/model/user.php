@@ -128,7 +128,7 @@ final class Model_User extends Model_Db_Abstract
   public function getUserAccess($user_id, $instance)
   {
     if($r = $this->db->select('user_access', array('component','permissions'))->where(array('user_id' => $user_id, 'instance' => $instance))
-      ->limit(1)->exec()->resultToAssoc('component', 'permissions')) {
+      ->limit()->exec()->resultToAssoc('component', 'permissions')) {
       $this->_clearData();
       return $r;
     }

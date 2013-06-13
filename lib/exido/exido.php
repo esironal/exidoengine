@@ -385,6 +385,7 @@ final class Exido
         self::$_paths, explode(':', get_include_path())
       )
     );
+
     // Debug log
     if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Include paths: '.implode(':', self::$_paths));
   }

@@ -6,7 +6,6 @@ DROP TABLE IF EXISTS `site`;
 
 CREATE TABLE `site` (
   `domain` varchar(64) NOT NULL UNIQUE,
-  `administrator_path` varchar(64) NOT NULL UNIQUE,
   `site_title` varchar(250) NOT NULL,
   `meta_description` text DEFAULT NULL,
   `meta_keywords` text DEFAULT NULL,

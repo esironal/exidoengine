@@ -40,7 +40,7 @@ $(function() {
     if (value.match(/^\w+$/i) != null) {
       return value;
     }
-  }, "<?php print $helper->line('User name may contains only latin characters and numbers');?>");
+  }, "<?php print __('User name may contains only latin characters and numbers');?>");
 
   $('form#-x-user-add').validate({
     rules: {
@@ -58,21 +58,17 @@ $(function() {
     },
     messages: {
       user_name: {
-        required: "<?php print $helper->line('Please enter a user name');?>",
-        remote: "<?php print $helper->line('User name is already exists');?>"
+        required: "<?php print __('Please enter a user name');?>",
+        remote: "<?php print __('User name is already exists');?>"
       },
       user_email: {
-        required: "<?php print $helper->line('Please enter a email');?>",
-        email: "<?php print $helper->line('Please enter a valid email');?>",
-        remote: "<?php print $helper->line('Email is already exists');?>"
+        required: "<?php print __('Please enter a email');?>",
+        email: "<?php print __('Please enter a valid email');?>",
+        remote: "<?php print __('Email is already exists');?>"
       },
-      role_name: '<?php print $helper->line('Please choose role');?>'
+      role_name: '<?php print __('Please choose role');?>'
     },
-    errorClass: "-i-error",
-    submitHandler: function(form) {
-      $('input[name=submit]',form).attr('disabled', true).val('<?php print $helper->line('Creating...');?>');
-      form.submit();
-    }
+    errorClass: "-i-error"
   });
 });
 </script>

@@ -46,7 +46,20 @@ include_once 'view/helper/html.php';
 class View extends View_Abstract
 {
   /**
+   * Dynamic javascript
+   * @var
+   */
+  public $on_page_script  = '';
+
+  /**
+   * External javascripts
+   * @var
+   */
+  public $external_script = array();
+
+  /**
    * Special variable containing an action view content.
+   * @var
    */
   private $_actionContent;
 
@@ -76,6 +89,20 @@ class View extends View_Abstract
   {
     // Todo: Make the methods for views
     //self::$_methods[$method] = $callback;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  public function addScriptOnPage($script)
+  {
+    $this->on_page_script.= $script;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  public function addExternalScript($js)
+  {
+    $this->external_script[] = $js;
   }
 
   // ---------------------------------------------------------------------------

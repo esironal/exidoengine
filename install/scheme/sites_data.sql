@@ -1,1 +1,1 @@
-INSERT INTO `site` (`domain`, `administrator_path`, `site_title`) VALUES ('e.local', 'e.local', 'test web-site');
+INSERT INTO `site` (`domain`, `site_title`) VALUES ('e.local', 'test web-site');

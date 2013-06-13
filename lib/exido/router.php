@@ -102,6 +102,9 @@ final class Router
     if($default_route == false) {
       // Remove the suffix from the URL if needed
       self::$current_uri = preg_replace("|".preg_quote(Exido::config('global.core.url_suffix'))."$|", "", self::$current_uri);
+      // Strip arguments
+      if($argspos = strpos(self::$current_uri, '?'))
+        self::$current_uri = substr(self::$current_uri, 0, $argspos);
       // Explode the segments by slashes
       foreach(explode("/", preg_replace("|/*(.+?)/*$|", "\\1", self::$current_uri)) as $val) {
         $val = trim($val);
@@ -223,6 +226,7 @@ final class Router
         // Set the URL suffix
         self::$url_suffix = $suffix;
       }
+      // Find index file name
       if($indexfile = Exido::config('global.core.index_file') and
         $indexpos = strpos(self::$current_uri, $indexfile) and
         $indexpos !== false) {

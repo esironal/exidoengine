@@ -203,6 +203,17 @@ final class Input
   // ---------------------------------------------------------------------------
 
   /**
+   * Gets the referer.
+   * @return string
+   */
+  public function referer()
+  {
+    return $this->server('HTTP_REFERER');
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Gets the value of given key.
    * @param string $key
    * @return array|string

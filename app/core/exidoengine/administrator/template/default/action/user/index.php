@@ -46,16 +46,20 @@ if($view->item_list) {
                     __('Group'),
                     __('Role'),
                     __('Joined at'),
-                    __('Status')
+                    __('Status'),
+                    __('Actions')
   ));
   foreach($view->item_list as $item) {
     $item->is_enabled = htmlStatus($item->is_enabled);
     $item->created_at = dateConvertSQL2Human($item->created_at, Exido::config('global.date.format_long'));
+
+    $item->actions = '<a href="user/action/edit/'.$item->user_id.'">'.__('Edit').'</a> ';
+    $item->actions.= '<a class="remove" href="user/action/remove/'.$item->user_id.'">'.__('Remove').'</a>';
     print tableTR(arrayExtract((array)$item, array(
       'user_id', 'user_name', 'user_email',
       'owner_name', 'group_name', 'role_name',
-      'created_at', 'is_enabled')
-    ));
+      'created_at', 'is_enabled', 'actions'
+    )));
   }
   print tableClose();
 }

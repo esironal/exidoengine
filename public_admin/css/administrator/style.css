@@ -1,0 +1,30 @@
+/*******************************************************************************
+ * ExidoEngine Administrator CSS styles
+ * Copyright (c) 2009 - 2013, ExidoEngine Solutions
+ * Licensed under GNU General Public License v3
+ * http://www.exidoengine.com/license/gpl-3.0.html
+ *******************************************************************************/
+
+.item-list-checkbox {
+  display: inline !important;
+  height: auto !important;
+  line-height: 1em !important;
+}
+.user-panel {
+  float: right;
+  margin-right: 15px;
+  height: 50px; text-align: right;
+}
+
+/* Page add/edit form */
+#-x-input-keywords, #-x-input-description {
+  width: 40em;
+  height: 6em;
+}
+#-x-input-title,#-x-input-urlpath {
+  width: 40em;
+}
+#-x-input-content {
+  width: 99%;
+  height: 200em;
+}

@@ -7,7 +7,7 @@ Contents:
   2. System recommendations
   3. Installation
   4. Updates
-  5. Support
+  5. Other information
 
 *******************************************************************************
 
@@ -21,20 +21,25 @@ Contents:
 
 2. System recommendations
 
-  The mod_rewrite Apache module
+  The mod_rewrite Apache module or the same module for other web-server
 
 -------------------------------------------------------------------------------
 
 3. Installation
 
+  a) Copy the files to web-server root directory
+  b) Upload SQL schemes /install/scheme/*_scheme.sql
+  c) Configure database access /app/config/database.php
+  g) Set paths in /index.php
+
 -------------------------------------------------------------------------------
 
 4. Updates
 
-  You can always get the latest stable version from http://www.exidoengine.com/download.html
+  You can always get the latest development version from http://www.exidoengine.com/download.html
 
 -------------------------------------------------------------------------------
 
-5. Support
+5. Other information
 
-  Find the information you need http://wiki.exidoengine.com/
+  ExidoEngine Web-sites manager does not have a public version. Its still in development.

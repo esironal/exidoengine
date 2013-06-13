@@ -31,7 +31,7 @@ return array(
      * The entities can be used in application routes (APPPATH/config/route.php)
      * The entity will be replaced with its regular expression.
      */
-     'uri_entities'        => array(
+    'uri_entities'        => array(
                                ':num' => '([0-9]+)',
                                ':abc' => '([A-z]+)',
                                ':sym' => '([A-z0-9-]+)',
@@ -40,7 +40,7 @@ return array(
     'url_suffix'          => '.html',
     /**
      * To use friendly URLs you will need to enable apache's mod_rewrite or the
-     * same mod for another web-server)
+     * same mod of another web-server)
      * and create .htaccess file on the web-root directory with the following contents:
      * RewriteEngine on
      * RewriteBase /
@@ -52,10 +52,17 @@ return array(
      * If you don't know how to do this, please just disable this option.
      */
     // TODO: Do the friendly URLs handler
-    'use_friendly_url'    => false
+    'use_friendly_url'    => true
   ),
   'date' => array(
     'format_long' => '%e %B %Y, %H:%M'
+  ),
+  /**
+   * Email parameters
+   */
+  'mail' => array(
+    'from' => 'support@exidoengine.com',
+    'name' => 'ExidoEngine'
   )
 );
 

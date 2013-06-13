@@ -36,13 +36,12 @@
  */
 abstract class Controller_Administrator_Abstract extends Controller_Abstract
 {
-  /**
-   * Allow all the controllers to run in production by default
-   * @var bool
-   */
-  private $_has_access = false;
-
   private $_actions = array('r', 'w', 'x');
+
+  /**
+   * Common components does not require for authorization.
+   */
+  private $_common_components = array('logout');
 
   // ---------------------------------------------------------------------------
 
@@ -60,6 +59,9 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
         $this->view->header_menu[$d->component_key] = __($d->component_name);
       }
     }
+
+    // Logged user name
+    $this->view->user_logged_as = $this->_system_user['user_name'];
   }
 
   // ---------------------------------------------------------------------------
@@ -71,8 +73,17 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
   public function beforeController()
   {
     $path = implode('/', uriSegments());
+
+    if(in_array($path, $this->_common_components))
+      return true;
+
     if( ! $this->_checkAccess($path, 'r')) {
-      $this->view->getView('action/auth/index');
+      if($this->session->get('_passw_entered') == true) {
+        $this->view->referer = $this->input->referer();
+        $this->view->getView('action/auth/forbidden');
+      } else {
+        $this->view->getView('action/auth/index');
+      }
       return false;
     }
     return true;

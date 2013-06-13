@@ -28,6 +28,8 @@
  *******************************************************************************/
 
 $helper
+  ->notifier($view->getView('layout/inc.header-user-panel', true), 'user-panel');
+$helper
   ->notifier($view->getView('layout/inc.header-menu-panel', true), '-i-tabs');
 print $helper->script("$(function(){ $('a.remove').click(function(e){var href=$(this).attr('href');e.preventDefault();if(confirm('".__('Do you really want to remove the item?')."')){document.location.href=href;}});});");
 if(isset($view->notify_text) and isset($view->notify_style))

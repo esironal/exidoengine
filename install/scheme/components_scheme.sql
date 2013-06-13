@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS `component`;
 CREATE TABLE `component` (
   `component_key` varchar(64) NOT NULL UNIQUE,
   `component_name` varchar(32) NOT NULL,
+  `path` varchar( 64 ) default NULL COMMENT "System components hasn't a path as they are placed in the system folder",
   `created_at` datetime NOT NULL,
   `has_backend` bool NOT NULL DEFAULT true COMMENT "If TRUE the component has an administration UI",
   `has_frontend` bool NOT NULL DEFAULT true COMMENT "If TRUE the component has a frontend UI",

@@ -63,7 +63,7 @@ VALUES (113           ,'permissions_other','varchar'      ,NOW()       ,'1'     
 
 INSERT INTO `page_attribute`
        (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`,`backend_object`     ,`description` ,`is_system`)
-VALUES (114           ,'content'      ,'text'         ,NOW()       ,'eav/eavFormTextarea','Page content','1');
+VALUES (114           ,'content'      ,'text'         ,NOW()       ,'eav/eavFormTextareaWysiwyg','Page content','1');
 
 INSERT INTO `page_attribute`
        (`attribute_id`,`attribute_key`,`data_type_key`,`created_at`,`backend_object`  ,`description`,`is_system`,`is_required`)

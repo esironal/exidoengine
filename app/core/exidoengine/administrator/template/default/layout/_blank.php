@@ -40,11 +40,16 @@ $helper
   ->css('administrator/jqueryui')
   ->css('administrator/style')
   ->ie('exido-bootstrap/ie')
-  ->js('administrator/jquery')
-  ->js('administrator/jqueryui')
-  ->js('administrator/form.validate')
-  ->js('administrator/form.validate.additional')
-  ->js('administrator/common')
+  ->js(array(
+         'administrator/jquery',
+         'administrator/jqueryui',
+         'administrator/form.validate',
+         'administrator/form.validate.additional',
+         'administrator/common'
+       )
+  )
+  ->js($view->external_script)
+  ->script($view->on_page_script)
   ->closeHead()
   ->openBody()
   ->target('notification')

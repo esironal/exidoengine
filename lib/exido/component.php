@@ -52,16 +52,21 @@ final class Component
   public static function readComponents()
   {
     // Get components list
-    $_components = Exido::config('component');
-    foreach($_components as $name => $path) {
-      if(is_dir(COMPATH.$path)) {
-        // Set component paths
-        self::$_components[$name] = array(
-          1 => COMPATH.$path,
-          2 => COMPATH.$path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME)
-        );
-      } else {
-        throw new Exception_Exido('Component %s is not found in path %s', array($name, $path));
+    //$_components = Exido::config('component');
+    $_components = Registry::factory('Model_Component')->getActiveComponents();
+    foreach($_components as $component) {
+      $apath = rtrim(COMPATH.$component->path, '/');
+      // Get path for custom components. System components are placed in core/exidoengine
+      if($component->is_system == 0) {
+        if(is_dir($apath)) {
+          // Set component paths
+          self::$_components[$component->component_key] = array(
+            1 => $apath,
+            2 => $apath.'/'.strtolower(EXIDO_ENVIRONMENT_NAME)
+          );
+        } else {
+          throw new Exception_Exido('Component %s is not found in path %s', array($component->component_key, $component->component_key));
+        }
       }
     }
   }

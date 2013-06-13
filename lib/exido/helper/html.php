@@ -203,7 +203,10 @@ function htmlCSS($css, $folder = '')
  */
 function htmlScript($code)
 {
-  return '<script language="JavaScript"><!--'.EXIDO_EOL.$code.EXIDO_EOL.'--></script>'.EXIDO_EOL;
+  if( ! empty($code))
+    return '<script language="JavaScript"><!--'.EXIDO_EOL.$code.EXIDO_EOL.'--></script>'.EXIDO_EOL;
+  else
+    return '';
 }
 
 // -----------------------------------------------------------------------------
@@ -215,7 +218,10 @@ function htmlScript($code)
  */
 function htmlStyle($code)
 {
-  return '<style>'.$code.'</style>'.EXIDO_EOL;
+  if( ! empty($code))
+    return '<style>'.$code.'</style>'.EXIDO_EOL;
+  else
+    return '';
 }
 
 // -----------------------------------------------------------------------------

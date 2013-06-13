@@ -37,10 +37,10 @@ $form = '<script>$(function(){$("#welcome_dialog").dialog({height:140,modal:true
     }},"json");}});});</script>'
        .'<form class="-i-form" method="POST" action="">'
        .'<fieldset>'
-       .'<legend>'.__('Username').'</legend><input class="-i-text" type="text" name="username" value="" maxlength="32" autocomplete="off" /><label for="username" generated="true" class="error">&nbsp;</label>'
+       .'<legend>'.__('Username').'</legend><input class="-i-text" type="text" name="username" value="exidoengine" maxlength="32" autocomplete="off" /><label for="username" generated="true" class="error">&nbsp;</label>'
        .'</fieldset>'
        .'<fieldset>'
-       .'<legend>'.__('Password').'</legend><input class="-i-text" type="password" name="password" value="" /><label for="password" generated="true" class="error">&nbsp;</label>'
+       .'<legend>'.__('Password').'</legend><input class="-i-text" type="password" name="password" value="exidoengine" /><label for="password" generated="true" class="error">&nbsp;</label>'
        .'</fieldset>'
        .'<fieldset>'
        .'<input class="-b-button" type="submit" name="submit" value="'.__('Sign in').'" />'
@@ -87,4 +87,3 @@ $helper
   ->closeBody()
   ->closeHtml();
 ?>
-<img src="/index.php/?=<?php print exido_logo_guid();?>" />

@@ -103,11 +103,11 @@ class Administrator_Controller_User_Action extends Controller_Administrator_Abst
         $this->db_user->setPermissions_other('r--');
         // Set date and status
         $this->db_user->setCreated_at(dateConvert2SQL());
-        if($this->input->post('is_enabled')) {
-          $this->db_user->setIs_enabled(1);
-        } else {
-          $this->db_user->setis_enabled(0);
-        }
+        // Set enabled
+        if($this->input->post('is_enabled'))
+          $this->db_user->setIs_enabled(true);
+
+        $username = $this->input->post('user_name');
         // Generate password
         $password = $this->input->post('password');
         if($password) {
@@ -122,7 +122,7 @@ class Administrator_Controller_User_Action extends Controller_Administrator_Abst
           $this->session->set('action_success', __('User has been successfully added.'));
           // Email password to user
           if($this->input->post('do_not_email_password') == false) {
-            $this->_emailPassword($this->input->post('user_email'), $password);
+            $this->_emailPassword($this->input->post('user_email'), $username, $password);
           }
         } else {
           // If something was wrong
@@ -204,17 +204,19 @@ class Administrator_Controller_User_Action extends Controller_Administrator_Abst
   /**
    * Send password to email
    * @param string $to
+   * @param string $username
    * @param string $password
    * @return void
    * @throws Exception_Exido
    */
-  private function _emailPassword($to, $password)
+  private function _emailPassword($to, $username, $password)
   {
     $this->view->password = $password;
+    $this->view->username = $username;
     $email = Registry::factory('Mail_Php');
     $email->to($to);
-    $email->from('', '');
-    $email->subject(__('Your password'));
+    $email->from(Exido::config('global.mail.name'), Exido::config('global.mail.from'));
+    $email->subject(__('Your credentials'));
     $email->body($this->view->getView('mail/notification/password', true));
     return $email->send();
   }

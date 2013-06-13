@@ -43,6 +43,18 @@ class Administrator_Controller_User extends Controller_Administrator_Abstract
   {
     parent::__construct();
     Helper::load('table', 'date');
+
+    // UI error notifications
+    if($text = $this->session->get('action_success')) {
+      $this->view->notify_text  = $text;
+      $this->view->notify_style = 'ui-popup-success';
+      $this->session->set('action_success', false);
+    }
+    if($text = $this->session->get('action_error')) {
+      $this->view->notify_text  = $text;
+      $this->view->notify_style = 'ui-popup-error';
+      $this->session->set('action_error', false);
+    }
   }
 
   // ---------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+1369478753:|<div class="-i-action-menu">
+<ul>
+    <li><a href="/page/">Вернуться назад</a></li>
+  </ul>
+</div>
+<h3>Статические страницы - Редактировать страницу</h3>
+<script>$(function() {$('#-x-page-edit').validate({rules: {title: {required: true},urlpath: {required: true,remote: "http://e.local/page/ajax/unique?entity_id=113"},content: {required: true}},messages: {title: {required: 'Обязательное поле'},urlpath: {required: 'Обязательное поле',remote: 'This field must be unique'},content: {required: 'Обязательное поле'}},errorClass: "-i-error",submitHandler: function(form){ $('input[name=submit]',form).attr('disabled', true).val('Сохранение...');$('#-x-page-edit', form).submit();}});});
+</script><form action="http://e.local/page/action/edit/113" id="-x-page-edit" class="-i-form" method="POST">
+<fieldset id="-x-field-title">
+<legend>Заголовок страницы<sup>*</sup></legend>
+<input type="text" name="title" value="О системев" id="-x-input-title" class="-i-text"  /></fieldset><fieldset id="-x-field-urlpath">
+<legend>URL путь к странице в адресной строке браузера<sup>*</sup></legend>
+<input type="text" name="urlpath" value="about the system" id="-x-input-urlpath" class="-i-text"  /></fieldset><fieldset id="-x-field-keywords">
+<legend>Ключевые слова для мета-тега</legend>
+<textarea name="keywords" cols="90" rows="12" id="-x-input-keywords" class="-i-textarea" ></textarea></fieldset><fieldset id="-x-field-description">
+<legend>Краткое описание для мета-тега</legend>
+<textarea name="description" cols="90" rows="12" id="-x-input-description" class="-i-textarea" ></textarea></fieldset><script src="js/administrator/tinymce/tinymce.min.js"></script>
+<script>$(function() {tinymce.init({selector:"textarea[name=content]",content_css:"/css/default/tinymce.css?"+new Date().getTime()});});</script><fieldset id="-x-field-content">
+<legend>Контент страницы<sup>*</sup></legend>
+<textarea name="content" cols="90" rows="12" id="-x-input-content" class="-i-textarea" >Контент</textarea></fieldset><fieldset id="-x-field-is_enabled">
+<input type="checkbox" name="is_enabled" value="1" checked="checked"  /><label>Активировать?</label>
+</fieldset><input type="submit" name="submit" value="Сохранить" class="-b-button"  />
+</form>
