@@ -6,3 +6,4 @@ workspace/uploads/
 install-log.txt
 .DS_Store
 *.log
+workspace.xml
