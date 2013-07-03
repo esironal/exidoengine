@@ -56,11 +56,9 @@ function exido_logo_guid() {
  * @param $path
  * @return string
  */
-function exido_fix_path($path, $trim = true) {
+function exido_fix_path($path, $trim = false) {
   $path = str_replace('\\', '/', $path);
-  if($trim)
-    $path = trim($path, '/');
-  return $path;
+  return (($trim)?trim($path, '/'):trim($path, '/').'/');
 }
 
 ?>

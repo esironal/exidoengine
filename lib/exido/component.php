@@ -42,6 +42,12 @@ final class Component
    */
   protected static $_components = array();
 
+  /**
+   * Path list
+   * @var array
+   */
+  protected static $_paths = array();
+
   // ---------------------------------------------------------------------------
 
   /**
@@ -49,21 +55,23 @@ final class Component
    * @return void
    * @throws Exception_Exido
    */
-  public static function readComponents()
+  public static function load()
   {
     // Get components list
     //$_components = Exido::config('component');
     $_components = Registry::factory('Model_Component')->getActiveComponents();
     foreach($_components as $component) {
-      $apath = rtrim(COMPATH.$component->path, '/');
+      //print $apath = rtrim(COMPATH.$component->path, '/');
       // Get path for custom components. System components are placed in core/exidoengine
       if($component->is_system == 0) {
-        if(is_dir($apath)) {
+        if(is_dir(COMPATH.$component->path)) {
           // Set component paths
           self::$_components[$component->component_key] = array(
-            1 => $apath,
-            2 => $apath.'/'.strtolower(EXIDO_ENVIRONMENT_NAME)
+            1 => COMPATH.$component->path.'/',
+            2 => COMPATH.$component->path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/'
           );
+          self::$_paths[] = COMPATH.$component->path.'/';
+          self::$_paths[] = COMPATH.$component->path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/';
         } else {
           throw new Exception_Exido('Component %s is not found in path %s', array($component->component_key, $component->component_key));
         }
@@ -74,17 +82,25 @@ final class Component
   // ---------------------------------------------------------------------------
 
   /**
+   * Load paths of additional components.
+   * @return void
+   */
+  public static function initialize()
+  {
+    if($paths = self::getPaths() and ! empty($paths)) {
+      Exido::setIncludePaths($paths);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Gets a component paths.
    * @return array
    */
-  public static function getComponentPaths()
+  public static function getPaths()
   {
-    $paths = array();
-    foreach(self::$_components as $path) {
-      $paths[] = $path[1];
-      $paths[] = $path[2];
-    }
-    return $paths;
+    return self::$_paths;
   }
 
   // ---------------------------------------------------------------------------

@@ -216,7 +216,6 @@ final class Exido
 
     // Load helpers
     Helper::load('lang','uri');
-
     // Check if we can use gZIP compression
     self::$use_gzip =
       (strstr(Input::instance()->server('HTTP_ACCEPT_ENCODING'), "gzip") !== false)
@@ -233,6 +232,7 @@ final class Exido
     Event::add('system.routing',   array('Router'   , 'initialize'));
     Event::add('system.execute',   array(__CLASS__  , 'instance'));
     Event::add('system.shutdown',  array(__CLASS__  , 'shutdown'));
+
     return true;
   }
 
@@ -331,7 +331,7 @@ final class Exido
     // Debug log
     if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Load components');
     // Read loaded components
-    Component::readComponents();
+
     // Set a new paths array including paths to components
     self::setIncludePaths();
   }
@@ -368,13 +368,15 @@ final class Exido
       array_push(self::$_paths,
         APPPATH.'core/'.self::$core_app_name.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/');
 
-    foreach(array_merge($external_paths, Component::getComponentPaths()) as $key => $path) {
-      if(is_dir($path)) {
-        // Add the path to include paths
-        array_push(self::$_paths, exido_fix_path(realpath($path)).'/');
-      } else {
-        // This path is invalid, remove it
-        unset($external_paths[$key]);
+    if( ! empty($external_paths)) {
+      foreach($external_paths as $key => $path) {
+        if(is_dir($path)) {
+          // Add the path to include paths
+          array_push(self::$_paths, $path);
+        } else {
+          // This path is invalid, remove it
+          unset($external_paths[$key]);
+        }
       }
     }
 
@@ -411,7 +413,7 @@ final class Exido
     $pathfile = exido_fix_path($dir).$file.$ext;
 
     // Debug log
-    if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Include external file /'.ltrim($pathfile, '/'));
+    if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Include external file '.$pathfile);
 
     // The file has not been found yet
     $found = false;
@@ -489,13 +491,16 @@ final class Exido
     } else {
       // Check the language parameters. And returns the default
       // values if some does not found.
-      if($line == '__charset')     return self::$charset;
-      if($line == '__locale')      return self::$locale;
-      if($line == '__time_zone')   return self::$timezone;
-      if($line == '__db_charset')    return self::$db_charset;
-      if($line == '__db_collation')  return self::$db_collation;
-      if($line == '__db_time_names') return self::$db_time_names;
-      if($line == '__db_time_zone')  return self::$db_time_zone;
+      switch($line) {
+        case '__charset':       return self::$charset;       break;
+        case '__locale':        return self::$locale;        break;
+        case '__time_zone':     return self::$timezone;      break;
+        case '__db_charset':    return self::$db_charset;    break;
+        case '__db_collation':  return self::$db_collation;  break;
+        case '__db_time_names': return self::$db_time_names; break;
+        case '__db_time_zone':  return self::$db_time_zone;  break;
+        default:
+      }
       return $line;
     }
   }

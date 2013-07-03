@@ -67,10 +67,19 @@ set_exception_handler(array('Exception_Exido', 'handlerException'));
 
 // Initialize framework
 Exido::initialize();
+
+// Load basic include paths
+Exido::setIncludePaths();
+
 // You can attach a log writer by uncomment next line
 //Exido::$log->attach(new Log_File(APPPATH.'data/cache/log'));
-// Initialize components
-Exido::initComponents();
+
+// Load additional components
+Component::load();
+// Initialize loaded components
+Component::initialize();
+
+
 
 // Include internalization languages
 //Exido::$i18n->attach(new I18n_File('en_US'));
