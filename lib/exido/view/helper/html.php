@@ -64,7 +64,7 @@ abstract class View_Helper_Html extends View_Helper_Meta
       foreach($file as $f)
         $this->css($f, $folder);
     } else {
-      $path   = exido_fix_path($folder).'/'.$file.'.css';
+      $path   = exido_fix_path($folder).$file.'.css';
       self::$_css[$file] = $path;
       print htmlCSS($file, $folder);
     }
@@ -86,7 +86,7 @@ abstract class View_Helper_Html extends View_Helper_Meta
       foreach($file as $f)
         $this->js($f, $folder);
     } else {
-      $path   = exido_fix_path($folder).'/'.$file.'.js';
+      $path   = exido_fix_path($folder).$file.'.js';
       self::$_js[$file] = $path;
       print htmlJS($file, $folder);
     }

@@ -83,3 +83,4 @@ CREATE TABLE `user_access` (
 ) ENGINE = InnoDB;
 
 ALTER TABLE `user_access` ADD FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+ALTER TABLE `user_access` ADD FOREIGN KEY (`component`) REFERENCES `component`(`component_key`);

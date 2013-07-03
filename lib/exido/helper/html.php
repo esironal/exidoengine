@@ -35,8 +35,8 @@
  */
 function htmlFavIcon($file, $folder = '')
 {
-  return '<link rel="shortcut icon" href="'.exido_fix_path($folder).'/'.$file.'.ico" />'.EXIDO_EOL
-        .'<link rel="icon" href="'.exido_fix_path($folder).'/'.$file.'.ico" />'.EXIDO_EOL;
+  return '<link rel="shortcut icon" href="'.exido_fix_path($folder).$file.'.ico" />'.EXIDO_EOL
+        .'<link rel="icon" href="'.exido_fix_path($folder).$file.'.ico" />'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -160,7 +160,7 @@ function htmlJS($js, $folder = '')
   if(empty($folder)) {
     return '';
   }
-  return '<script src="'.exido_fix_path($folder).'/'.$js.'.js"></script>'.EXIDO_EOL;
+  return '<script src="'.exido_fix_path($folder).$js.'.js"></script>'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -184,7 +184,7 @@ function htmlCSS($css, $folder = '')
 
   if(empty($folder))
     return '';
-  return '<link rel="stylesheet" type="text/css" href="'.exido_fix_path($folder).'/'.$css.'.css" />'.EXIDO_EOL;
+  return '<link rel="stylesheet" type="text/css" href="'.exido_fix_path($folder).$css.'.css" />'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------

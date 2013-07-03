@@ -99,6 +99,7 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
    */
   protected function _checkAccess($path, $action)
   {
+    print $path;
     // Check if an action allowed
     if( ! in_array($action, $this->_actions))
       return false;
