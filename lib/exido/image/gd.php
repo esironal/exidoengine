@@ -86,7 +86,7 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
    * @param array $params
    * @throws Exception_Exido
    */
-  public function __construct(array $params = array())
+  public function __construct($params = array())
   {
     if( ! $this->_isGdLoaded()) {
       throw new Exception_Exido(__("The GD library doesn't installed."));
@@ -107,6 +107,19 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
       return preg_replace("/\D/", "", $vers['GD Version']);
     }
     return false;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Throws a processed image to browser.
+   * @return void
+   */
+  public function action($action, array $params = array())
+  {
+    $global = get_object_vars($this);
+    $global['action'] = $action;
+    return new Image_Gd(array_merge($global, $params));
   }
 
   // ---------------------------------------------------------------------------
@@ -182,6 +195,9 @@ final class Image_Gd extends Image_Base implements Image_Interface_Gd, Image_Int
       throw new Exception_Exido(__("Couldn't get the image properties. Perhaps it's not an image."));
     }
 
+    if($this->action == 'resize') {
+      pre($image_props);
+    }
     // Set image properties
     $this->_orig_width  = $image_props['width'];
     $this->_orig_height = $image_props['height'];

@@ -44,9 +44,8 @@ function guidGet($chars = 8, $groups = 1, $delimiter = '', $lowcase = false)
 
   for($i = 1; $i <= $groups; $i++) {
     $charid = md5(uniqid(rand(), true)).md5(uniqid(rand(), true));
-    if( ! $lowcase) {
+    if( ! $lowcase)
       $charid = strtoupper($charid);
-    }
     $guid[] = substr($charid, 0, $chars);
   }
 
@@ -63,13 +62,11 @@ function guidGet($chars = 8, $groups = 1, $delimiter = '', $lowcase = false)
  */
 function guidMD5($word = '', $lowcase = false)
 {
-  if(empty($word)) {
+  if(empty($word))
     $word = md5(uniqid(rand(), true));
-  }
   $word = md5($word);
-  if( ! $lowcase) {
+  if( ! $lowcase)
     $word = strtoupper($word);
-  }
   return $word;
 }
 

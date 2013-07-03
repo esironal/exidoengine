@@ -61,6 +61,7 @@ abstract class Image_Base
   public $quality         = '90';
   public $action          = '';
   public $increase_small  = false;
+  public $actions         = array();
 
   /*
    * Allowed mimes
@@ -79,7 +80,7 @@ abstract class Image_Base
    */
   public function __construct($params = null)
   {
-    if($params == null) {
+    if( ! is_array($params)) {
       $params = array();
     }
     $params['degs'] = range(1, 360);

@@ -56,7 +56,7 @@ class Log_File extends Log_Writer
       }
     }
     // Set log path
-    $this->_directory = rtrim(str_replace('\\', '/', realpath($directory)), '/').'/';
+    $this->_directory = exido_fix_path(realpath($directory)).'/';
   }
 
   // ---------------------------------------------------------------------------

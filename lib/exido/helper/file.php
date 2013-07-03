@@ -74,12 +74,12 @@ function fileList($path = false, $recursive = false)
       // Recursively get and merge all files
       $files = array_merge($files, fileList($path, $recursive));
   } else {
-    $path = rtrim($path, '/').'/';
+    $path = exido_fix_path($path);
     if(is_readable($path)) {
       $items = (array) glob($path.'*');
       if( ! empty($items)) {
         foreach($items as $index => $item) {
-          $files[] = $item = str_replace('\\', '/', $item);
+          $files[] = $item = exido_fix_path($item);
           // Handle recursion
           if(is_dir($item) and $recursive == true) {
             // Filename should only be the basename

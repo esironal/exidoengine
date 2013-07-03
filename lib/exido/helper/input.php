@@ -33,8 +33,7 @@
  * @return array|string
  */
 function inputPost($key = '') {
-  $input = Input::instance();
-  return $input->post($key);
+  return Input::instance()->post($key);
 }
 
 // ---------------------------------------------------------------------------------
@@ -45,8 +44,7 @@ function inputPost($key = '') {
  * @return array|string
  */
 function inputGet($key = '') {
-  $input = Input::instance();
-  return $input->get($key);
+  return Input::instance()->get($key);
 }
 
 // ---------------------------------------------------------------------------------
@@ -57,8 +55,7 @@ function inputGet($key = '') {
  * @return array|string
  */
 function inputServer($key = '') {
-  $input = Input::instance();
-  return $input->server($key);
+  return Input::instance()->server($key);
 }
 
 // ---------------------------------------------------------------------------------
@@ -68,8 +65,7 @@ function inputServer($key = '') {
  * @return array|string
  */
 function inputHost() {
-  $input = Input::instance();
-  return $input->host();
+  return Input::instance()->host();
 }
 
 // ---------------------------------------------------------------------------------
@@ -79,8 +75,7 @@ function inputHost() {
  * @return array|string
  */
 function inputName() {
-  $input = Input::instance();
-  return $input->name();
+  return Input::instance()->name();
 }
 
 // ---------------------------------------------------------------------------------
@@ -91,8 +86,7 @@ function inputName() {
  * @return array|string
  */
 function inputFiles($key = '') {
-  $input = Input::instance();
-  return $input->files($key);
+  return Input::instance()->files($key);
 }
 
 // ---------------------------------------------------------------------------------
@@ -103,8 +97,7 @@ function inputFiles($key = '') {
  * @return string
  */
 function inputIp($return_array = false) {
-  $input = Input::instance();
-  return $input->files($return_array);
+  return Input::instance()->ip($return_array);
 }
 
 ?>

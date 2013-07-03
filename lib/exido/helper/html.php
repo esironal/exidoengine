@@ -35,10 +35,8 @@
  */
 function htmlFavIcon($file, $folder = '')
 {
-  $folder = str_replace('\\', '/', $folder);
-  $folder = ltrim($folder, '/');
-  return '<link rel="shortcut icon" href="'.trim($folder, '/').'/'.$file.'.ico" />'.EXIDO_EOL
-        .'<link rel="icon" href="'.trim($folder, '/').'/'.$file.'.ico" />'.EXIDO_EOL;
+  return '<link rel="shortcut icon" href="'.exido_fix_path($folder).'/'.$file.'.ico" />'.EXIDO_EOL
+        .'<link rel="icon" href="'.exido_fix_path($folder).'/'.$file.'.ico" />'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -50,8 +48,7 @@ function htmlFavIcon($file, $folder = '')
  */
 function htmlMetaDescription($text)
 {
-  return '<meta name="description" content="'.$text.'" />'.EXIDO_EOL
-        .'<meta name="description" content="'.$text.'" />'.EXIDO_EOL;
+  return '<meta name="description" content="'.$text.'" />'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -69,7 +66,7 @@ function htmlMetaKeywords($text)
 // -----------------------------------------------------------------------------
 
 /**
- * Returns an IE conditional comment.
+ * Returns an IE conditional comment string.
  * @param string $code
  * @param string $version
  * @return string
@@ -94,7 +91,7 @@ function htmlIe($code, $version = '*')
     default:
       $html.= 'IE';
   }
-  return $html."]>\n".$code."<![endif]-->\n";
+  return $html."]>".EXIDO_EOL.$code."<![endif]-->".EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -163,8 +160,7 @@ function htmlJS($js, $folder = '')
   if(empty($folder)) {
     return '';
   }
-  $folder = str_replace('\\', '/', $folder);
-  return '<script src="'.trim($folder, '/').'/'.$js.'.js"></script>'.EXIDO_EOL;
+  return '<script src="'.exido_fix_path($folder).'/'.$js.'.js"></script>'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -181,17 +177,14 @@ function htmlJS($js, $folder = '')
 function htmlCSS($css, $folder = '')
 {
   if(is_array($css)) {
-    foreach($css as $file => $folder) {
+    foreach($css as $file => $folder)
       print htmlCSS($file, $folder);
-    }
     return '';
   }
 
-  if(empty($folder)) {
+  if(empty($folder))
     return '';
-  }
-  $folder = str_replace('\\', '/', $folder);
-  return '<link rel="stylesheet" type="text/css" href="'.rtrim($folder, '/').'/'.$css.'.css" />'.EXIDO_EOL;
+  return '<link rel="stylesheet" type="text/css" href="'.exido_fix_path($folder).'/'.$css.'.css" />'.EXIDO_EOL;
 }
 
 // -----------------------------------------------------------------------------
@@ -204,7 +197,7 @@ function htmlCSS($css, $folder = '')
 function htmlScript($code)
 {
   if( ! empty($code))
-    return '<script language="JavaScript"><!--'.EXIDO_EOL.$code.EXIDO_EOL.'--></script>'.EXIDO_EOL;
+    return '<script type="text/javascript"><!--'.EXIDO_EOL.$code.EXIDO_EOL.'--></script>'.EXIDO_EOL;
   else
     return '';
 }
@@ -437,6 +430,48 @@ function htmlStatus($value, $label_on = '', $label_off = '')
   return (empty($value)) ? $label_off : $label_on;
 }
 
+// ---------------------------------------------------------------------------------
+/**
+ * Close all opened tags
+ * @param string $string
+ * @return string
+ */
+function htmlCloseTags($string)
+{
+  $position = 0;
+  $open_tags = array();
+  // Ignore tags
+  $ignored_tags = array('br', 'hr', 'img');
+
+  while(($position = strpos($string, '<', $position)) !== false) {
+    // Get all tags
+    if(preg_match("|^<(/?)([a-z\d]+)\b[^>]*>|i", substr($string, $position), $match)) {
+      $tag = strtolower($match[2]);
+      // Ignore single tags
+      if(in_array($tag, $ignored_tags) == false) {
+        // Tag opened
+        if(isset($match[1]) and $match[1] == '') {
+          if (isset($open_tags[$tag]))
+            $open_tags[$tag]++;
+          else
+            $open_tags[$tag] = 1;
+        }
+        // Tag closed
+        if(isset($match[1]) and $match[1] == '/') {
+          if (isset($open_tags[$tag]))
+            $open_tags[$tag]--;
+        }
+      }
+      $position += strlen($match[0]);
+    } else
+      $position++;
+  }
+  // Close tags
+  foreach($open_tags as $tag => $count_not_closed)
+    $string.= str_repeat("</{$tag}>", $count_not_closed);
+
+  return $string;
+}
 
 
 ?>

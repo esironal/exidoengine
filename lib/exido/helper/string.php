@@ -179,7 +179,7 @@ function stringRemoveInvisibleChars($str, $url_encoded = true)
   }
   $non_display[] = '/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/S';	// 00-08, 11, 12, 14-31, 127
   do $str = preg_replace($non_display, '', $str, -1, $count);
-  while ($count);
+  while($count);
   return $str;
 }
 
@@ -222,13 +222,24 @@ function stringToLower($str)
 // ---------------------------------------------------------------------------
 
 /**
- * Make a string lowercase. Use mb_strtolower if possible.
+ * Return null if string is empty.
  * @param string $str
- * @return string
+ * @return mixed
  */
 function stringNull($str)
 {
   return empty($str) ? null : $str;
+}
+
+// ---------------------------------------------------------------------------
+
+/**
+ * Replace backslash (\) with slash (/) and trim the trailing slash if needed.
+ * @param $path
+ * @return string
+ */
+function stringFixPath($path, $trim = true) {
+  return exido_fix_path($path, $trim);
 }
 
 ?>

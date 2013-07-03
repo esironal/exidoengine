@@ -49,4 +49,18 @@ function exido_logo_guid() {
   return CORE_LOGO_GUID;
 }
 
+// ---------------------------------------------------------------------------
+
+/**
+ * Replace backslash (\) with slash (/) and trim the trailing slash if needed.
+ * @param $path
+ * @return string
+ */
+function exido_fix_path($path, $trim = true) {
+  $path = str_replace('\\', '/', $path);
+  if($trim)
+    $path = trim($path, '/');
+  return $path;
+}
+
 ?>

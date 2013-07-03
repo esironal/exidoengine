@@ -54,7 +54,7 @@ function eavFetchValue($key, array $attributes, $callback = null)
 
 function eavCreateFormValidationJS($id, array $attributes)
 {
-  $script = '<script>';
+  $script = '<script type="text/javascript">';
   $script.= '$(function() {';
   $script.= "$('#".$id."').validate({";
   $rules  = array();
@@ -231,7 +231,7 @@ function eavFormTextareaWysiwyg(Database_Mapper_Result $attributes)
 {
   // Add Wysiwyg initialization function to View object
   $script = htmlJS('tinymce.min', 'js/administrator/tinymce');
-  $script.= '<script>';
+  $script.= '<script type="text/javascript">';
   $script.= '$(function() {';
   $script.= 'tinymce.init({selector:"textarea[name=content]",content_css:"/css/default/tinymce.css?"+new Date().getTime()});';
   $script.= '});';

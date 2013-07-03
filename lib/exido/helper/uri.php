@@ -39,7 +39,7 @@ function uriRedirect($location, $type = 'header', $timeout = 3000)
   if($type == 'header') {
     header("Location: ".$location);
   } else {
-    $output = "<script type=\"text/javascript\">".EXIDO_EOL;
+    $output = '<script type="text/javascript">'.EXIDO_EOL;
     $output.= "<!-- ".EXIDO_EOL;
     $output.= "setTimeout('location.href(\"".$location."\")', ".$timeout.");".EXIDO_EOL;
     $output.= "//-->".EXIDO_EOL;
@@ -72,9 +72,9 @@ function uriSiteRedirect($location, $type = 'header', $timeout = 3000)
 function uriSite($uri)
 {
   if(Exido::config('global.core.use_friendly_url')) {
-    return HOME.ltrim($uri, '/');
+    return HOME.exido_fix_path($uri);
   }
-  return HOME.Exido::config('global.core.index_file').'/'.ltrim($uri, '/');
+  return HOME.Exido::config('global.core.index_file').'/'.exido_fix_path($uri);
 }
 
 // -----------------------------------------------------------------------------

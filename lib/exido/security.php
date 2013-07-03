@@ -47,16 +47,16 @@ final class Security
    * @var array
    */
   protected $_never_allowed_str = array(
-    'document.cookie'	=> '[removed]',
-    'document.write'	=> '[removed]',
-    '.parentNode'		=> '[removed]',
-    '.innerHTML'		=> '[removed]',
-    'window.location'	=> '[removed]',
-    '-moz-binding'		=> '[removed]',
-    '<!--'				=> '&lt;!--',
-    '-->'				=> '--&gt;',
-    '<![CDATA['			=> '&lt;![CDATA[',
-    '<comment>'			=> '&lt;comment&gt;'
+    'document.cookie' => '[removed]',
+    'document.write'  => '[removed]',
+    '.parentNode'     => '[removed]',
+    '.innerHTML'      => '[removed]',
+    'window.location' => '[removed]',
+    '-moz-binding'    => '[removed]',
+    '<!--'            => '&lt;!--',
+    '-->'             => '--&gt;',
+    '<![CDATA['       => '&lt;![CDATA[',
+    '<comment>'       => '&lt;comment&gt;'
   );
 
   /**
@@ -219,8 +219,8 @@ final class Security
      * code, it simply converts the parenthesis to entities
      * rendering the code un-executable.
      *
-     * For example:	eval('some code')
-     * Becomes:		eval&#40;'some code'&#41;
+     * For example:  eval('some code')
+     * Becomes:    eval&#40;'some code'&#41;
      */
     $str = preg_replace('#(alert|cmd|passthru|eval|exec|expression|system|fopen|fsockopen|file|file_get_contents|readfile|unlink)(\s*)\((.*?)\)#si', "\\1\\2&#40;\\3&#41;", $str);
 
@@ -256,7 +256,7 @@ final class Security
    * semicolons, so we are left with our own little solution here. Bummer.
    * @param string $str
    * @param string $charset
-   * @return	string
+   * @return  string
    */
   public function entityDecode($str, $charset = 'UTF-8')
   {

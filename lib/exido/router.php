@@ -144,7 +144,7 @@ final class Router
           // Valid path
           $found = true;
           // The controller must be a file that exists with the search path
-          if($c = str_replace('\\', '/', realpath($dir.$controller_path.'.php'))
+          if($c = exido_fix_path(realpath($dir.$controller_path.'.php'))
               and
             is_file($c)
           ) {

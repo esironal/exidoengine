@@ -371,7 +371,7 @@ final class Exido
     foreach(array_merge($external_paths, Component::getComponentPaths()) as $key => $path) {
       if(is_dir($path)) {
         // Add the path to include paths
-        array_push(self::$_paths, str_replace('\\', '/', realpath($path)).'/');
+        array_push(self::$_paths, exido_fix_path(realpath($path)).'/');
       } else {
         // This path is invalid, remove it
         unset($external_paths[$key]);
@@ -408,8 +408,7 @@ final class Exido
     $ext = ($ext === null) ? '.php' : '.'.$ext;
 
     // Create a partial path of the filename
-    $dir = str_replace('\\', '/', $dir);
-    $pathfile = rtrim($dir, '/').'/'.$file.$ext;
+    $pathfile = exido_fix_path($dir).$file.$ext;
 
     // Debug log
     if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Include external file /'.ltrim($pathfile, '/'));

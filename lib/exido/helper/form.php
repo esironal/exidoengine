@@ -49,7 +49,7 @@ function formHint($hint, $class = 'form-field-hint')
  */
 function formRedirect($title, $url, $name = 'back')
 {
-  return formButton($name, $title, "onClick=\"location.href('".$url."')\"");
+  return formButton($name, $title, "onclick=\"location.href('".$url."')\"");
 }
 
 // -------------------------------------------------------------------------------
