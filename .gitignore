@@ -7,3 +7,8 @@ install-log.txt
 .DS_Store
 *.log
 idea/*
+.idea/workspace.xml
+app/core/exidoengine/frontend/controller/tests.php
+app/data/ss.jpeg
+app/data/ss.jpg
+app/data/ss111.jpeg
