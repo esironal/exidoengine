@@ -46,7 +46,7 @@ function pre($object, $title = '') {
  * @return string
  */
 function exido_logo_guid() {
-  return CORE_LOGO_GUID;
+  return EXIDO_LOGO_GUID;
 }
 
 // ---------------------------------------------------------------------------

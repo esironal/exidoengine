@@ -247,7 +247,7 @@ final class Exido
   public static function & instance()
   {
     // ExidoEngine logo
-    if(Input::instance()->checkGet(CORE_LOGO_GUID)) {
+    if(Input::instance()->checkGet(EXIDO_LOGO_GUID)) {
       self::_logo();
     } elseif(self::$_instance === null) {
       try {
@@ -309,8 +309,9 @@ final class Exido
         // Otherwise execute the controller method
         $method->invokeArgs(self::$_instance, $arguments);
       }
-      // Execute the "after action" method
-      $class->getMethod('afterController')->invoke(self::$_instance);
+      if($class->getProperty('preventAfterController')->getValue() == null)
+        // Execute the "after action" method
+        $class->getMethod('afterController')->invoke(self::$_instance);
 
       if($is_before_fails == false) {
         // Execute the "pushLayout" method
@@ -364,17 +365,17 @@ final class Exido
     self::$_paths   = array(APPPATH);
 
     // Set the currently environment path
-    if(is_dir(APPPATH.'core/'.self::$core_app_name.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/'))
-      array_push(self::$_paths,
-        APPPATH.'core/'.self::$core_app_name.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/');
+    if(is_dir(self::_coreEnvDir()))
+      array_push(self::$_paths, self::_coreEnvDir());
 
     if( ! empty($external_paths)) {
       foreach($external_paths as $key => $path) {
+        // Check if the path exists in the file system
         if(is_dir($path)) {
           // Add the path to include paths
           array_push(self::$_paths, $path);
         } else {
-          // This path is invalid, remove it
+          // The path is invalid, so we just remove it
           unset($external_paths[$key]);
         }
       }
@@ -389,7 +390,7 @@ final class Exido
     );
 
     // Debug log
-    if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Include paths: '.implode(':', self::$_paths));
+    if(self::$log_debug) self::$log->add('EXIDO_DEBUG_LOG', 'Included paths: '.implode(':', self::$_paths));
   }
 
   // ---------------------------------------------------------------------------
@@ -450,9 +451,10 @@ final class Exido
   /**
    * Creates a new configuration object for the requested group.
    * @param string $group
+   * @param bool $reload
    * @return array
    */
-  public static function config($group)
+  public static function config($group, $reload = false)
   {
     static $config;
     if(strpos($group, '.') !== false) {
@@ -460,7 +462,7 @@ final class Exido
       list($group, $path) = explode('.', $group, 2);
     }
 
-    if( ! isset($config[$group])) {
+    if( ! isset($config[$group]) or $reload) {
       // Load the config group into the cache
       $config[$group] = self::$config->load($group);
     }
@@ -485,10 +487,10 @@ final class Exido
     if( ! isset($i18n[$line]))
       // Load the config group into the cache
       $i18n[$line] = self::$i18n->get($line);
-
-    if( ! empty($i18n[$line]) and $i18n[$line] != $line) {
+    // Return the line if exists
+    if( ! empty($i18n[$line]) and $i18n[$line] != $line)
       return $i18n[$line];
-    } else {
+    else {
       // Check the language parameters. And returns the default
       // values if some does not found.
       switch($line) {
@@ -589,16 +591,37 @@ final class Exido
     self::$log->write();
   }
 
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Prints the system logo.
+   * @return void
+   */
   private static function _logo()
   {
-    $im = imagecreatefromstring(base64_decode(CORE_LOGO));
-    if($im !== false) {
+    if($b64   = base64_decode(EXIDO_LOGO)
+      and $im = imagecreatefromstring($b64)
+      and $im !== false)
+    {
       header('Content-Type: image/gif');
       imagegif($im);
       imagedestroy($im);
     } else {
-      print CORE_LOGO_GUID;
+      print EXIDO_LOGO_GUID;
     }
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get environment directory
+   * @return string
+   */
+  private static function _coreEnvDir()
+  {
+    return APPPATH.'core/'
+          .self::$core_app_name.'/'
+          .strtolower(EXIDO_ENVIRONMENT_NAME).'/';
   }
 
   // ---------------------------------------------------------------------------

@@ -33,7 +33,7 @@
  * @param string $folder
  * @return string
  */
-function htmlFavIcon($file, $folder = '')
+function htmlFavIcon($file = 'favicon', $folder = 'css/images')
 {
   return '<link rel="shortcut icon" href="'.exido_fix_path($folder).$file.'.ico" />'.EXIDO_EOL
         .'<link rel="icon" href="'.exido_fix_path($folder).$file.'.ico" />'.EXIDO_EOL;

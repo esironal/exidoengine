@@ -28,6 +28,7 @@ return array(
    *   'component_unique_name' => 'relative_path'
    * )
    */
-  'namespace_componentname' => 'namespace/componentname'
+  'exidoteam_page'      => 'exidoteam/page',
+  'exidoteam_ecommerce' => 'exidoteam/ecommerce'
 );
 ?>

@@ -197,8 +197,7 @@ abstract class Controller_Cron_Abstract extends Controller_Abstract
    */
   final public function __construct()
   {
-    $this->input  = Input::instance();
-    $this->_model = Registry::factory('Model');
+    // Nothing by default
   }
 
   // ---------------------------------------------------------------------------

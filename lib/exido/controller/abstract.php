@@ -62,6 +62,12 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
   public $view;
 
   /**
+   * Prevent after controller
+   * @var bool
+   */
+  public static $preventAfterController;
+
+  /**
    * Current system user
    * @var string
    */
@@ -222,6 +228,18 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
   protected function disableLayoutView()
   {
     $this->_disableLayoutView = true;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Disable the execution of "After" controller method.
+   * Can be executed in "Before" or main controller methods.
+   * @return void
+   */
+  protected function preventAfter()
+  {
+    self::$preventAfterController = true;
   }
 
   // ---------------------------------------------------------------------------

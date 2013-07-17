@@ -37,6 +37,16 @@
 final class Component
 {
   /**
+   * Default config
+   */
+  public static $default_config = array(
+    'has_backend'  => 1,
+    'has_frontend' => 1,
+    'is_visible_in_backend_menu' => 0,
+    'is_enabled' => 0
+  );
+
+  /**
    * Loaded components
    * @var array
    */
@@ -58,23 +68,13 @@ final class Component
   public static function load()
   {
     // Get components list
-    //$_components = Exido::config('component');
-    $_components = Registry::factory('Model_Component')->getActiveComponents();
-    foreach($_components as $component) {
-      //print $apath = rtrim(COMPATH.$component->path, '/');
+    foreach(Exido::config('component') as $name_space => $path) {
       // Get path for custom components. System components are placed in core/exidoengine
-      if($component->is_system == 0) {
-        if(is_dir(COMPATH.$component->path)) {
-          // Set component paths
-          self::$_components[$component->component_key] = array(
-            1 => COMPATH.$component->path.'/',
-            2 => COMPATH.$component->path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/'
-          );
-          self::$_paths[] = COMPATH.$component->path.'/';
-          self::$_paths[] = COMPATH.$component->path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/';
-        } else {
-          throw new Exception_Exido('Component %s is not found in path %s', array($component->component_key, $component->component_key));
-        }
+      if(is_dir(COMPATH.$path)) {
+        self::$_paths[] = COMPATH.$path.'/';
+        self::$_paths[] = COMPATH.$path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/';
+      } else {
+        throw new Exception_Exido('Component %s is not found in path %s', array($path, $path));
       }
     }
   }
@@ -90,6 +90,20 @@ final class Component
     if($paths = self::getPaths() and ! empty($paths)) {
       Exido::setIncludePaths($paths);
     }
+    // Load components configurations
+    foreach(Exido::config('component') as $name_space => $path) {
+      // Get component configuration
+      $config = Exido::config($name_space);
+      // Set name
+      $config['ui_name'] = (isset($config['ui_name'])) ? $config['ui_name'] : $name_space;
+      // Assign component configuration
+      self::$_components[$name_space] = ($config) ? (array)$config : self::$default_config;
+      // Set component paths
+      self::$_components[$name_space]['paths'] = array(
+        1 => COMPATH.$path.'/',
+        2 => COMPATH.$path.'/'.strtolower(EXIDO_ENVIRONMENT_NAME).'/'
+      );
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -101,6 +115,17 @@ final class Component
   public static function getPaths()
   {
     return self::$_paths;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Gets a components.
+   * @return array
+   */
+  public static function getComponents()
+  {
+    return self::$_components;
   }
 
   // ---------------------------------------------------------------------------

@@ -28,34 +28,41 @@
  *******************************************************************************/
 
 /**
- * Component model class.
+ * Administrator dashboard controller class.
  * @package    core
  * @copyright  Sharapov A.
- * @created    14/06/2010
+ * @created    10/11/2012
  * @version    1.0
  */
-final class Model_Component extends Model_Db_Abstract
+class Administrator_Controller_Test extends Controller_Administrator_Abstract
 {
   /**
-   * Active components
-   * @var
+   * Dashboard page
+   * @return void
    */
-  private $_active_components = null;
+  public function index()
+  {
 
-  // ---------------------------------------------------------------------------
+    //$this->preventAfter();
+  }
 
   /**
-   * Get components.
-   * @return mixed
+   * Dashboard page
+   * @return void
    */
-  public function getActiveComponents()
+  public function beforeController()
   {
-    if($this->_active_components == null) {
-      if($this->_active_components = Component::getComponents()) {
-        return $this->_active_components;
-      }
-    }
-    return $this->_active_components;
+    //$this->preventAfter();
+    print 'before';
+  }
+
+  /**
+   * Dashboard page
+   * @return void
+   */
+  public function afterController()
+  {
+    print 'after';
   }
 }
 

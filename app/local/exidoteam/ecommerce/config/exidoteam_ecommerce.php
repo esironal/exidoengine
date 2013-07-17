@@ -13,12 +13,6 @@
  * obtain it through the world-wide-web, please send an email
  * to license@exidoengine.com so we can send you a copy immediately.
  *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade ExidoEngine to newer
- * versions in the future. If you wish to customize ExidoEngine for your
- * needs please refer to http://www.exidoengine.com for more information.
- *
  * @license   http://www.exidoengine.com/license/gpl-3.0.html (GNU General Public License v3)
  * @author    ExidoTeam
  * @copyright Copyright (c) 2009 - 2013, ExidoEngine Solutions
@@ -27,36 +21,11 @@
  * @filesource
  *******************************************************************************/
 
-/**
- * Component model class.
- * @package    core
- * @copyright  Sharapov A.
- * @created    14/06/2010
- * @version    1.0
- */
-final class Model_Component extends Model_Db_Abstract
-{
-  /**
-   * Active components
-   * @var
-   */
-  private $_active_components = null;
-
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Get components.
-   * @return mixed
-   */
-  public function getActiveComponents()
-  {
-    if($this->_active_components == null) {
-      if($this->_active_components = Component::getComponents()) {
-        return $this->_active_components;
-      }
-    }
-    return $this->_active_components;
-  }
-}
-
+return array(
+  'has_backend' => 1,
+  'has_frontend' => 1,
+  'is_visible_in_backend_menu' => 1,
+  'is_enabled' => 1,
+  'ui_name'    => 'Ecommerce'
+);
 ?>

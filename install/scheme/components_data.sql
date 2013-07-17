@@ -1,7 +1,0 @@
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `is_enabled`, `position`) VALUES ('ALL', 'root', NOW(), true, false, false, '0');
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `position`) VALUES ('dashboard', 'Dashboard', NOW(), true, true, '4102');
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `position`) VALUES ('user', 'Users', NOW(), true, true, '3500');
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `position`) VALUES ('user/access', 'Access', NOW(), true, true, '3400');
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `position`) VALUES ('page', 'Pages', NOW(), true, true, '2900');
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `position`) VALUES ('site/config', 'Site config', NOW(), true, true, '1000');
-INSERT INTO `component` (`component_key`, `component_name`, `created_at`, `is_system`, `is_installed`, `position`) VALUES ('component', '...', NOW(), true, true, '100');

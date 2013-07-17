@@ -52,11 +52,17 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
   {
     parent::__construct();
 
-    // Configuring main menu
+    // Configure the main menu
     $this->view->header_menu = array();
     if($this->_components != null and ! empty($this->_components)) {
-      foreach($this->_components as $d) {
-        $this->view->header_menu[$d->component_key] = __($d->component_name);
+      // Generate backend menu
+      foreach($this->_components as $key => $d) {
+        if($d['is_enabled']  and
+           $d['has_backend'] and
+           $d['is_visible_in_backend_menu']
+        ) {
+          $this->view->header_menu[$key] = __($d['ui_name']);
+        }
       }
     }
 

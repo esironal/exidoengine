@@ -48,32 +48,28 @@ $vnd_dir = '../app/vendors'; // Path to the Vendors dir
 define('DOCROOT', realpath(dirname(__FILE__)));
 
 // Make the application relative to the docroot
-$app_dir = rtrim($app_dir, '/');
-if(is_dir(DOCROOT.$app_dir))
+if( ! is_dir($app_dir) and is_dir(DOCROOT.$app_dir))
   $app_dir = DOCROOT.$app_dir;
 
 // Make the components relative to the docroot
-$com_dir = rtrim($com_dir, '/');
-if(is_dir(DOCROOT.$com_dir))
+if( ! is_dir($com_dir) and is_dir(DOCROOT.$com_dir))
   $com_dir = DOCROOT.$com_dir;
 
 // Make the system relative to the docroot
-$sys_dir = rtrim($sys_dir, '/');
-if(is_dir(DOCROOT.$sys_dir)) {
+if( ! is_dir($sys_dir) and is_dir(DOCROOT.$sys_dir)) {
   $sys_dir = DOCROOT.$sys_dir;
 }
 
 // Make the vendors relative to the docroot
-$vnd_dir = rtrim($vnd_dir, '/');
-if(is_dir(DOCROOT.$vnd_dir)) {
+if( ! is_dir($vnd_dir) and is_dir(DOCROOT.$vnd_dir)) {
   $vnd_dir = DOCROOT.$vnd_dir;
 }
 
 // Define the absolute paths for configured directories
-define('APPPATH', str_replace('\\', '/', $app_dir.'/'));
-define('COMPATH', str_replace('\\', '/', $com_dir.'/'));
-define('SYSPATH', str_replace('\\', '/', $sys_dir.'/'));
-define('VNDPATH', str_replace('\\', '/', $vnd_dir.'/'));
+define('APPPATH', str_replace('\\', '/', realpath($app_dir).'/'));
+define('COMPATH', str_replace('\\', '/', realpath($com_dir).'/'));
+define('SYSPATH', str_replace('\\', '/', realpath($sys_dir).'/'));
+define('VNDPATH', str_replace('\\', '/', realpath($vnd_dir).'/'));
 
 // Clean up the configuration vars
 unset($app_dir, $com_dir, $sys_dir, $vnd_dir);
