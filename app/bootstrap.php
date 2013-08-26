@@ -79,8 +79,6 @@ Component::load();
 // Initialize loaded components
 Component::initialize();
 
-
-
 // Include internalization languages
 //Exido::$i18n->attach(new I18n_File('en_US'));
 Exido::$i18n->attach(new I18n_File('ru_RU'));

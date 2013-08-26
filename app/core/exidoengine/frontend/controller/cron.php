@@ -198,7 +198,7 @@ class Frontend_Controller_Cron extends Controller
   final public function __construct()
   {
     $this->input  = Input::instance();
-    $this->_model = Registry::factory('Model');
+    $this->model = Registry::factory('Model');
   }
 
   // ---------------------------------------------------------------------------

@@ -77,7 +77,7 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
     if(in_array($path, $this->_common_components))
       return true;
 
-    if( ! $this->_checkAccess($path, 'r')) {
+    if( ! $this->checkPermissions($path, 'r')) {
       if($this->session->get('_passw_entered') == true) {
         $this->view->referer = $this->input->referer();
         $this->view->getView('action/auth/forbidden');
@@ -85,51 +85,6 @@ abstract class Controller_Administrator_Abstract extends Controller_Abstract
         $this->view->getView('action/auth/index');
       }
       return false;
-    }
-    return true;
-  }
-
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Check access to the component
-   * @param string $path
-   * @param string $action
-   * @return bool
-   */
-  protected function _checkAccess($path, $action)
-  {
-    print $path;
-    // Check if an action allowed
-    if( ! in_array($action, $this->_actions))
-      return false;
-
-    // If the user has full access
-    if(isset($this->_system_user_access['ALL'])) {
-      $access = $this->_system_user_access['ALL'];
-    // If the user has access only to specified components
-    } elseif(isset($this->_system_user_access[$path])) {
-      $access = $this->_system_user_access[$path];
-    } else
-      // No access
-      return false;
-
-    // Check actions
-    switch($action) {
-      case 'r' : // Read action
-          if($access[0] != 'r')
-            return false;
-        break;
-      case 'w' : // Write action
-          if($access[1] != 'w')
-            return false;
-        break;
-      case 'x' : // Execute action
-          if($access[2] != 'x')
-            return false;
-        break;
-      default:
-        return false;
     }
     return true;
   }
