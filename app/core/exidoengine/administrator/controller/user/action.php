@@ -152,7 +152,7 @@ class Administrator_Controller_User_Action extends Controller_Administrator_Abst
   public function edit($user_id = null)
   {
     // Get page data
-    if( ! $this->view->attribute_form = $this->db_user->getEntityById($entity_id)) {
+    if( ! $this->view->attribute_form = $this->db_user->getUser($user_id)) {
       throw new Exception_Exido(__('Page not found'), array(), 404);
     };
 

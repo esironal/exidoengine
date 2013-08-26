@@ -157,19 +157,6 @@ final class Model_User extends Model_Db_Abstract
   // ---------------------------------------------------------------------------
 
   /**
-   * Get list of users.
-   * @return mixed
-   */
-  public function getUser()
-  {
-    return $this->db->select('user', '*')
-      //->where()
-      ->limit()->order('user_id')->exec()->result();
-  }
-
-  // ---------------------------------------------------------------------------
-
-  /**
    * Update user.
    * @param int $user_id
    * @return bool
