@@ -64,4 +64,10 @@ $helper
   ->notifier('<a href="http://www.exidoengine.com/" target="_blank">ExidoEngine Web-sites manager</a>', '-i-box-footer')
   ->closeBody()
   ->closeHtml();
+
+pre($view->system_user, 'current user');
+print '<hr />';
+pre($view->system_user_access, 'access');
+print '<hr />';
+pre($_SESSION, 'session');
 ?>

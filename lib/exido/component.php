@@ -69,6 +69,7 @@ final class Component
   {
     // Get components list
     foreach(Exido::config('component') as $name_space => $path) {
+      print COMPATH.$path;
       // Get path for custom components. System components are placed in core/exidoengine
       if(is_dir(COMPATH.$path)) {
         self::$_paths[] = COMPATH.$path.'/';

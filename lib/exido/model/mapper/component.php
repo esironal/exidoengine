@@ -28,37 +28,37 @@
  *******************************************************************************/
 
 /**
- * Prints array or object in User-Friendly form.
- * @param array $object
- * @param string $title
- * @return void
+ * Component mapper.
+ * @package    core
+ * @copyright  Sharapov A.
+ * @created    14/06/2010
+ * @version    1.0
  */
-function pre($object, $title = '') {
-  print ' <pre><b>'.$title.'</b> ';
-  print_r($object);
-  print '</pre>';
-}
+final class Model_Mapper_Component extends Model_Mapper
+{
+  /**
+   * Model_Registry object
+   * @var
+   */
+  protected $_aData;
 
-// ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
 
-/**
- * Returns logo guid.
- * @return string
- */
-function exido_logo_guid() {
-  return EXIDO_LOGO_GUID;
-}
-
-// ---------------------------------------------------------------------------
-
-/**
- * Replace backslash (\) with slash (/) and add the trailing slash if needed.
- * @param $path
- * @return string
- */
-function exido_fix_path($path, $disable_slash = false) {
-  $path = str_replace('\\', '/', $path);
-  return (($disable_slash)?trim($path, '/'):trim($path, '/').'/');
+  /**
+   * Loads the result from database into the local object.
+   * @param mixed
+   */
+  public function __construct($user)
+  {
+    if($user instanceof Database_Mapper_Result) {
+      // Create registry object
+      $this->_aData = Model_Registry::instance();
+      // Deploy properties
+      foreach($user as $prop => $val) {
+        $this->_aData->$prop = $val;
+      }
+    }
+  }
 }
 
 ?>

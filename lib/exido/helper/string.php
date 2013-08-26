@@ -41,7 +41,7 @@ function stringStrip($str, $length, $delimiter = '', $attach = '...')
     return $str;
   $str = substr($str, 0, $length);
   if(empty($delimiter))
-    return $string;
+    return $str;
   $str = substr($str, 0, strrpos($str, $delimiter));
   return (empty($str)) ? $str : $str.$attach;
 }

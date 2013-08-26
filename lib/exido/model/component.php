@@ -45,17 +45,57 @@ final class Model_Component extends Model_Db_Abstract
   // ---------------------------------------------------------------------------
 
   /**
-   * Get components.
+   * Get active components.
    * @return mixed
    */
-  public function getActiveComponents()
+  public function getActive()
   {
     if($this->_active_components == null) {
-      if($this->_active_components = Component::getComponents()) {
-        return $this->_active_components;
+      if($r = $this->db->select('component')
+        ->where(array('is_enabled' => 1, 'is_installed' => 1))
+        ->exec()->result()) {
+        $this->_active_components = $r;
       }
     }
     return $this->_active_components;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get backend components.
+   * @return array
+   */
+  public function getBackend()
+  {
+    if($this->_active_components == null) {
+      $this->getActive();
+    }
+    $list = array();
+    foreach($this->_active_components as $b) {
+      if($b->has_backend)
+        $list[] = $b;
+    }
+    return $list;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get backend components.
+   * @return array
+   */
+  public function getFrontend()
+  {
+    if($this->_active_components == null) {
+      $this->getActive();
+    }
+    $list = array();
+    foreach($this->_active_components as $b) {
+      if($b->has_frontend)
+        $list[] = $b;
+    }
+    return $list;
   }
 }
 

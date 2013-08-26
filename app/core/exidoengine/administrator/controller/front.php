@@ -27,37 +27,25 @@
  * @filesource
  *******************************************************************************/
 
-/**
- * User class.
- * @package    core
- * @copyright  Sharapov A.
- * @created    14/06/2010
- * @version    1.0
- */
-final class Model_Auth_User extends Model_Mapper
+class Administrator_Controller_Front extends Controller_Administrator_Abstract
 {
   /**
-   * Model_Registry object
-   * @var
+   * Constructor
    */
-  protected $_aData;
+  public function __construct()
+  {
+    parent::__construct();
+  }
 
   // ---------------------------------------------------------------------------
 
   /**
-   * Loads the result from database into the local object.
-   * @param mixed
+   * Print index page
+   * @return void
    */
-  public function __construct($user)
+  public function index()
   {
-    if($user instanceof Database_Mapper_Result) {
-      // Create registry object
-      $this->_aData = Model_Registry::instance();
-      // Deploy properties
-      foreach($user as $prop => $val) {
-        $this->_aData->$prop = $val;
-      }
-    }
+
   }
 }
 

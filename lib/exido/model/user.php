@@ -53,7 +53,7 @@ final class Model_User extends Model_Db_Abstract
   {
     if($r = $this->db->select('user', '*')->where(array('user_id' => $user_id))
             ->limit(1)->exec()->row()) {
-      return Registry::factory('Model_Auth_User', $r);
+      return Registry::factory('Model_Mapper_User', $r);
     }
     return false;
   }
@@ -95,9 +95,13 @@ final class Model_User extends Model_Db_Abstract
    */
   public function getUserByUniqueKey($key)
   {
+    // If current user is unknown so we just start a guest session
+    if( ! is_string($key))
+      $key = Exido::config('global.guest_user_key');
+
     if($r = $this->db->select('user', '*')->where(array('unique_session_id' => $key))
       ->limit(1)->exec()->row()) {
-      return $this->_user = Registry::factory('Model_Auth_User', $r);
+      return $this->_user = Registry::factory('Model_Mapper_User', $r);
     }
     return false;
   }

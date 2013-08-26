@@ -155,45 +155,104 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
     // Init action view object
     $this->_viewAction = Registry::factory('View_Action');
 
-    // Get active components
-    $this->_components = $this->model('Model_Component')->getActiveComponents();
-    // Get session data
-    $_user_key = $this->_getCurrentUser();
-    // If current user is unknown so we should start guest session
-    if(empty($_user_key)) {
-      // Guest session id
-      $_user_key = '5627a272bf2563cee5877539bd906e7cc3eb33afcefe2b570a08906f9a34ae48';
-    }
-    if($r = $this->model('Model_User')->getUserByUniqueKey($_user_key)) {
-      $this->_system_user = array(
-        'user_id'     => $r->getUser_id(),
-        'user_name'   => $r->getUser_name(),
-        'password'    => $r->getPassword(),
-        'user_email'  => $r->getUser_email(),
-        'owner_id'    => $r->getOwner_id(),
-        'owner_name'  => $r->getOwner_name(),
-        'group_id'    => $r->getGroup_id(),
-        'group_name'  => $r->getGroup_name(),
-        'role_name'   => $r->getRole_key(),
-        'permissions' => array(
-          'owner' => $r->getPermissions_owner(),
-          'group' => $r->getPermissions_group(),
-          'other' => $r->getPermissions_other()
-        ),
-        'is_enabled'  => $r->getIs_enabled(),
-        'is_dropped'  => $r->getIs_dropped(),
-        'is_system'   => $r->getIs_system()
-      );
+    // Get active backend components
+    $this->_components = $this->model('Model_Component')->getBackend();
 
-      // User constants
+    // Get user data
+    if($r = $this->model('Model_User')->getUserByUniqueKey($this->getSessionUserKey())) {
+      $this->_system_user              = new stdClass;
+      $this->_system_user->user_id     = $r->getUser_id();
+      $this->_system_user->user_name   = $r->getUser_name();
+      $this->_system_user->password    = $r->getPassword();
+      $this->_system_user->user_email  = $r->getUser_email();
+      $this->_system_user->owner_id    = $r->getOwner_id();
+      $this->_system_user->owner_name  = $r->getOwner_name();
+      $this->_system_user->group_id    = $r->getGroup_id();
+      $this->_system_user->group_name  = $r->getGroup_name();
+      $this->_system_user->role_name   = $r->getRole_key();
+      $this->_system_user->permissions = array(
+        'owner' => $r->getPermissions_owner(),
+        'group' => $r->getPermissions_group(),
+        'other' => $r->getPermissions_other()
+      );
+      $this->_system_user->is_enabled = $r->getIs_enabled();
+      $this->_system_user->is_dropped = $r->getIs_dropped();
+      $this->_system_user->is_system  = $r->getIs_system();
+
+      // Set unique session ID for the user
+      $this->session->set('system_user', $r->getUnique_session_id());
+
+      // Define user constants
       define('@SU.GROUP_ID'   , $r->getGroup_id());
       define('@SU.GROUP_NAME' , $r->getGroup_name());
       define('@SU.USER_ID'    , $r->getUser_id());
       define('@SU.USER_NAME'  , $r->getUser_name());
 
-      $this->_system_user_access = $this->model('Model_User')->getUserAccess($r->getUser_id(), EXIDO_ENVIRONMENT_NAME);
-      $this->session->set('system_user', $_user_key);
+      // Get user access permissions
+      $this->_system_user_access =
+        $this->model('Model_User')
+          ->getUserAccess($r->getUser_id(), EXIDO_ENVIRONMENT_NAME);
+
+      // TODO: Remove after fisish with User access
+      $this->view->system_user = $this->getCurrentUserData();
+      $this->view->system_user_access = $this->getCurrentUserAccess();
     }
+
+    // Check access permissions
+    if($this->checkPermissions('ALL') == false) {
+      die('Access denied');
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Check permissions.
+   * @param string $path
+   * @param string $action
+   * @return bool
+   */
+  public function checkPermissions($path, $action = 'r')
+  {
+    // Check if the requested action is allowed
+    if( ! in_array($action, array('r','w','x')))
+      return false;
+
+    // Get user data and his permissions
+    $d = $this->getCurrentUserData();
+    $a = $this->getCurrentUserAccess();
+
+    if($d == false or $a == false)
+      return false;
+
+    // If the user has access to all the components
+    if(isset($a['ALL'])) {
+      $access = $a['ALL'];
+      // If the user has access only to specified components
+    } elseif(isset($a[$path])) {
+      $access = $a[$path];
+    } else
+      // No access
+      return false;
+
+    // Check actions
+    switch($action) {
+      case 'r' : // Read action
+        if($access[0] != 'r')
+          return false;
+        break;
+      case 'w' : // Write action
+        if($access[1] != 'w')
+          return false;
+        break;
+      case 'x' : // Execute action
+        if($access[2] != 'x')
+          return false;
+        break;
+      default:
+        return false;
+    }
+    return true;
   }
 
   // ---------------------------------------------------------------------------
@@ -364,10 +423,32 @@ abstract class Controller_Abstract implements Controller_Interface_Abstract
   // ---------------------------------------------------------------------------
 
   /**
+   * Get current user data.
+   * @return mixed
+   */
+  public function getCurrentUserData()
+  {
+    return $this->_system_user;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Get current user access permissions.
+   * @return mixed
+   */
+  public function getCurrentUserAccess()
+  {
+    return $this->_system_user_access;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  /**
    * Get current user.
    * @return mixed
    */
-  private function _getCurrentUser()
+  public function getSessionUserKey()
   {
     return $this->session->get('system_user');
   }

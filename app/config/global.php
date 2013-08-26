@@ -63,7 +63,8 @@ return array(
   'mail' => array(
     'from' => 'support@exidoengine.com',
     'name' => 'ExidoEngine'
-  )
+  ),
+  'guest_user_key' => '5627a272bf2563cee5877539bd906e7cc3eb33afcefe2b570a08906f9a34ae48'
 );
 
 ?>
