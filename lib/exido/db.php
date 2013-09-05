@@ -37,7 +37,7 @@ include_once 'database/init.php';
  * @created    06/02/2010
  * @version    1.0
  */
-class Db
+class Exido_Database extends Exido_Database_Abstract
 {
   /**
    * Singleton instance

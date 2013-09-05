@@ -61,7 +61,7 @@ class Administrator_Controller_User_Ajax extends Controller_Ajax_Abstract
     $this->disableViews();
     if($this->input->get('user_name')) {
       // Check if all the values are unique
-      if($this->db_user->checkIfUsernameIsUnique($this->input->get('user_name'))) {
+      if($this->db_user->checkIfUsernameIsUnique($this->input->get('user_name'), $this->input->get('exclude'))) {
         print 'true';
       } else {
         print 'false';
@@ -69,7 +69,7 @@ class Administrator_Controller_User_Ajax extends Controller_Ajax_Abstract
     }
     if($this->input->get('user_email')) {
       // Check if all the values are unique
-      if($this->db_user->checkIfEmailIsUnique($this->input->get('user_email'))) {
+      if($this->db_user->checkIfEmailIsUnique($this->input->get('user_email'), $this->input->get('exclude'))) {
         print 'true';
       } else {
         print 'false';

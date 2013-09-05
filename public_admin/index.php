@@ -37,7 +37,7 @@ define('EXIDO_ENVIRONMENT_NAME', 'ADMINISTRATOR');
 // Set absolute paths to directories without trailing slashes
 $app_dir = '../app'; // Path to the App dir
 $com_dir = '../app/local'; // Path to the Local dir
-$sys_dir = '../lib/exido'; // Path to the System dir
+$sys_dir = '../lib/ex'; // Path to the System dir
 $vnd_dir = '../app/vendors'; // Path to the Vendors dir
 
 /*************************************************/

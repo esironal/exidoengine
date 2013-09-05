@@ -127,7 +127,7 @@ class Administrator_Controller_User_Action extends Controller_Administrator_Abst
         } else {
           // If something was wrong
           $this->session->set('action_error',
-                                sprintf(__('There is an error while creating a user. Details: %s'), $this->db_page->getErrorString())
+                                sprintf(__('There is an error while creating a user. Details: %s'), $this->db_user->getErrorString())
           );
         }
       } else {
@@ -152,74 +152,56 @@ class Administrator_Controller_User_Action extends Controller_Administrator_Abst
   public function edit($user_id = null)
   {
     // Get page data
-    if( ! $this->view->attribute_form = $this->db_user->getUser($user_id)) {
-      throw new Exception_Exido(__('Page not found'), array(), 404);
+    if( ! $this->view->user = $this->db_user->getUser($user_id)) {
+      throw new Exception_Exido(__('User not found'), array(), 404);
     };
+
+    $this->view->roles_list = $this->db_user->getRoleList();
 
     // Save when posting
     if($this->input->checkPost()) {
       // Init validation object
       $v = Registry::factory('Validation_Form');
       // Set rules
-      $v->setRule('user_name', 'required|alphaDash');
       $v->setRule('user_email', 'required|email');
       $v->setRule('role_name', 'required');
       // Set error messages
-      $v->setRuleError('user_name', __('Please enter a user name'), 'required');
-      $v->setRuleError('user_name', __('User name may contains only latin characters and numbers'), 'alphaDash');
       $v->setRuleError('user_email', __('Please enter a email'), 'required');
       $v->setRuleError('user_email', __('Please enter a valid email'), 'email');
       $v->setRuleError('role_name', __('Please choose role'), 'required');
       // Run validator
       if($v->run()) {
         // If validation was passed successfully
-        $this->db_user->setUser_name($this->input->post('user_name'));
         $this->db_user->setUser_email($this->input->post('user_email'));
         $this->db_user->setRole_key($this->input->post('role_name'));
         $this->db_user->setDescription($this->input->post('description'));
-        // Generate unique session id
-        $this->db_user->setUnique_session_id(guidGet(64, 1, '', true));
-        // Set owner parameters
-        $this->db_user->setOwner_id(constant('@SU.USER_ID'));
-        $this->db_user->setOwner_name(constant('@SU.USER_NAME'));
-        $this->db_user->setGroup_id(constant('@SU.GROUP_ID'));
-        $this->db_user->setGroup_name(constant('@SU.GROUP_NAME'));
-        $this->db_user->setPermissions_owner('rwx');
-        $this->db_user->setPermissions_group('r--');
-        $this->db_user->setPermissions_other('r--');
         // Set date and status
-        $this->db_user->setCreated_at(dateConvert2SQL());
+        $this->db_user->setUpdated_at(dateConvert2SQL());
         // Set enabled
         if($this->input->post('is_enabled'))
           $this->db_user->setIs_enabled(true);
+        else
+          $this->db_user->setIs_enabled(false);
 
-        $username = $this->input->post('user_name');
         // Generate password
         $password = $this->input->post('password');
         if($password) {
           $this->db_user->setPassword(md5($password));
-        } else {
-          $password = guidGet(8, 1, '', true);
-          $this->db_user->setPassword(md5($password));
         }
 
         // Adding user
-        if($this->db_user->addUser()) {
-          $this->session->set('action_success', __('User has been successfully added.'));
-          // Email password to user
-          if($this->input->post('do_not_email_password') == false) {
-            $this->_emailPassword($this->input->post('user_email'), $username, $password);
-          }
+        if($this->db_user->updateUser($user_id)) {
+          $this->session->set('action_success', __('User has been successfully saved.'));
         } else {
           // If something was wrong
           $this->session->set('action_error',
-                              sprintf(__('There is an error while creating a user. Details: %s'), $this->db_page->getErrorString())
+                              sprintf(__('There is an error while saving a user. Details: %s'), $this->db_user->getErrorString())
           );
         }
       } else {
         // If something was wrong during validation
         $this->session->set('action_error',
-                            sprintf(__('There is an error while creating a user. Details: %s'), $v->getErrorString())
+                            sprintf(__('There is an error while saving a user. Details: %s'), $v->getErrorString())
         );
       }
       uriSiteRedirect('user');
